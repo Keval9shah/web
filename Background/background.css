@@ -41,12 +41,10 @@ img:active {
 .frst {
     margin: 0;
     width: 22%;
-    background-color: rgba(255, 245, 233, 0.65);
+    background-color: rgba(255, 255, 255, 0.35);
     padding: 25px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 5px;
+    backdrop-filter: blur(2px);
     border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
     min-width: 200px;
     display: none;
 }
@@ -83,6 +81,8 @@ img:active {
 }
 
 .fax {
+    padding: 13px 17px;
+    z-index: 3;
     border-radius: 4px;
     background-color: rgba(250, 255, 228, 0.884);
     display: none;
