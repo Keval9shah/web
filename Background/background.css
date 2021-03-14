@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: green;
+    background-size: cover;
+}
+
+.bttn {
+    display: inline-block;
+    padding: 17px 29px;
+    margin: 0 20px 0 0;
+    border-radius: 6px;
+    border-width: 3px;
+}
+
+.btn {
+    outline: none;
+    cursor: pointer;
+}
+
+img {
+    height: 70px;
+    display: inline-block;
+    margin: 0 20px 0 0;
+    border-radius: 7px;
+    display: none;
+    border-top: 4px solid rgb(129, 129, 129);
+    border-left: 4px solid rgb(129, 129, 129);
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+    cursor: pointer;
+}
+
+img:active {
+    border-top: 4px solid black;
+    border-left: 4px solid black;
+    border-right: 4px solid rgb(129, 129, 129);
+    border-bottom: 4px solid rgb(129, 129, 129);
+}
+
+.frst {
+    margin: 0;
+    width: 22%;
+    background-color: rgba(255, 245, 233, 0.65);
+    padding: 25px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    min-width: 200px;
+    display: none;
+}
+
+#scnd {
+    position: relative;
+    border-radius: 7px;
+    top: -10px;
+    height: 16px;
+    background-color: rgb(0, 0, 0);
+    width: 135.5px;
+}
+
+#bttn1 {
+    border-radius: 7px;
+    padding: 10px;
+    z-index: 3;
+    position: relative;
+    top: 0;
+    border: 3px solid rgb(0, 0, 0);
+    transition: all 0.2s;
+}
+
+#bttn1:active {
+    top: 4.5px;
+}
+
+.fa-bars,
+.fa-times {
+    cursor: pointer;
+    padding: 15px 20px;
+    border-bottom-right-radius: 4px;
+    background-color: antiquewhite;
+}
+
+.fax {
+    border-radius: 4px;
+    background-color: rgba(250, 255, 228, 0.884);
+    display: none;
+    position: absolute;
+    top: 25px;
+}
