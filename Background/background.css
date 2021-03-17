@@ -8,7 +8,7 @@ body {
 .bttn {
     display: inline-block;
     padding: 17px 29px;
-    margin: 0 20px 0 0;
+    margin: 0 10px 10px 0;
     border-radius: 6px;
     border-width: 3px;
 }
@@ -21,7 +21,7 @@ body {
 img {
     height: 70px;
     display: inline-block;
-    margin: 0 20px 0 0;
+    margin: 0 10px 10px 0;
     border-radius: 7px;
     display: none;
     border-top: 4px solid rgb(129, 129, 129);
@@ -41,11 +41,12 @@ img:active {
 .frst {
     margin: 0;
     width: 22%;
-    background-color: rgba(255, 255, 255, 0.35);
-    padding: 25px;
+    background-color: rgba(75, 75, 75, 0.39);
+    padding: 12px;
     backdrop-filter: blur(2px);
     border-bottom-right-radius: 5px;
-    min-width: 200px;
+    min-width: 240px;
+    max-width: 480px;
     display: none;
 }
 
@@ -81,11 +82,30 @@ img:active {
 }
 
 .fax {
-    padding: 13px 17px;
-    z-index: 3;
-    border-radius: 4px;
-    background-color: rgba(250, 255, 228, 0.884);
+    padding: 10px 13px;
+    background-color: rgba(250, 255, 228);
     display: none;
     position: absolute;
-    top: 25px;
+    top: 15px;
+    /*hii*/
+    border-radius: 7px;
+    z-index: 3;
+    border: 3px solid rgb(0, 0, 0);
+    transition: all 0.2s;
+    left: 77%;
+}
+
+.fax:active {
+    top: 19.5px;
+}
+
+#scnd1 {
+    transition: all 0.2s;
+    position: absolute;
+    border-radius: 7px;
+    top: 45px;
+    left: 77%;
+    height: 16px;
+    background-color: rgb(0, 0, 0);
+    width: 44px;
 }
