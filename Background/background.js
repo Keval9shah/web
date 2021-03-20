@@ -3,12 +3,16 @@ var y = "green";
 var z = "2";
 var l = document.getElementsByClassName("bttn");
 var m = document.getElementsByTagName("img");
-document.getElementById('scnd').style.width = document.getElementById('bttn1').offsetWidth + 1;
 
 function ifun() {
     document.getElementById('i').style.display = "none";
     document.getElementById('i1').style.display = "inline-flex";
     document.getElementsByClassName("frst")[0].style.display = "block";
+    var col = document.getElementById("33");
+    col.addEventListener("input", function() {
+        document.body.style.backgroundColor = col.value;
+        y = col.value;
+    });
 }
 
 function ifun2() {
