@@ -1,8 +1,10 @@
 var x = 1;
 var y = "green";
-var z = "2";
+var z = "https://free4kwallpapers.com/uploads/originals/2019/12/16/nature-wallpaper.jpg";
+var current = "white";
+var later = "white";
 var l = document.getElementsByClassName("bttn");
-var m = document.getElementsByTagName("img");
+var m = document.getElementsByClassName("bttn2");
 
 function ifun() {
     document.getElementById('i').style.display = "none";
@@ -12,6 +14,8 @@ function ifun() {
     col.addEventListener("input", function() {
         document.body.style.backgroundColor = col.value;
         y = col.value;
+        current = col.value;
+        // document.getElementById("crnt").style.backgroundColor = current;
     });
 }
 
@@ -37,7 +41,7 @@ function myFun() {
         }
     } else {
         document.getElementsByTagName("div")[0].style.width = "40%";
-        document.body.style.backgroundImage = "url(" + document.getElementById(z).src + ")";
+        document.body.style.backgroundImage = "url(" + z + ")";
         document.getElementById("bttn1").innerHTML = "background color";
         document.getElementById('scnd').style.width = document.getElementById('bttn1').offsetWidth;
         for (i = 0; i < l.length; i++) {
@@ -46,10 +50,28 @@ function myFun() {
         for (i = 0; i < m.length; i++) {
             m[i].style.display = "inline-block";
         }
+        var inpimg = document.getElementById("intxt");
+        inpimg.addEventListener("input", function() {
+            z = inpimg.value;
+            inpimg.value = "";
+            document.body.style.backgroundImage = "url(" + z + ")";
+            inpimg.style.backgroundSize = "cover";
+            inpimg.style.backgroundImage = "url(" + z + ")";
+        });
     }
     if (x > 4) {
         x = x - 2;
     }
+}
+
+function crntt() {
+    document.body.style.backgroundColor = set;
+    y = current;
+}
+
+function sett() {
+    set = current;
+    document.getElementById("crnt").style.backgroundColor = current;
 }
 
 function Fun(n) {
@@ -62,7 +84,7 @@ function Fun(n) {
     document.body.style.backgroundColor = n;
 }
 
-function fntn(url, c) {
-    z = c;
+function fntn(url) {
+    z = url;
     document.body.style.backgroundImage = "url(" + url + ")";
 }
