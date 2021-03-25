@@ -15,7 +15,6 @@ function ifun() {
         document.body.style.backgroundColor = col.value;
         y = col.value;
         current = col.value;
-        // document.getElementById("crnt").style.backgroundColor = current;
     });
 }
 
@@ -66,7 +65,7 @@ function myFun() {
 
 function crntt() {
     document.body.style.backgroundColor = set;
-    y = current;
+    y = set;
 }
 
 function sett() {
