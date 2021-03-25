@@ -2,7 +2,7 @@ var x = 1;
 var y = "green";
 var z = "https://free4kwallpapers.com/uploads/originals/2019/12/16/nature-wallpaper.jpg";
 var current = "white";
-var later = "white";
+var set = "white";
 var l = document.getElementsByClassName("bttn");
 var m = document.getElementsByClassName("bttn2");
 
