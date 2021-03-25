@@ -50,12 +50,14 @@ function myFun() {
             m[i].style.display = "inline-block";
         }
         var inpimg = document.getElementById("intxt");
-        inpimg.addEventListener("input", function() {
+        inpimg.addEventListener("input", () => {
             z = inpimg.value;
-            inpimg.value = "";
             document.body.style.backgroundImage = "url(" + z + ")";
             inpimg.style.backgroundSize = "cover";
             inpimg.style.backgroundImage = "url(" + z + ")";
+            setTimeout(() => {
+                inpimg.value = "";
+            }, 3000);
         });
     }
     if (x > 4) {
