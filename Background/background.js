@@ -57,7 +57,7 @@ function myFun() {
             inpimg.style.backgroundImage = "url(" + z + ")";
             setTimeout(() => {
                 inpimg.value = "";
-            }, 3000);
+            }, 7000);
         });
     }
     if (x > 4) {
