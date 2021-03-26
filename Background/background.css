@@ -36,21 +36,33 @@ body {
 }
 
 #intxt {
-    display: none;
     width: 52%;
     min-width: 220px;
     border-radius: 5px;
     margin-bottom: 10px;
-    outline: none;
     height: 22px;
+    background-color: rgba(240, 248, 255, 0.4);
+}
+
+::placeholder {
+    color: black;
+}
+
+select {
+    height: 22px;
+    border-radius: 3px;
+    background-color: rgba(240, 248, 255, 0.4);
+}
+
+.bttn2 {
+    display: none;
+    outline: none;
 }
 
 img {
     height: 70px;
-    display: inline-block;
     margin: 0 10px 10px 0;
     border-radius: 7px;
-    display: none;
     border-top: 4px solid rgb(129, 129, 129);
     border-left: 4px solid rgb(129, 129, 129);
     border-right: 4px solid black;

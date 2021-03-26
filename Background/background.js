@@ -5,6 +5,7 @@ var current = "white";
 var set = "white";
 var l = document.getElementsByClassName("bttn");
 var m = document.getElementsByClassName("bttn2");
+var e, inpimg;
 
 function ifun() {
     document.getElementById('i').style.display = "none";
@@ -49,15 +50,15 @@ function myFun() {
         for (i = 0; i < m.length; i++) {
             m[i].style.display = "inline-block";
         }
-        var inpimg = document.getElementById("intxt");
+        inpimg = document.getElementById("intxt");
+        e = document.getElementById("slct");
         inpimg.addEventListener("input", () => {
             z = inpimg.value;
             document.body.style.backgroundImage = "url(" + z + ")";
             inpimg.style.backgroundSize = "cover";
-            inpimg.style.backgroundImage = "url(" + z + ")";
             setTimeout(() => {
                 inpimg.value = "";
-            }, 7000);
+            }, 6200);
         });
     }
     if (x > 4) {
@@ -75,17 +76,19 @@ function sett() {
     document.getElementById("crnt").style.backgroundColor = current;
 }
 
+function slctt() {
+    document.body.style.backgroundSize = e.options[e.selectedIndex].value;
+}
+
 function Fun(n) {
     if (x % 2 == 0) {
         x++;
     }
-    document.getElementById("bttn1").innerHTML = "background image";
     y = n;
-    document.body.style.backgroundImage = "none";
     document.body.style.backgroundColor = n;
 }
 
 function fntn(url) {
     z = url;
-    document.body.style.backgroundImage = "url(" + url + ")";
+    document.body.style.backgroundImage = "url(" + z + ")";
 }
