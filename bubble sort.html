@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -24,14 +23,14 @@
 
 <body>
     <table id="tbl" border="1px" cellpadding=5>
-        <tr>
+        <tr id="0">
             <th>no.</th>
             <th>value</th>
         </tr>
-        <tr id="1">
+        <tr id='1'>
             <td class="no">1</td>
-            <td><input type="text"></td>
-            <td><button onclick="remove(1)">-</button></td>
+            <td><input onkeydown='go_down(event,this.parentNode.parentNode.id)' type='text'></td>
+            <td><button class='minus' onclick='remove(this.parentNode.parentNode.id)'>-</button></td>
         </tr>
     </table>
 
@@ -42,17 +41,31 @@
         var x = 2;
 
         function add() {
-            document.getElementById("tbl").insertRow(x).outerHTML = "<tr id='" + x + "'><td class='no'>" + x + "</td><td><input type='text'></td><td><button onclick='remove(" + x + ")'>-</button></td></tr>";
+            document.getElementById("tbl").insertRow(x).outerHTML = "<tr id='" + x + "'><td class='no'>" + x + "</td><td><input onkeydown='go_down(event,this.parentNode.parentNode.id)' type='text'></td><td><button class='minus' onclick='remove(this.parentNode.parentNode.id)'>-</button></td></tr>";
             x = x + 1;
         }
 
         function remove(n) {
             document.getElementById(n).outerHTML = "";
-            var elem = document.getElementsByClassName("no");
-            for (i = 0; i < elem.length; i++) {
-                elem[i].innerHTML = i + 1;
+            var nos = document.getElementsByClassName("no");
+            var inps = document.getElementsByTagName("tr");
+            var x1;
+            for (i = 0; i < nos.length; i++) {
+                x1 = i + 1;
+                nos[i].innerHTML = x1;
+                inps[x1].id = x1;
             }
             x = x - 1;
+        }
+
+        function go_down(e, n) {
+            if (e.which == '40') {
+                var x2 = parseInt(n) + 1;
+                document.getElementById(x2).childNodes[1].firstChild.focus();
+            } else if (e.which == '38') {
+                var x3 = parseInt(n) - 1;
+                document.getElementById(x3).childNodes[1].firstChild.focus();
+            }
         }
 
         function sort() {
