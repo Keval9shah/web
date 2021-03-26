@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            cursor: pointer;
+            margin: 0 0 0 5px;
+        }
+        
+        table {
+            border-collapse: collapse;
+        }
+        
+        input {
+            width: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="tbl" border="1px" cellpadding=5>
+        <tr>
+            <th>no.</th>
+            <th>value</th>
+        </tr>
+        <tr id="1">
+            <td class="no">1</td>
+            <td><input type="text"></td>
+            <td><button onclick="remove(1)">-</button></td>
+        </tr>
+    </table>
+
+    <br>
+    <button onclick="add()" style="position:absolute;top:34px;left:135px; padding:8px 9px;">+</button>
+    <button onclick="sort()">Sort</button>
+    <script>
+        var x = 2;
+
+        function add() {
+            document.getElementById("tbl").insertRow(x).outerHTML = "<tr id='" + x + "'><td class='no'>" + x + "</td><td><input type='text'></td><td><button onclick='remove(" + x + ")'>-</button></td></tr>";
+            x = x + 1;
+        }
+
+        function remove(n) {
+            document.getElementById(n).outerHTML = "";
+            var elem = document.getElementsByClassName("no");
+            for (i = 0; i < elem.length; i++) {
+                elem[i].innerHTML = i + 1;
+            }
+            x = x - 1;
+        }
+
+        function sort() {
+            var elems = document.getElementsByTagName("input");
+            var arr = new Array(elems.length);
+            for (i = 0; i < elems.length; i++) {
+                arr[i] = parseInt(elems[i].value);
+            }
+            for (i = 0; i < arr.length; i++) {
+                for (j = 0; j < arr.length - i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+            for (i = 0; i < elems.length; i++) {
+                elems[i].value = arr[i];
+            }
+        }
+    </script>
+</body>
+
+</html>
