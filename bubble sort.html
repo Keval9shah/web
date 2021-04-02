@@ -1,10 +1,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Excel V(-1)</title>
     <style>
         button {
             outline: none;
@@ -33,9 +30,7 @@
             <td><input onkeydown='go_down(event,this.parentNode.parentNode.id)' type='text'></td>
             <td><button class='minus' onclick='remove(this.parentNode.parentNode.id)'>-</button></td>
         </tr>
-    </table>
-
-    <br>
+    </table><br>
     <button id="add" onclick="add()" style="position:absolute;top:34px;left:135px; padding:8px 9px;">+</button>
     <button id="srt" onclick="sort()">Sort</button>
     <script>
@@ -50,7 +45,7 @@
 
         function add() {
             document.getElementById("tbl").insertRow(x).outerHTML = "<tr id='" + x + "'><td class='no'>" + x + "</td><td><input onkeydown='go_down(event,this.parentNode.parentNode.id)' type='text'></td><td><button class='minus' onclick='remove(this.parentNode.parentNode.id)'>-</button></td></tr>";
-            x = x + 1;
+            x += 1;
             var tbll = document.getElementById("tbl").rows.length - 1;
             document.getElementById(tbll).childNodes[1].firstChild.focus();
         }
@@ -65,7 +60,7 @@
                 nos[i].innerHTML = x1;
                 inps[x1].id = x1;
             }
-            x = x - 1;
+            x -= 1;
         }
 
         function go_down(e, n) {
@@ -96,9 +91,7 @@
             for (i = 0; i < arr.length; i++) {
                 for (j = 0; j < arr.length - i - 1; j++) {
                     if (arr[j] > arr[j + 1]) {
-                        temp = arr[j];
-                        arr[j] = arr[j + 1];
-                        arr[j + 1] = temp;
+                        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
                     }
                 }
             }
