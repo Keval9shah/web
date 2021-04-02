@@ -3,24 +3,34 @@
 <head>
     <title>Excel V(-1)</title>
     <style>
+        body {
+            padding: 15px 10px;
+        }
+        
         button {
             outline: none;
             cursor: pointer;
-            margin: 0 0 0 5px;
-        }
-        
-        table {
-            border-collapse: collapse;
+            border: none;
+            padding: 10px 13px;
+            border-radius: 3px;
+            box-shadow: 2px 2px 2px rgba(124, 124, 124, 0.51);
         }
         
         input {
+            padding-left: 8px;
             width: 30px;
+            outline: none;
+            border-radius: 3px;
+            border: none;
+            width: 35px;
+            height: 25px;
+            box-shadow: 2px 2px 5px 1px rgba(54, 46, 0, 0.4);
         }
     </style>
 </head>
 
 <body>
-    <table id="tbl" border="1px" cellpadding=5>
+    <table id="tbl" cellpadding=5>
         <tr id="0">
             <th>no.</th>
             <th>value</th>
@@ -31,23 +41,23 @@
             <td><button class='minus' onclick='remove(this.parentNode.parentNode.id)'>-</button></td>
         </tr>
     </table><br>
-    <button id="add" onclick="add()" style="position:absolute;top:34px;left:135px; padding:8px 9px;">+</button>
-    <button id="srt" onclick="sort()">Sort</button>
+    <button id="add" onclick="add()" style="position:absolute;top:52px;left:165px;padding:16px 18px">+</button>
+    <button id="srt" onclick="sort()" style="padding:10px;">Sort</button>
     <script>
         var x = 2;
         var para = 1;
 
-        document.getElementById("tbl").addEventListener("keydown", (event) => {
+        document.getElementById("tbl").addEventListener("keydown", async(event) => {
             if (event.which == '13' && para == 1) {
-                add();
+                await add();
+                var tbll = document.getElementById("tbl").rows.length - 1;
+                document.getElementById(tbll).childNodes[1].firstChild.focus();
             }
         });
 
-        function add() {
+        async function add() {
             document.getElementById("tbl").insertRow(x).outerHTML = "<tr id='" + x + "'><td class='no'>" + x + "</td><td><input onkeydown='go_down(event,this.parentNode.parentNode.id)' type='text'></td><td><button class='minus' onclick='remove(this.parentNode.parentNode.id)'>-</button></td></tr>";
             x += 1;
-            var tbll = document.getElementById("tbl").rows.length - 1;
-            document.getElementById(tbll).childNodes[1].firstChild.focus();
         }
 
         function remove(n) {
