@@ -36,14 +36,23 @@
     </table>
 
     <br>
-    <button onclick="add()" style="position:absolute;top:34px;left:135px; padding:8px 9px;">+</button>
+    <button id="add" onclick="add()" style="position:absolute;top:34px;left:135px; padding:8px 9px;">+</button>
     <button id="srt" onclick="sort()">Sort</button>
     <script>
         var x = 2;
+        var para = 1;
+
+        document.getElementById("tbl").addEventListener("keydown", (event) => {
+            if (event.which == '13' && para == 1) {
+                add();
+            }
+        });
 
         function add() {
             document.getElementById("tbl").insertRow(x).outerHTML = "<tr id='" + x + "'><td class='no'>" + x + "</td><td><input onkeydown='go_down(event,this.parentNode.parentNode.id)' type='text'></td><td><button class='minus' onclick='remove(this.parentNode.parentNode.id)'>-</button></td></tr>";
             x = x + 1;
+            var tbll = document.getElementById("tbl").rows.length - 1;
+            document.getElementById(tbll).childNodes[1].firstChild.focus();
         }
 
         function remove(n) {
@@ -63,9 +72,14 @@
             var m = parseInt(n);
             var x3 = m - 1;
             var tl = document.getElementById("tbl").rows.length - 1;
-            if ((e.which == '40' || e.which == '13') && m < tl) {
-                var x2 = m + 1;
-                document.getElementById(x2).childNodes[1].firstChild.focus();
+            if (e.which == '40' || e.which == '13') {
+                if (m < tl) {
+                    var x2 = m + 1;
+                    para = 0;
+                    document.getElementById(x2).childNodes[1].firstChild.focus();
+                } else {
+                    para = 1;
+                }
             } else if (e.which == '38' && m > 2) {
                 document.getElementById(x3).childNodes[1].firstChild.focus();
             } else if (e.which == '38' && m == 2) {
