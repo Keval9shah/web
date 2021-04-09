@@ -7,7 +7,7 @@ body {
 div {
     margin: 100px 0 0 55px;
     display: grid;
-    grid-template-columns: repeat(5, clamp(70px, 9%, 100px));
+    grid-template-columns: repeat(5, clamp(68px, 12%, 85px));
 }
 
 button {
