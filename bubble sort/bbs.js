@@ -63,3 +63,10 @@ function sort() {
         elems[i].value = arr[i];
     }
 }
+
+function resset() {
+    var elems = document.getElementsByTagName('input');
+    for (i = 0; i < elems.length; i++) {
+        elems[i].value = '';
+    }
+}
