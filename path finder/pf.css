@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: rgb(230, 220, 211);
+}
+
+div {
+    margin: 100px 0 0 55px;
+    display: grid;
+    grid-template-columns: repeat(5, clamp(70px, 9%, 100px));
+}
+
+button {
+    background-color: white;
+    border: 1px solid black;
+    outline: none;
+    height: 48px;
+    cursor: pointer;
+}

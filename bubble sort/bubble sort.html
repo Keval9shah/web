@@ -1,0 +1,29 @@
+<html lang="en">
+
+<head>
+    <title>Excel V(-1)</title>
+    <link rel="stylesheet" href="bbs.css">
+</head>
+
+<body>
+    <table id="tbl" cellpadding=5>
+        <tr id="0">
+            <th>no.</th>
+            <th>value</th>
+        </tr>
+        <tr id='1'>
+            <td class="no">1</td>
+            <td><input onkeydown='go_down(event,this.parentNode.parentNode.id)' type='text' placeholder=" val"></td>
+            <td><button class='minus' onclick='remove(this.parentNode.parentNode.id)'>-</button></td>
+        </tr>
+    </table><br>
+    <button id="add" onclick="add()" style="position:absolute;top:59px;left:155px;">+</button>
+    <button id="srt" onclick="sort()">Sort</button>
+    <button id="rst" onclick="var elems = document.getElementsByTagName('input');
+    for (i = 0; i < elems.length; i++) {
+        elems[i].value = '';
+    }" style="margin-left: 10px;">Reset</button>
+    <script src="bbs.js"></script>
+</body>
+
+</html>
