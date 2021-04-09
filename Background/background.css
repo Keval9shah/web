@@ -3,6 +3,7 @@ body {
     padding: 0;
     background-color: green;
     background-size: cover;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .bttn {
@@ -35,13 +36,32 @@ body {
     border-bottom: 3px solid rgb(129, 129, 129);
 }
 
-#intxt {
-    width: 47%;
-    min-width: 175px;
-    border-radius: 5px;
+.in2 {
+    background: rgba(240, 248, 255, 0.4);
     margin: 0 10px 5px 0;
     height: 22px;
-    background-color: rgba(240, 248, 255, 0.4);
+    border-radius: 4px;
+}
+
+#intxt {
+    width: 47%;
+    min-width: 170px;
+}
+
+#infile {
+    width: 16%;
+    min-width: 75px;
+}
+
+#infile::before {
+    content: 'Image File';
+    display: inline-block;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    user-select: none;
+    cursor: pointer;
+    font-weight: 400;
 }
 
 ::placeholder {
@@ -50,9 +70,6 @@ body {
 
 select {
     cursor: pointer;
-    height: 22px;
-    border-radius: 3px;
-    background-color: rgba(240, 248, 255, 0.4);
 }
 
 .bttn2 {
