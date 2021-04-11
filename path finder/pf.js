@@ -1,8 +1,9 @@
-document.write("<div>");
+document.write("<div class='grid'>");
 for (var i = 1; i < 36; i++) {
     document.write("<button onclick='clicked(this.id)' id='x" + i + "'></button>");
 }
-document.write("</div><button onclick='fiind()' style='padding:0 35px;height:38px; margin:30px 0 0 55px;border-radius: 3px;border: none;'>Find</button>");
+document.write("</div><button class='bttn' onclick='fiind()'>Find</button>");
+document.write("<button class='bttn' onclick='reset()'>Reset</button>");
 
 const size = [5, 7];
 var arr = new Array(size[0]).fill(0).map(() => new Array(size[1]).fill(0).map(() => new Array(3).fill(0)));
@@ -71,6 +72,7 @@ function fiind() {
         return 0;
     }
 
+    var no;
     var now = sd[0];
     for (let i = 0; 1; i++) {
         nearbyBtns(now);
@@ -84,7 +86,10 @@ function fiind() {
             document.getElementById("x" + a).style.background = "#FFD700";
             break;
         }
+        no = i;
     }
+    document.getElementById("show").style.display = "block";
+    document.getElementById("steps").innerHTML = no + 1;
 }
 
 function findMin() {
@@ -150,11 +155,32 @@ function findDist(x) {
     srcDist[1] = Math.abs(crntBtn[1] - sd[0][1]);
     var mindist = Math.min(srcDist[0], srcDist[1])
     srcDist[2] = mindist * -1 + (srcDist[0] - mindist) * -3 + (srcDist[1] - mindist) * -3;
-    // if (x[0] == sd[1][0] && x[1] == sd[1][1]) {
-    //     return 1;
-    // } else {
+    if (x[0] == sd[1][0] && x[1] == sd[1][1]) {
+        return 1;
+    }
+    //else {
     //     return srcDist[2] + destDist[2];
     //     // return destDist[2];
     // }
-    return srcDist[2] + destDist[2];
+    return destDist[2];
+}
+
+function reset() {
+    for (let i = 0; i < size[0]; i++) {
+        for (let j = 0; j < size[1]; j++) {
+            for (let k = 0; k < 3; k++) {
+                arr[i][j][k] = 0;
+            }
+        }
+    }
+    for (let i = 0; i < 2; i++) {
+        for (let j = 0; j < 2; j++) {
+            sd[i][j] = -1;
+        }
+    }
+    for (let i = 1; i < 36; i++) {
+        document.getElementById("x" + i).style.background = "white";
+        document.getElementById("x" + i).innerHTML = "";
+    }
+    pinFull = 3;
 }
