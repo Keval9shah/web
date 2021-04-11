@@ -92,3 +92,7 @@ function fntn(url) {
     z = url;
     document.body.style.backgroundImage = "url(" + z + ")";
 }
+
+document.getElementById("infile").addEventListener("change", () => {
+    console.log("hi");
+});
