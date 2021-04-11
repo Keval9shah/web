@@ -64,9 +64,9 @@ function sort() {
     }
 }
 
-function resset() {
+function reset() {
     var elems = document.getElementsByTagName('input');
     for (i = 0; i < elems.length; i++) {
-        elems[i].value = '';
+        elems[i].value = "";
     }
 }
