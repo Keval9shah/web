@@ -8,7 +8,6 @@ const size = [5, 7];
 var arr = new Array(size[0]).fill(0).map(() => new Array(size[1]).fill(0).map(() => new Array(3).fill(0)));
 var sd = new Array(2).fill(-1).map(() => new Array(2).fill(-1));
 var pinFull = 3;
-var notFound = 1;
 
 function clicked(xclass) {
     var x, y;
@@ -65,34 +64,27 @@ function click2(xclass) {
 
 function fiind() {
     if (sd[0][0] == -1 || sd[1][0] == -1) {
-        console.log("select source & destination");
+        alert("select source & destination");
         return 0;
     } else if ((Math.abs(sd[0][0] - sd[1][0]) + Math.abs(sd[0][1] - sd[1][1])) == 1) {
-        console.log("1");
+        alert("1");
         return 0;
     }
 
-    // var exploredlist = new Array(5).fill(-1).map(() => new Array(7).fill(-1));
-    // while (notFound) {
-
-    // }
-    // var dist =
     var now = sd[0];
-
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; 1; i++) {
         nearbyBtns(now);
         now = [...findMin()];
         var a = now[0] + 1 + now[1] * 5;
-        // console.log(now);
-        document.getElementById("x" + a).style.background = "green";
-        // document.getElementById("x" + a).innerHTML = i.toString() + findDist(now).toString();
+        if (now[0] != sd[1][0] || now[1] != sd[1][1]) {
+            document.getElementById("x" + a).style.background = "green";
+            document.getElementById("x" + a).innerHTML = (i + 1).toString() + "," + findDist(now).toString();
+        }
         if (now[0] == sd[1][0] && now[1] == sd[1][1]) {
+            document.getElementById("x" + a).style.background = "#FFD700";
             break;
         }
     }
-
-    // nearbyBtns([4, 5]);
-
 }
 
 function findMin() {
@@ -111,7 +103,9 @@ function findMin() {
             }
         }
     }
-    arr[m][n][2] = 1;
+    if (m != sd[1][0] || n != sd[1][1]) {
+        arr[m][n][2] = 1;
+    }
     return [m, n];
 }
 
@@ -133,8 +127,8 @@ function nearbyBtns(Btn) {
         cBtn[1] += emt[1];
         if (cBtn[0] >= 0 && cBtn[0] < size[0] && cBtn[1] >= 0 && cBtn[1] < size[1] && arr[cBtn[0]][cBtn[1]][0] != 1) {
             if ((cBtn[0] != sd[0][0] || cBtn[1] != sd[0][1]) && arr[cBtn[0]][cBtn[1]][1] == 0) {
-                var a = cBtn[0] + 1 + cBtn[1] * 5;
-                document.getElementById("x" + a).style.background = "red";
+                // var a = cBtn[0] + 1 + cBtn[1] * 5;
+                // document.getElementById("x" + a).style.background = "red";
                 arr[cBtn[0]][cBtn[1]][1] = findDist(cBtn);
                 // console.log(cBtn + "," + arr[cBtn[0]][cBtn[1]][1] + "," + emt);
             }
@@ -151,14 +145,15 @@ function findDist(x) {
     var mindist = Math.min(destDist[0], destDist[1])
     destDist[2] = mindist * 14 + (destDist[0] - mindist) * 10 + (destDist[1] - mindist) * 10;
     //srcdist
-    var srcDist = new Array(3).fill(0);
-    srcDist[0] = Math.abs(crntBtn[0] - sd[0][0]);
-    srcDist[1] = Math.abs(crntBtn[1] - sd[0][1]);
-    var mindist = Math.min(srcDist[0], srcDist[1])
-    srcDist[2] = mindist * 10 + (srcDist[0] - mindist) * 10 + (srcDist[1] - mindist) * 10;
+    // var srcDist = new Array(3).fill(0);
+    // srcDist[0] = Math.abs(crntBtn[0] - sd[0][0]);
+    // srcDist[1] = Math.abs(crntBtn[1] - sd[0][1]);
+    // var mindist = Math.min(srcDist[0], srcDist[1])
+    // srcDist[2] = 0; mindist * 14 + (srcDist[0] - mindist) * 10 + (srcDist[1] - mindist) * 10;
     if (x[0] == sd[1][0] && x[1] == sd[1][1]) {
         return 1;
     } else {
-        return srcDist[2] + destDist[2];
+        // return srcDist[2] + destDist[2];
+        return destDist[2];
     }
 }
