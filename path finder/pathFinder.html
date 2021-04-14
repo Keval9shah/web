@@ -12,8 +12,21 @@
 <body>
     <div class="txt">
         <h3>Path Finder</h3>
-        <p id="show">Path was found in
-            <span id="steps"></span> steps.</p>
+        <div class="html">
+            <p id="show">Path was found in
+                <span id="steps">_</span> steps.</p>
+
+            <select name="add" id="add" oninput="plus()">
+                <option value="add">add</option>
+                <option value="row">row</option>
+                <option value="clm">column</option>
+            </select>
+            <select name="rmv" id="rmv" oninput="rmv()">
+                <option value="rmv">remove</option>
+                <option value="row">row</option>
+                <option value="clm">column</option>
+            </select>
+        </div>
     </div>
     <script src="pf.js"></script>
 </body>
