@@ -1,11 +1,13 @@
 document.write("<div class='grid'>");
-for (var i = 1; i < 36; i++) {
+var size = [5, 7];
+for (var i = 1; i < (size[0] * size[1]) + 1; i++) {
     document.write("<button onclick='clicked(this.id)' id='x" + i + "'></button>");
 }
-document.write("</div><button class='bttn b1' title='Find' onclick='editMode(fiind);'><i class='fa fa-search' aria-hidden='true'></i>Find</button>");
-document.write("<button class='bttn' title='Reset' onclick='reset()'><i class='fa fa-refresh' aria-hidden='true'></i>Reset</button>");
+document.write("</div><div id='bottom'><button class='bttn b1' title='Find' onclick='editMode(fiind);'><i class='fa fa-search' aria-hidden='true'></i>Find</button>");
+document.write("<button class='bttn' title='Reset' onclick='reset()'><i class='fa fa-refresh' aria-hidden='true'></i>Reset</button></div>");
 
-const size = [5, 7];
+document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + size[0] + ", clamp(68px, 12%, 85px)";
+
 var arr = new Array(size[0]).fill(0).map(() => new Array(size[1]).fill(0).map(() => new Array(3).fill(0)));
 var sd = new Array(2).fill(-1).map(() => new Array(2).fill(-1));
 var pinFull = 3;
@@ -77,15 +79,22 @@ function fiind() {
     for (let i = 0; 1; i++) {
         nearbyBtns(now);
         now = [...findMin()];
-        var a = now[0] + 1 + now[1] * 5;
+        var a = now[0] + 1 + now[1] * size[0];
         timeout(sd, now, a, i);
         if (now[0] == sd[1][0] && now[1] == sd[1][1]) {
             break;
         }
         no = i;
     }
-    document.getElementById("show").style.display = "block";
     document.getElementById("steps").innerHTML = no + 1;
+
+    var note = document.createElement("div");
+    note.innerHTML = "Note : To Replay Click Find Again.";
+    note.id = "note";
+    document.getElementById("bottom").appendChild(note);
+    setTimeout(() => {
+        note.innerHTML = "";
+    }, 8500);
 }
 
 function timeout(sd, now, a, i) {
@@ -140,10 +149,7 @@ function nearbyBtns(Btn) {
         cBtn[1] += emt[1];
         if (cBtn[0] >= 0 && cBtn[0] < size[0] && cBtn[1] >= 0 && cBtn[1] < size[1] && arr[cBtn[0]][cBtn[1]][0] != 1) {
             if ((cBtn[0] != sd[0][0] || cBtn[1] != sd[0][1]) && arr[cBtn[0]][cBtn[1]][1] == 0) {
-                // var a = cBtn[0] + 1 + cBtn[1] * 5;
-                // document.getElementById("x" + a).style.background = "red";
                 arr[cBtn[0]][cBtn[1]][1] = findDist(cBtn);
-                // console.log(cBtn + "," + arr[cBtn[0]][cBtn[1]][1] + "," + emt);
             }
         }
     });
@@ -152,24 +158,24 @@ function nearbyBtns(Btn) {
 function findDist(x) {
     crntBtn = [x[0], x[1]];
     //destdist
-    var destDist = new Array(5).fill(0);
+    var destDist = new Array(4).fill(0); //Array(5);
     destDist[0] = Math.abs(crntBtn[0] - sd[1][0]);
     destDist[1] = Math.abs(crntBtn[1] - sd[1][1]);
     destDist[3] = Math.min(destDist[0], destDist[1])
     destDist[2] = destDist[3] * 14 + (destDist[0] - destDist[3]) * 10 + (destDist[1] - destDist[3]) * 10;
 
     //src
-    destDist[0] = Math.abs(crntBtn[0] - sd[0][0]);
-    destDist[1] = Math.abs(crntBtn[1] - sd[0][1]);
-    destDist[3] = Math.min(destDist[0], destDist[1])
-    destDist[4] = destDist[3] * 7 + (destDist[0] - destDist[3]) * 5 + (destDist[1] - destDist[3]) * 5;
+    // destDist[0] = Math.abs(crntBtn[0] - sd[0][0]);
+    // destDist[1] = Math.abs(crntBtn[1] - sd[0][1]);
+    // destDist[3] = Math.min(destDist[0], destDist[1])
+    // destDist[4] = destDist[3] * 7 + (destDist[0] - destDist[3]) * 5 + (destDist[1] - destDist[3]) * 5;
     if (x[0] == sd[1][0] && x[1] == sd[1][1]) {
         return 1;
     }
     //else {
     //     // return destDist[2];
     // }
-    return destDist[4] + destDist[2];
+    return destDist[2]; // + destDist[2];
 }
 
 function reset() {
@@ -198,17 +204,27 @@ function editMode(callback) {
             for (let k = 0; k < 3; k++) {
                 if (k != 0) {
                     if (k == 2 && arr[i][j][k] == 1 && arr[i][j][0] == 0) {
-                        var temp = i + 1 + j * 5;
+                        var temp = i + 1 + j * size[0];
                         document.getElementById("x" + temp).style.background = "white";
                         document.getElementById("x" + temp).innerHTML = "";
                     }
                     arr[i][j][k] = 0;
                 } else if (arr[i][j][k] == 2) {
-                    var tmp = i + 1 + j * 5;
+                    var tmp = i + 1 + j * size[0];
                     document.getElementById("x" + tmp).style.background = "#B6CEC7";
                 }
             }
         }
     }
     callback();
+}
+
+function plus() {
+    var e = document.getElementById("add");
+    if (e.options[e.selectedIndex].value == "row") {
+        size[1] += 1;
+    } else if (e.options[e.selectedIndex].value == "clm") {
+        size[0] += 1;
+    }
+    console.log(size);
 }
