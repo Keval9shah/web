@@ -6,6 +6,8 @@ for (var i = 1; i < (size[0] * size[1]) + 1; i++) {
 document.write("</div><div id='bottom'><button class='bttn b1' title='Find' onclick='editMode(fiind);'><i class='fa fa-search' aria-hidden='true'></i>Find</button>");
 document.write("<button class='bttn' title='Reset' onclick='reset()'><i class='fa fa-refresh' aria-hidden='true'></i>Reset</button></div>");
 
+
+document.getElementsByTagName("h3")[0].innerHTML = "Path Finder   (" + size[0] + "x" + size[1] + ")";
 document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + size[0] + ", clamp(68px, 12%, 85px)";
 
 var arr = new Array(size[0]).fill(0).map(() => new Array(size[1]).fill(0).map(() => new Array(3).fill(0)));
@@ -108,7 +110,7 @@ function timeout(sd, now, a, i) {
         if (now[0] == sd[1][0] && now[1] == sd[1][1]) {
             document.getElementById("x" + a).style.background = "#FFD700";
         }
-    }, 500 * i);
+    }, 200 + 200 * i);
 }
 
 function findMin() {
@@ -160,24 +162,24 @@ function nearbyBtns(Btn) {
 function findDist(x) {
     crntBtn = [x[0], x[1]];
     //destdist
-    var destDist = new Array(4).fill(0); //Array(5);
+    var destDist = new Array(5).fill(0); //Array(5);
     destDist[0] = Math.abs(crntBtn[0] - sd[1][0]);
     destDist[1] = Math.abs(crntBtn[1] - sd[1][1]);
     destDist[3] = Math.min(destDist[0], destDist[1])
     destDist[2] = destDist[3] * 14 + (destDist[0] - destDist[3]) * 10 + (destDist[1] - destDist[3]) * 10;
 
-    //src
-    // destDist[0] = Math.abs(crntBtn[0] - sd[0][0]);
-    // destDist[1] = Math.abs(crntBtn[1] - sd[0][1]);
-    // destDist[3] = Math.min(destDist[0], destDist[1])
-    // destDist[4] = destDist[3] * 7 + (destDist[0] - destDist[3]) * 5 + (destDist[1] - destDist[3]) * 5;
+    // src
+    destDist[0] = Math.abs(crntBtn[0] - sd[0][0]);
+    destDist[1] = Math.abs(crntBtn[1] - sd[0][1]);
+    destDist[3] = Math.min(destDist[0], destDist[1])
+    destDist[4] = destDist[3] * 7 + (destDist[0] - destDist[3]) * 5 + (destDist[1] - destDist[3]) * 5;
     if (x[0] == sd[1][0] && x[1] == sd[1][1]) {
         return 1;
     }
     //else {
     //     // return destDist[2];
     // }
-    return destDist[2]; // + destDist[2];
+    return destDist[2] + destDist[4];
 }
 
 function reset() {
@@ -267,6 +269,7 @@ function plus() {
             }
         }
     }
+    document.getElementsByTagName("h3")[0].innerHTML = "Path Finder   (" + size[0] + "x" + size[1] + ")";
 }
 
 function minus() {
@@ -315,4 +318,5 @@ function minus() {
             }
         }
     }
+    document.getElementsByTagName("h3")[0].innerHTML = "Path Finder   (" + size[0] + "x" + size[1] + ")";
 }
