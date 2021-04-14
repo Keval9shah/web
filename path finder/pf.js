@@ -152,24 +152,23 @@ function nearbyBtns(Btn) {
 function findDist(x) {
     crntBtn = [x[0], x[1]];
     //destdist
-    var destDist = new Array(3).fill(0);
+    var destDist = new Array(5).fill(0);
     destDist[0] = Math.abs(crntBtn[0] - sd[1][0]);
     destDist[1] = Math.abs(crntBtn[1] - sd[1][1]);
-    var mindist = Math.min(destDist[0], destDist[1])
-    destDist[2] = mindist * 13 + (destDist[0] - mindist) * 10 + (destDist[1] - mindist) * 14;
+    destDist[3] = Math.min(destDist[0], destDist[1])
+    destDist[2] = mindist * 14 + (destDist[0] - mindist) * 10 + (destDist[1] - mindist) * 10;
 
-    var srcDist = new Array(3).fill(0);
-    srcDist[0] = Math.abs(crntBtn[0] - sd[0][0]);
-    srcDist[1] = Math.abs(crntBtn[1] - sd[0][1]);
-    var mindist = Math.min(srcDist[0], srcDist[1])
-    srcDist[2] = mindist * -1 + (srcDist[0] - mindist) * 10 + (srcDist[1] - mindist) * 14;
+    destDist[0] = Math.abs(crntBtn[0] - sd[0][0]);
+    destDist[1] = Math.abs(crntBtn[1] - sd[0][1]);
+    destDist[3] = Math.min(srcDist[0], srcDist[1])
+    destDist[4] = mindist * 14 + (srcDist[0] - mindist) * 10 + (srcDist[1] - mindist) * 10;
     if (x[0] == sd[1][0] && x[1] == sd[1][1]) {
         return 1;
     }
     //else {
     //     // return destDist[2];
     // }
-    return srcDist[2] + destDist[2];
+    return destDist[4] + destDist[2];
 }
 
 function reset() {
