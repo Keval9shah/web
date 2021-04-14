@@ -43,14 +43,15 @@ function clicked(xclass) {
             sd[0][0] = x;
             sd[0][1] = y;
             click2(xclass);
-            // console.log(x + "," + y);
+            if (sd[1][0] != -1) {
+                pinFull = 2;
+            }
         } else if (sd[1][0] == -1) {
             use.innerHTML = "dest";
             sd[1][0] = x;
             sd[1][1] = y;
             pinFull = 2;
             click2(xclass);
-            // console.log(x + "," + y);
         }
     }
 }
@@ -118,10 +119,6 @@ function findMin() {
         m, n;
     for (let i = 0; i < size[0]; i++) {
         for (let j = 0; j < size[1]; j++) {
-            // if (arr[i][j][1] == minn && (i != sd[1][0] || j != sd[1][1])) {
-            //     arr[i][j][2] = 1;
-            //     console.log(i + "," + j + ".,.,.");
-            // } else 
             if (arr[i][j][1] != 0 && arr[i][j][1] < minn && arr[i][j][2] != 1) {
                 minn = arr[i][j][1];
                 m = i;
@@ -176,9 +173,6 @@ function findDist(x) {
     if (x[0] == sd[1][0] && x[1] == sd[1][1]) {
         return 1;
     }
-    //else {
-    //     // return destDist[2];
-    // }
     return destDist[2] + destDist[4];
 }
 
@@ -222,7 +216,6 @@ function editMode(callback) {
     }
     callback();
 }
-
 
 var e = document.getElementById("slct");
 
@@ -317,6 +310,16 @@ function minus() {
                 }
             }
         }
+    }
+    if (sd[0][0] >= size[0] || sd[0][1] >= size[1]) {
+        sd[0][0] = -1;
+        sd[0][1] = -1;
+        pinFull = 3;
+    }
+    if (sd[1][0] >= size[0] || sd[1][1] >= size[1]) {
+        sd[1][0] = -1;
+        sd[1][1] = -1;
+        pinFull = 3;
     }
     document.getElementsByTagName("h3")[0].innerHTML = "Path Finder   (" + size[0] + "x" + size[1] + ")";
 }
