@@ -88,13 +88,15 @@ function fiind() {
     }
     document.getElementById("steps").innerHTML = no + 1;
 
-    var note = document.createElement("div");
-    note.innerHTML = "Note : To Replay Click Find Again.";
-    note.id = "note";
-    document.getElementById("bottom").appendChild(note);
-    setTimeout(() => {
-        note.innerHTML = "";
-    }, 8500);
+    if (!document.body.contains(document.getElementById("note"))) {
+        var note = document.createElement("div");
+        note.innerHTML = "Note : To Replay Click Find Again.";
+        note.id = "note";
+        document.getElementById("bottom").appendChild(note);
+        setTimeout(() => {
+            note.innerHTML = "";
+        }, 8500);
+    }
 }
 
 function timeout(sd, now, a, i) {
@@ -219,12 +221,48 @@ function editMode(callback) {
     callback();
 }
 
+
+var e = document.getElementById("slct");
+
 function plus() {
-    var e = document.getElementById("add");
+    var buton;
     if (e.options[e.selectedIndex].value == "row") {
+        var uls;
+        for (let i = 0; i < size[0]; i++) {
+            buton = document.createElement("button");
+            uls = size[0] * size[1] + 1 + i;
+            document.getElementsByClassName("grid")[0].appendChild(buton);
+            buton.outerHTML = "<button onclick='clicked(this.id)' id='x" + uls + "'></button>";
+            arr[i].push([0, 0, 0]);
+        }
         size[1] += 1;
     } else if (e.options[e.selectedIndex].value == "clm") {
+        arr.push([]);
+        var x = size[0] + 1; //experiment
+        document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + x + ", clamp(68px, 12%, 85px)";
+        for (let i = 0; i < size[1]; i++) {
+            uls = size[0] * (i + 1);
+            x = uls + 1;
+            document.getElementById("x" + uls).outerHTML = "<button onclick='clicked(this.id)' id='x" + uls + "'></button><button onclick='clicked(this.id)' id='x" + x + "'></button>";
+            arr[size[0]].push([0, 0, 0]);
+        }
         size[0] += 1;
     }
-    console.log(size);
+}
+
+function minus() {
+    var buton;
+    if (e.options[e.selectedIndex].value == "row") {
+        if (size[1] <= 0) {
+            return 0;
+        }
+        var uls;
+        for (let i = 0; i < size[0]; i++) {
+            uls = size[0] * (size[1] - 1) + 1 + i;
+            buton = document.getElementById("x" + uls);
+            buton.outerHTML = "";
+            arr[i].pop();
+        }
+        size[1] -= 1;
+    }
 }
