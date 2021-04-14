@@ -193,7 +193,7 @@ function reset() {
             sd[i][j] = -1;
         }
     }
-    for (let i = 1; i < 36; i++) {
+    for (let i = 1; i < (size[0] * size[1]) + 1; i++) {
         document.getElementById("x" + i).style.background = "white";
         document.getElementById("x" + i).innerHTML = "";
     }
@@ -241,12 +241,31 @@ function plus() {
         var x = size[0] + 1; //experiment
         document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + x + ", clamp(68px, 12%, 85px)";
         for (let i = 0; i < size[1]; i++) {
-            uls = size[0] * (i + 1);
-            x = uls + 1;
-            document.getElementById("x" + uls).outerHTML = "<button onclick='clicked(this.id)' id='x" + uls + "'></button><button onclick='clicked(this.id)' id='x" + x + "'></button>";
+            buton = document.createElement("button");
+            uls = size[0] * size[1] + 1 + i;
+            document.getElementsByClassName("grid")[0].appendChild(buton);
+            buton.outerHTML = "<button onclick='clicked(this.id)' id='x" + uls + "'></button>";
             arr[size[0]].push([0, 0, 0]);
         }
         size[0] += 1;
+        var xx;
+        for (let i = 0; i < size[0]; i++) {
+            for (let j = 0; j < size[1]; j++) {
+                xx = i + 1 + j * size[0];
+                document.getElementById("x" + xx).style.background = "white";
+                document.getElementById("x" + xx).innerHTML = "";
+                if (arr[i][j][0] == 1) {
+                    document.getElementById("x" + xx).style.background = "#0b032d";
+                } else if (arr[i][j][0] == 2) {
+                    document.getElementById("x" + xx).style.background = "#B6CEC7";
+                    if (i == sd[0][0] && j == sd[0][1]) {
+                        document.getElementById("x" + xx).innerHTML = "src";
+                    } else {
+                        document.getElementById("x" + xx).innerHTML = "dest";
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -264,5 +283,36 @@ function minus() {
             arr[i].pop();
         }
         size[1] -= 1;
+    } else if (e.options[e.selectedIndex].value == "clm") {
+        arr.pop();
+        var x = size[0] - 1; //experiment
+        if (size[0] <= 0) {
+            return 0;
+        }
+        document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + x + ", clamp(68px, 12%, 85px)";
+        for (let i = 0; i < size[1]; i++) {
+            uls = (size[0] - 1) * size[1] + 1 + i;
+            buton = document.getElementById("x" + uls);
+            buton.outerHTML = "";
+        }
+        size[0] -= 1;
+        var xx;
+        for (let i = 0; i < size[0]; i++) {
+            for (let j = 0; j < size[1]; j++) {
+                xx = i + 1 + j * size[0];
+                document.getElementById("x" + xx).style.background = "white";
+                document.getElementById("x" + xx).innerHTML = "";
+                if (arr[i][j][0] == 1) {
+                    document.getElementById("x" + xx).style.background = "#0b032d";
+                } else if (arr[i][j][0] == 2) {
+                    document.getElementById("x" + xx).style.background = "#B6CEC7";
+                    if (i == sd[0][0] && j == sd[0][1]) {
+                        document.getElementById("x" + xx).innerHTML = "src";
+                    } else {
+                        document.getElementById("x" + xx).innerHTML = "dest";
+                    }
+                }
+            }
+        }
     }
 }
