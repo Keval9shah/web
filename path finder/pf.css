@@ -11,12 +11,25 @@ body {
     grid-template-columns: repeat(5, clamp(68px, 12%, 85px));
 }
 
+i {
+    margin-right: 5px;
+}
+
 .bttn {
-    padding: 0 35px;
+    padding: 0 15px;
     height: 38px;
-    margin: 30px 0 0 55px;
-    border-radius: 3px;
+    border-radius: 5px;
+    margin: 30px 0 0 20px;
     border: none;
+    transition: all 0.2s;
+}
+
+.b1 {
+    margin: 30px 0 0 55px;
+}
+
+.bttn:hover {
+    box-shadow: 0 0 3px 3px rgba(113, 113, 114, 0.8);
 }
 
 button {
@@ -39,7 +52,7 @@ button {
 
 @media only screen and (max-width: 768px) {
     .grid {
-        margin: 150px 0 0 35px;
+        margin: 132px 0 0 35px;
     }
     body {
         background-color: lightblue;
@@ -48,16 +61,16 @@ button {
         position: absolute;
         top: 35px;
         font-size: large;
-        left: 45px;
+        left: 32px;
     }
-    .bttn {
+    .b1 {
         margin: 30px 0 0 35px;
     }
 }
 
 @media only screen and (max-width: 399px) {
     .grid {
-        margin: 150px 0 0 20px;
+        margin: 120px 0 0 20px;
         grid-template-columns: repeat(5, clamp(55px, 12%, 70px));
     }
     body {
@@ -68,12 +81,12 @@ button {
     }
     .txt {
         position: absolute;
-        top: 35px;
+        top: 28px;
         font-size: large;
-        left: 45px;
+        left: 22px;
     }
-    .bttn {
-        margin: 30px 0 0 30px;
+    .b1 {
+        margin: 30px 0 0 22px;
     }
 }
 
@@ -85,7 +98,7 @@ button {
     button {
         height: 70px;
     }
-    .bttn {
+    .b1 {
         margin: 40px 0 0 85px;
     }
     .txt {
