@@ -156,21 +156,20 @@ function findDist(x) {
     destDist[0] = Math.abs(crntBtn[0] - sd[1][0]);
     destDist[1] = Math.abs(crntBtn[1] - sd[1][1]);
     var mindist = Math.min(destDist[0], destDist[1])
-    destDist[2] = mindist * 13 + (destDist[0] - mindist) * 11 + (destDist[1] - mindist) * 11;
+    destDist[2] = mindist * 13 + (destDist[0] - mindist) * 10 + (destDist[1] - mindist) * 14;
 
     var srcDist = new Array(3).fill(0);
     srcDist[0] = Math.abs(crntBtn[0] - sd[0][0]);
     srcDist[1] = Math.abs(crntBtn[1] - sd[0][1]);
     var mindist = Math.min(srcDist[0], srcDist[1])
-    srcDist[2] = mindist * -1 + (srcDist[0] - mindist) * -3 + (srcDist[1] - mindist) * -3;
+    srcDist[2] = mindist * -1 + (srcDist[0] - mindist) * 10 + (srcDist[1] - mindist) * 14;
     if (x[0] == sd[1][0] && x[1] == sd[1][1]) {
         return 1;
     }
     //else {
-    //     return srcDist[2] + destDist[2];
     //     // return destDist[2];
     // }
-    return destDist[2];
+    return srcDist[2] + destDist[2];
 }
 
 function reset() {
