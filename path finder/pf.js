@@ -2,15 +2,12 @@ document.write("<div class='grid'>");
 for (var i = 1; i < 36; i++) {
     document.write("<button onclick='clicked(this.id)' id='x" + i + "'></button>");
 }
-document.write("</div><button class='bttn' onclick='fiind()'>Find</button>");
-document.write("<button class='bttn' onclick='reset()'>Reset</button>");
-document.write("<button class='bttn' onclick='replay()'>Replay</button>");
+document.write("</div><button class='bttn b1' title='Find' onclick='editMode(fiind);'><i class='fa fa-search' aria-hidden='true'></i>Find</button>");
+document.write("<button class='bttn' title='Reset' onclick='reset()'><i class='fa fa-refresh' aria-hidden='true'></i>Reset</button>");
 
 const size = [5, 7];
 var arr = new Array(size[0]).fill(0).map(() => new Array(size[1]).fill(0).map(() => new Array(3).fill(0)));
-var frarr = new Array(size[0]).fill(0).map(() => new Array(size[1]).fill(0).map(() => new Array(3).fill(0)));
 var sd = new Array(2).fill(-1).map(() => new Array(2).fill(-1));
-var frsd = new Array(2).fill(-1).map(() => new Array(2).fill(-1));
 var pinFull = 3;
 
 function clicked(xclass) {
@@ -67,11 +64,6 @@ function click2(xclass) {
 }
 
 function fiind() {
-    for (let i = 0; i < size[0]; i++) {
-        for (let j = 0; j < size[1]; j++) {
-            frarr[i][j] = [...arr[i][j]];
-        }
-    }
     if (sd[0][0] == -1 || sd[1][0] == -1) {
         alert("select source & destination");
         return 0;
@@ -201,40 +193,23 @@ function reset() {
     pinFull = 3;
 }
 
-function replay() {
-    for (let i = 0; i < 2; i++) {
-        frsd[i] = [...sd[i]];
-    }
-    reset();
+function editMode(callback) {
     for (let i = 0; i < size[0]; i++) {
         for (let j = 0; j < size[1]; j++) {
-            arr[i][j] = [...frarr[i][j]];
-            if (arr[i][j][0] == 1) {
-                var temp = i + 1 + j * 5;
-                document.getElementById("x" + temp).style.background = "#0b032d";
+            for (let k = 0; k < 3; k++) {
+                if (k != 0) {
+                    if (k == 2 && arr[i][j][k] == 1 && arr[i][j][0] == 0) {
+                        var temp = i + 1 + j * 5;
+                        document.getElementById("x" + temp).style.background = "white";
+                        document.getElementById("x" + temp).innerHTML = "";
+                    }
+                    arr[i][j][k] = 0;
+                } else if (arr[i][j][k] == 2) {
+                    var tmp = i + 1 + j * 5;
+                    document.getElementById("x" + tmp).style.background = "#B6CEC7";
+                }
             }
         }
     }
-    for (let i = 0; i < 2; i++) {
-        sd = [...frsd];
-    }
-    var sd1 = sd[0][0] + 1 + sd[0][1] * 5;
-    var sd2 = sd[1][0] + 1 + sd[1][1] * 5;
-    document.getElementById("x" + sd1).style.background = "#B6CEC7";
-    document.getElementById("x" + sd2).style.background = "#B6CEC7";
-    document.getElementById("x" + sd1).innerHTML = "src";
-    document.getElementById("x" + sd2).innerHTML = "dest";
-    fiind();
-    // for (let i = 0; i < size[0]; i++) {
-    //     for (let j = 0; j < size[1]; j++) {
-    //         for (let k = 0; k < 3; k++) {
-    //             frarr[i][j][k] = 0;
-    //         }
-    //     }
-    // }
-    // for (let i = 0; i < 2; i++) {
-    //     for (let j = 0; j < 2; j++) {
-    //         frsd[i][j] = -1;
-    //     }
-    // }
+    callback();
 }
