@@ -3,9 +3,11 @@
 
 <head>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/png" href="pf.png" />
     <title>Path Finder</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="pf.css">
 </head>
 
@@ -24,7 +26,32 @@
             <button class="pm" id="minus" onclick="minus()">-</button>
         </div>
     </div>
+    <div id="info">
+        <div class="row">
+            <div class="col-4">
+                <button style="width:70px;height:42px;background: #0b032d;"></button>
+            </div>
+            <div class="col-5" style="font-size: 15px;">
+                On One tap <br>
+                <div class="label label-default">Obstacle</div>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-4">
+                <button style="width:70px;height:42px;background: #B6CEC7;">src/dest</button>
+            </div>
+            <div class="col-5" style="font-size: 15px;">
+                On Double tap <br>
+                <div class="label label-info">src</div> /
+                <div class="label label-warning">dest</div>
+            </div>
+        </div>
+    </div>
     <script src="pf.js"></script>
+    <div id='bottom'>
+        <button class='bttn b1' title='Find' onclick='editMode(fiind)'><i class='fa fa-search' aria-hidden='true'></i>Find</button>
+        <button class='bttn' title='Reset' onclick='reset()'><i class='fa fa-refresh' aria-hidden='true'></i>Reset</button>
+    </div>
 </body>
 
 </html>

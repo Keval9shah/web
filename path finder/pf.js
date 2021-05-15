@@ -3,8 +3,7 @@ var size = [5, 7];
 for (var i = 1; i < (size[0] * size[1]) + 1; i++) {
     document.write("<button onclick='clicked(this.id)' id='x" + i + "'></button>");
 }
-document.write("</div><div id='bottom'><button class='bttn b1' title='Find' onclick='editMode(fiind);'><i class='fa fa-search' aria-hidden='true'></i>Find</button>");
-document.write("<button class='bttn' title='Reset' onclick='reset()'><i class='fa fa-refresh' aria-hidden='true'></i>Reset</button></div>");
+document.write("</div>");
 
 
 document.getElementsByTagName("h3")[0].innerHTML = "Path Finder   (" + size[0] + "x" + size[1] + ")";
@@ -13,6 +12,13 @@ document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat("
 var arr = new Array(size[0]).fill(0).map(() => new Array(size[1]).fill(0).map(() => new Array(3).fill(0)));
 var sd = new Array(2).fill(-1).map(() => new Array(2).fill(-1));
 var pinFull = 3;
+
+if (window.matchMedia("(min-width: 1000px)").matches) {
+    document.getElementById("info").style.top = "170px";
+    x = 55 + 45 + 5 * 85;
+    document.getElementById("info").style.left = x + "px";
+}
+
 
 function clicked(xclass) {
     var x, y;
@@ -263,6 +269,10 @@ function plus() {
         }
     }
     document.getElementsByTagName("h3")[0].innerHTML = "Path Finder   (" + size[0] + "x" + size[1] + ")";
+    if (window.matchMedia("(min-width: 1000px)").matches) {
+        x = 55 + 45 + Math.max(3, size[0]) * 85;
+        document.getElementById("info").style.left = x + "px";
+    }
 }
 
 function minus() {
@@ -322,4 +332,8 @@ function minus() {
         pinFull = 3;
     }
     document.getElementsByTagName("h3")[0].innerHTML = "Path Finder   (" + size[0] + "x" + size[1] + ")";
+    if (window.matchMedia("(min-width: 1000px)").matches) {
+        x = 55 + 45 + Math.max(3, size[0]) * 85;
+        document.getElementById("info").style.left = x + "px";
+    }
 }
