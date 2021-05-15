@@ -48,22 +48,6 @@ body {
     min-width: 170px;
 }
 
-#infile {
-    width: 16%;
-    min-width: 75px;
-}
-
-#infile::before {
-    content: 'Image File';
-    display: inline-block;
-    padding: 5px 8px;
-    outline: none;
-    white-space: nowrap;
-    user-select: none;
-    cursor: pointer;
-    font-weight: 400;
-}
-
 ::placeholder {
     color: black;
 }
@@ -103,7 +87,6 @@ img:active {
     border-bottom-right-radius: 5px;
     min-width: 250px;
     max-width: 480px;
-    display: none;
 }
 
 #scnd {
@@ -137,10 +120,13 @@ img:active {
     background-color: antiquewhite;
 }
 
+.fa-bars {
+    display: none;
+}
+
 .fax {
     padding: 10px 13px;
     background-color: rgba(250, 255, 228);
-    display: none;
     position: absolute;
     top: 15px;
     /*hii*/
