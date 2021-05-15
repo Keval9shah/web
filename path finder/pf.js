@@ -4,21 +4,47 @@ for (var i = 1; i < (size[0] * size[1]) + 1; i++) {
     document.write("<button onclick='clicked(this.id)' id='x" + i + "'></button>");
 }
 document.write("</div>");
-
+var btnWd = 68;
+var btnWd2 = 85;
 
 document.getElementsByTagName("h3")[0].innerHTML = "Path Finder   (" + size[0] + "x" + size[1] + ")";
-document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + size[0] + ", clamp(68px, 12%, 85px)";
+if (window.matchMedia("(max-width: 1680px) and (min-width:1080px)").matches) {
+    btnWd = 72;
+    btnWd2 = 88;
+} else if (window.matchMedia("(max-width: 1080px) and (min-width:786px)").matches) {
+    btnWd = 68;
+    btnWd2 = 85;
+} else if (window.matchMedia("(max-width: 786px) and (min-width:399px)").matches) {
+    btnWd = 63;
+    btnWd2 = 72;
+}
+
+document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + size[0] + ", clamp(" + btnWd + "px, 12%, " + btnWd2 + "px)";
+
 
 var arr = new Array(size[0]).fill(0).map(() => new Array(size[1]).fill(0).map(() => new Array(3).fill(0)));
 var sd = new Array(2).fill(-1).map(() => new Array(2).fill(-1));
 var pinFull = 3;
 
-if (window.matchMedia("(min-width: 1000px)").matches) {
-    document.getElementById("info").style.top = "170px";
-    x = 55 + 45 + 5 * 85;
-    document.getElementById("info").style.left = x + "px";
+
+var info = document.getElementById("info");
+var txt = document.getElementsByClassName("txt")[0];
+var lng = document.getElementById("x1").offsetWidth;
+if (window.matchMedia("(max-width:1680px) and (min-width:1080px)").matches) {
+    info.style.top = "180px";
+    txt.style.top = "80px";
+    x = 55 + 45 + 5 * lng;
+    info.style.left = x + 15 + "px";
+} else if (window.matchMedia("(max-width: 1080px) and (min-width:786px)").matches) {
+    info.style.top = "180px";
+    txt.style.top = "80px";
+    x = 55 + 45 + 5 * lng;
+    info.style.left = x + 15 + "px";
 }
 
+window.addEventListener('resize', () => {
+    location.reload();
+});
 
 function clicked(xclass) {
     var x, y;
@@ -175,7 +201,7 @@ function findDist(x) {
     destDist[0] = Math.abs(crntBtn[0] - sd[0][0]);
     destDist[1] = Math.abs(crntBtn[1] - sd[0][1]);
     destDist[3] = Math.min(destDist[0], destDist[1])
-    destDist[4] = destDist[3] * 7 + (destDist[0] - destDist[3]) * 5 + (destDist[1] - destDist[3]) * 5;
+    destDist[4] = destDist[3] * 4 + (destDist[0] - destDist[3]) * 3 + (destDist[1] - destDist[3]) * 3;
     if (x[0] == sd[1][0] && x[1] == sd[1][1]) {
         return 1;
     }
@@ -270,8 +296,9 @@ function plus() {
     }
     document.getElementsByTagName("h3")[0].innerHTML = "Path Finder   (" + size[0] + "x" + size[1] + ")";
     if (window.matchMedia("(min-width: 1000px)").matches) {
-        x = 55 + 45 + Math.max(3, size[0]) * 85;
-        document.getElementById("info").style.left = x + "px";
+        var lng = document.getElementById("x1").offsetWidth;
+        x = 55 + 45 + size[0] * lng;
+        info.style.left = x + 15 + "px";
     }
 }
 
@@ -333,7 +360,8 @@ function minus() {
     }
     document.getElementsByTagName("h3")[0].innerHTML = "Path Finder   (" + size[0] + "x" + size[1] + ")";
     if (window.matchMedia("(min-width: 1000px)").matches) {
-        x = 55 + 45 + Math.max(3, size[0]) * 85;
-        document.getElementById("info").style.left = x + "px";
+        var lng = document.getElementById("x1").offsetWidth;
+        x = 55 + 45 + size[0] * lng;
+        info.style.left = x + 15 + "px";
     }
 }

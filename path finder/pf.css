@@ -1,7 +1,29 @@
+.inf {
+    cursor: default;
+    width: 70px;
+    height: 42px;
+}
+
+.row1 {
+    display: flex;
+}
+
+.col2 {
+    margin-left: 20px;
+}
+
 #info {
     position: absolute;
     width: 250px;
-    margin: 0 0 0 65px;
+    margin: 0 0 0 35px;
+}
+
+.label-info {
+    background: #9bb6ae;
+}
+
+.label-warning {
+    background: #e0bf00;
 }
 
 body {
@@ -88,22 +110,35 @@ select {
     margin: 40px;
 }
 
+.b1,
+.b2 {
+    font-size: 20px;
+}
+
 @media only screen and (max-width: 768px) {
     .grid {
-        margin: 132px 0 0 35px;
-        grid-template-columns: repeat(5, clamp(65px, 12%, 75px));
+        margin: 85px 0 0 35px;
+    }
+    #info {
+        margin-left: 15px;
+        display: flex;
+        width: 500px;
+        top: 112px;
+    }
+    .row1 {
+        margin-left: 20px;
     }
     body {
         background-color: lightblue;
     }
     button {
-        height: 45px;
+        height: 43px;
     }
     .txt {
         position: relative;
-        top: 35px;
         font-size: large;
-        left: 32px;
+        margin-left: 35px;
+        top: -10px;
     }
     .b1 {
         margin: 30px 0 0 35px;
@@ -116,7 +151,7 @@ select {
         grid-template-columns: repeat(5, clamp(55px, 12%, 70px));
     }
     body {
-        background-color: li;
+        background-color: lightblue;
     }
     button {
         height: 40px;
@@ -128,25 +163,11 @@ select {
         left: 22px;
     }
     .b1 {
-        margin: 30px 0 0 22px;
+        margin: 25px 0 0 22px;
     }
-}
-
-@media only screen and (min-width: 1435px) {
-    .grid {
-        margin: 150px 0 0 85px;
-        grid-template-columns: repeat(5, clamp(85px, 12%, 110px));
-    }
-    button {
-        height: 70px;
-    }
-    .b1 {
-        margin: 40px 0 0 85px;
-    }
-    .txt {
-        position: relative;
-        font-size: 30px;
-        top: 190px;
-        left: 700px;
+    .b1,
+    .b2 {
+        margin-top: 25px;
+        font-size: 14px;
     }
 }
