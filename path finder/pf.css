@@ -145,7 +145,7 @@ select {
     }
 }
 
-@media only screen and (max-width: 399px) {
+@media only screen and (max-width: 310px) {
     .grid {
         margin: 120px 0 0 20px;
         grid-template-columns: repeat(5, clamp(55px, 12%, 70px));
@@ -158,7 +158,7 @@ select {
     }
     .txt {
         position: relative;
-        top: 28px;
+        top: 25px;
         font-size: large;
         left: 22px;
     }
