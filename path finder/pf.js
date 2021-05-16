@@ -52,10 +52,9 @@ function zoomIn(x) {
     var zoom = parseInt(Page.style.zoom) + x + '%';
     Page.style.zoom = zoom;
 }
-if (window.matchMedia("(max-width:430px)")) {
-    setTimeout(() => {
-        zoomIn(20);
-    }, 1000);
+if (window.matchMedia("(max-width:430px)").matches) {
+    console.log("hii");
+    zoomIn(20);
 }
 
 function clicked(xclass) {
