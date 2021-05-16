@@ -53,7 +53,6 @@ function zoomIn(x) {
     Page.style.zoom = zoom;
 }
 if (window.matchMedia("(max-width:430px)").matches) {
-    console.log("hii");
     zoomIn(20);
 }
 
