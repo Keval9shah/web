@@ -30,22 +30,33 @@ var pinFull = 3;
 
 var info = document.getElementById("info");
 var txt = document.getElementsByClassName("txt")[0];
+var grid = document.getElementsByClassName("grid")[0];
 var lng = document.getElementById("x1").offsetWidth;
+x = 55 + 45 + 5 * lng;
 if (window.matchMedia("(max-width:1680px) and (min-width:1080px)").matches) {
     info.style.top = "180px";
     txt.style.top = "80px";
-    x = 55 + 45 + 5 * lng;
     info.style.left = x + 15 + "px";
 } else if (window.matchMedia("(max-width: 1080px) and (min-width:787px)").matches) {
     info.style.top = "180px";
     txt.style.top = "80px";
-    x = 55 + 45 + 5 * lng;
     info.style.left = x + 15 + "px";
-}
+} else { grid.style.width = x - 45 + "px"; }
 
 window.addEventListener('resize', () => {
     location.reload();
 });
+
+function zoomIn(x) {
+    var Page = document.getElementById('Body');
+    var zoom = parseInt(Page.style.zoom) + x + '%';
+    Page.style.zoom = zoom;
+}
+if (window.matchMedia("(max-width:430px)")) {
+    setTimeout(() => {
+        zoomIn(20);
+    }, 1000);
+}
 
 function clicked(xclass) {
     var x, y;
@@ -278,7 +289,7 @@ function plus() {
     } else if (e.options[e.selectedIndex].value == "clm") {
         arr.push([]);
         var x = size[0] + 1; //experiment
-        document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + x + ", clamp(68px, 12%, 85px)";
+        document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + x + ", clamp(" + btnWd + "px, 12%, " + btnWd2 + "px)";
         for (let i = 0; i < size[1]; i++) {
             buton = document.createElement("button");
             uls = size[0] * size[1] + 1 + i;
@@ -307,10 +318,12 @@ function plus() {
         }
     }
     document.getElementsByTagName("h3")[0].innerHTML = "Path Finder   (" + size[0] + "x" + size[1] + ")";
+    var lng = document.getElementById("x1").offsetWidth;
+    x = 55 + 45 + size[0] * lng;
     if (window.matchMedia("(min-width: 1000px)").matches) {
-        var lng = document.getElementById("x1").offsetWidth;
-        x = 55 + 45 + size[0] * lng;
         info.style.left = x + 15 + "px";
+    } else {
+        grid.style.width = x - 45 + "px";
     }
 }
 
@@ -334,7 +347,7 @@ function minus() {
         if (size[0] <= 0) {
             return 0;
         }
-        document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + x + ", clamp(68px, 12%, 85px)";
+        document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + x + ", clamp(" + btnWd + "px, 12%, " + btnWd2 + "px)";
         for (let i = 0; i < size[1]; i++) {
             uls = (size[0] - 1) * size[1] + 1 + i;
             buton = document.getElementById("x" + uls);
@@ -371,9 +384,11 @@ function minus() {
         pinFull = 3;
     }
     document.getElementsByTagName("h3")[0].innerHTML = "Path Finder   (" + size[0] + "x" + size[1] + ")";
+    var lng = document.getElementById("x1").offsetWidth;
+    x = 55 + 45 + size[0] * lng;
     if (window.matchMedia("(min-width: 1000px)").matches) {
-        var lng = document.getElementById("x1").offsetWidth;
-        x = 55 + 45 + size[0] * lng;
         info.style.left = x + 15 + "px";
+    } else {
+        grid.style.width = x - 45 + "px";
     }
 }

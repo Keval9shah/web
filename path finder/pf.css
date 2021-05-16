@@ -84,7 +84,7 @@ button {
 }
 
 #bottom {
-    width: 500px;
+    width: 600px;
 }
 
 .html {
@@ -183,5 +183,12 @@ select {
     }
     .sizechng {
         margin-left: -7px;
+    }
+    #bottom {
+        width: 500px;
+    }
+    .b1,
+    .b2 {
+        font-size: 18px;
     }
 }
