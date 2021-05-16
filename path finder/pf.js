@@ -45,20 +45,8 @@ if (window.matchMedia("(max-width:1680px) and (min-width:1080px)").matches) {
 
 window.addEventListener('resize', () => {
     location.reload();
-    // if (window.matchMedia("(min-width: 50px) and (max-width: 430px)").matches) {
-    //     zoomIn(20);
-    // }
 });
 
-function zoomIn(x) {
-    var Page = document.getElementById('Body');
-    var zoom = 100 + x + '%';
-    Page.style.zoom = zoom;
-    console.log(Page.style.zoom);
-}
-if (window.matchMedia("(min-width: 50px) and (max-width: 430px)").matches) {
-    zoomIn(10);
-}
 
 function clicked(xclass) {
     var x, y;
