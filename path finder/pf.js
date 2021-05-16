@@ -15,7 +15,7 @@ if (window.matchMedia("(max-width: 1680px) and (min-width:1080px)").matches) {
 } else if (window.matchMedia("(max-width: 1080px) and (min-width:787px)").matches) {
     btnWd = 68;
     btnWd2 = 85;
-} else if (window.matchMedia("(max-width: 787px) and (min-width:399px)").matches) {
+} else if (window.matchMedia("(max-width: 787px) and (min-width:430px)").matches) {
     btnWd = 63;
     btnWd2 = 72;
 }
@@ -45,15 +45,19 @@ if (window.matchMedia("(max-width:1680px) and (min-width:1080px)").matches) {
 
 window.addEventListener('resize', () => {
     location.reload();
+    // if (window.matchMedia("(min-width: 50px) and (max-width: 430px)").matches) {
+    //     zoomIn(20);
+    // }
 });
 
 function zoomIn(x) {
     var Page = document.getElementById('Body');
-    var zoom = parseInt(Page.style.zoom) + x + '%';
+    var zoom = 100 + x + '%';
     Page.style.zoom = zoom;
+    console.log(Page.style.zoom);
 }
-if (window.matchMedia("(max-width:430px)").matches) {
-    zoomIn(20);
+if (window.matchMedia("(min-width: 50px) and (max-width: 430px)").matches) {
+    zoomIn(10);
 }
 
 function clicked(xclass) {
