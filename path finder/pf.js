@@ -6,15 +6,16 @@ for (var i = 1; i < (size[0] * size[1]) + 1; i++) {
 document.write("</div>");
 var btnWd = 68;
 var btnWd2 = 85;
+var notecheck = 1;
 
 document.getElementsByTagName("h3")[0].innerHTML = "Path Finder   (" + size[0] + "x" + size[1] + ")";
 if (window.matchMedia("(max-width: 1680px) and (min-width:1080px)").matches) {
     btnWd = 72;
     btnWd2 = 88;
-} else if (window.matchMedia("(max-width: 1080px) and (min-width:786px)").matches) {
+} else if (window.matchMedia("(max-width: 1080px) and (min-width:787px)").matches) {
     btnWd = 68;
     btnWd2 = 85;
-} else if (window.matchMedia("(max-width: 786px) and (min-width:399px)").matches) {
+} else if (window.matchMedia("(max-width: 787px) and (min-width:399px)").matches) {
     btnWd = 63;
     btnWd2 = 72;
 }
@@ -35,7 +36,7 @@ if (window.matchMedia("(max-width:1680px) and (min-width:1080px)").matches) {
     txt.style.top = "80px";
     x = 55 + 45 + 5 * lng;
     info.style.left = x + 15 + "px";
-} else if (window.matchMedia("(max-width: 1080px) and (min-width:786px)").matches) {
+} else if (window.matchMedia("(max-width: 1080px) and (min-width:787px)").matches) {
     info.style.top = "180px";
     txt.style.top = "80px";
     x = 55 + 45 + 5 * lng;
@@ -100,12 +101,25 @@ function click2(xclass) {
     document.getElementById(xclass).style.background = "#B6CEC7";
 }
 
+setTimeout(() => {
+    var note = document.createElement("div");
+    note.id = "note";
+    document.getElementById("bottom").appendChild(note);
+}, 1000);
+
+
 function fiind() {
     if (sd[0][0] == -1 || sd[1][0] == -1) {
-        alert("select source & destination");
+        note.innerHTML = "Select Source and Destination";
+        setTimeout(() => {
+            note.innerHTML = "";
+        }, 8500);
         return 0;
     } else if ((Math.abs(sd[0][0] - sd[1][0]) + Math.abs(sd[0][1] - sd[1][1])) == 1) {
-        alert("1");
+        note.innerHTML = "They are side by side";
+        setTimeout(() => {
+            note.innerHTML = "";
+        }, 8500);
         return 0;
     }
 
@@ -123,11 +137,9 @@ function fiind() {
     }
     document.getElementById("steps").innerHTML = no + 1;
 
-    if (!document.body.contains(document.getElementById("note"))) {
-        var note = document.createElement("div");
+    if (notecheck) {
+        notecheck = 0;
         note.innerHTML = "Note : To Replay Click Find Again.";
-        note.id = "note";
-        document.getElementById("bottom").appendChild(note);
         setTimeout(() => {
             note.innerHTML = "";
         }, 8500);
