@@ -10,26 +10,38 @@
         body {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             margin: 0;
-            background-image: url(b0.jpg);
-            /* background-color: bisque; */
+            /* background-image: url(b0.jpg); */
+            background-color: rgb(0, 0, 0);
             background-size: contain;
         }
         
+        .ttl {
+            width: 100%;
+            position: fixed;
+            padding: 15px 0;
+            font-size: 30px;
+            text-align: center;
+            background-color: rgba(46, 46, 46, 0.64);
+            color: white;
+            backdrop-filter: blur(9px);
+        }
+        
         .flx {
-            margin: 50px 0 1000px 0;
-            padding: 30px 2%;
+            margin: 0px 0 700px 0;
+            padding: 40px 2%;
+            padding-top: 110px;
             display: flex;
             flex-wrap: wrap;
-            backdrop-filter: blur(8px);
-            background: rgba(88, 88, 88, 0.37);
+            /* backdrop-filter: blur(5px); */
+            /* background: rgba(0, 0, 0, 0.41); */
         }
         
         .flx-item {
-            color: white;
+            color: black;
             margin: 20px 1.25%;
             height: 450px;
             border-radius: 20px;
-            background: rgba(0, 0, 0, 0.781);
+            background: rgba(255, 255, 255, 0.83);
             flex: 1 0 22.5%;
             text-align: center;
         }
@@ -47,7 +59,7 @@
         }
         
         .title {
-            font-size: 22px;
+            font-size: 27px;
         }
         
         .content {
@@ -56,9 +68,8 @@
         
         @media only screen and (min-width: 580px) and (max-width:1024px) {
             .flx-item {
-                margin: 20px 9%;
-                flex: 1 0 32%;
-                /* height: ; */
+                margin: 20px 6%;
+                flex: 1 0 38%;
             }
         }
         
@@ -72,10 +83,11 @@
 </head>
 
 <body>
+    <div class="ttl">HellO</div>
     <div class="flx">
         <div class="x1 flx-item"><img src="x1.jpg" alt="">
             <div class="txt">
-                <div class="title">Lorem</div>
+                <div class="title">Never stop learning</div><br>
                 <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui natus, ducimus eligendi impedit beatae at.</div>
             </div>
         </div>
@@ -83,7 +95,7 @@
             <div class="txt">
                 <div class="title">
                     Lorem
-                </div>
+                </div><br>
                 <div class="content">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, minus.
                 </div>
@@ -93,7 +105,7 @@
             <div class="txt">
                 <div class="title">
                     Lorem
-                </div>
+                </div><br>
                 <div class="content">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </div>
@@ -101,7 +113,7 @@
         </div>
         <div class="x4 flx-item"><img src="x4.jpg" alt="">
             <div class="txt">
-                <div class="title">Lorem</div>
+                <div class="title">Lorem</div><br>
                 <div class="content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis, voluptate?</div>
             </div>
         </div>
