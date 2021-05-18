@@ -16,14 +16,15 @@
         }
         
         .ttl {
+            z-index: 2;
             width: 100%;
             position: fixed;
             padding: 15px 0;
             font-size: 30px;
             text-align: center;
-            background-color: rgba(46, 46, 46, 0.64);
+            background-color: rgba(46, 46, 46, 0.54);
             color: white;
-            backdrop-filter: blur(9px);
+            backdrop-filter: blur(8px);
         }
         
         .flx {
@@ -41,21 +42,23 @@
             margin: 20px 1.25%;
             height: 450px;
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.83);
+            background: rgb(230, 222, 208);
             flex: 1 0 22.5%;
             text-align: center;
         }
         
         img {
-            margin: 10px;
+            box-shadow: 1px 3px 40px 10px rgba(99, 99, 99, 0.7);
+            margin: 11px;
             border-radius: 12px;
-            width: calc(98.8% - 20px);
+            width: calc(100% - 22px);
             height: 50%;
             object-fit: cover;
+            transition: all 0.3s;
         }
         
         .txt {
-            margin: 0 20px;
+            margin: 10px 20px 30px 20px;
         }
         
         .title {
@@ -66,18 +69,40 @@
             font-size: 16px;
         }
         
+        button {
+            background: rgb(95, 158, 160);
+            position: relative;
+            bottom: 3px;
+            padding: 8px 12px;
+            border: 3px solid rgb(45, 93, 95);
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        
+        button:active {
+            border: 3px solid rgb(4, 30, 31);
+        }
+        
         @media only screen and (min-width: 580px) and (max-width:1024px) {
             .flx-item {
                 margin: 20px 6%;
                 flex: 1 0 38%;
             }
+            /* img {
+                margin: 20px;
+                width: calc(100% - 40px);
+            } */
         }
         
         @media only screen and (min-width: 320px) and (max-width:580px) {
             .flx-item {
-                margin: 20px 15%;
-                flex: 1 0 70%;
+                margin: 20px 14%;
+                flex: 1 0 72%;
             }
+            /* img {
+                margin: 18px;
+                width: calc(100% - 36px);
+            } */
         }
     </style>
 </head>
@@ -90,6 +115,7 @@
                 <div class="title">Oppotunities</div><br>
                 <div class="content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis, voluptate?</div>
             </div>
+            <button class="select">Choose now</button>
         </div>
         <div class="x3 flx-item"><img src="x3.jpg" alt="">
             <div class="txt">
@@ -100,6 +126,7 @@
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, minus.
                 </div>
             </div>
+            <button class="select">Choose now</button>
         </div>
         <div class="x2 flx-item"><img src="x2.jpg" alt="">
             <div class="txt">
@@ -107,15 +134,17 @@
                     Success funda
                 </div><br>
                 <div class="content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem, ipsum.
                 </div>
             </div>
+            <button class="select">Choose now</button>
         </div>
         <div class="x1 flx-item"><img src="x1.jpg" alt="">
             <div class="txt">
                 <div class="title">Never stop learning</div><br>
-                <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui natus, ducimus eligendi impedit beatae at.</div>
+                <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui natus, ducimus</div>
             </div>
+            <button class="select">Choose now</button>
         </div>
     </div>
 </body>
