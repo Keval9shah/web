@@ -40,7 +40,7 @@
         .flx-item {
             color: black;
             margin: 20px 1.25%;
-            height: 450px;
+            height: 425px;
             border-radius: 20px;
             background: rgb(230, 222, 208);
             flex: 1 0 22.5%;
@@ -50,6 +50,7 @@
         img {
             box-shadow: 1px 3px 40px 10px rgba(99, 99, 99, 0.7);
             margin: 11px;
+            margin-bottom: 0;
             border-radius: 12px;
             width: calc(100% - 22px);
             height: 50%;
@@ -58,7 +59,7 @@
         }
         
         .txt {
-            margin: 10px 20px 30px 20px;
+            margin: 0 20px 30px 20px;
         }
         
         .title {
@@ -70,9 +71,10 @@
         }
         
         button {
+            -webkit-tap-highlight-color: transparent;
             background: rgb(95, 158, 160);
             position: relative;
-            bottom: 3px;
+            top: 175px;
             padding: 8px 12px;
             border: 3px solid rgb(45, 93, 95);
             border-radius: 20px;
@@ -80,7 +82,7 @@
         }
         
         button:active {
-            border: 3px solid rgb(4, 30, 31);
+            border: 3px solid rgb(0, 48, 49);
         }
         
         @media only screen and (min-width: 580px) and (max-width:1024px) {
@@ -111,13 +113,15 @@
     <div class="ttl">HellO</div>
     <div class="flx">
         <div class="x4 flx-item"><img src="x4.jpg" alt="">
+            <button class="select">Choose now</button>
             <div class="txt">
                 <div class="title">Oppotunities</div><br>
                 <div class="content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis, voluptate?</div>
             </div>
-            <button class="select">Choose now</button>
+
         </div>
         <div class="x3 flx-item"><img src="x3.jpg" alt="">
+            <button class="select">Choose now</button>
             <div class="txt">
                 <div class="title">
                     follow your passion
@@ -126,9 +130,10 @@
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, minus.
                 </div>
             </div>
-            <button class="select">Choose now</button>
+
         </div>
         <div class="x2 flx-item"><img src="x2.jpg" alt="">
+            <button class="select">Choose now</button>
             <div class="txt">
                 <div class="title">
                     Success funda
@@ -137,14 +142,15 @@
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem, ipsum.
                 </div>
             </div>
-            <button class="select">Choose now</button>
+
         </div>
         <div class="x1 flx-item"><img src="x1.jpg" alt="">
+            <button class="select">Choose now</button>
             <div class="txt">
                 <div class="title">Never stop learning</div><br>
                 <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui natus, ducimus</div>
             </div>
-            <button class="select">Choose now</button>
+
         </div>
     </div>
 </body>
