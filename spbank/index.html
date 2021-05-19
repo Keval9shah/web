@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;600&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        
+        .grd {
+            height: 100vh;
+            display: flex;
+        }
+        
+        .g1 {
+            background-color: #2e3c49;
+            flex: 0 0 400px;
+            height: 100%;
+        }
+        
+        .g2 {
+            flex: 0 0 calc(100%-400px);
+        }
+        
+        .prop {
+            /* margin: 10% 0 10% 0; */
+            height: 100%;
+            width: 400px;
+            object-fit: cover;
+        }
+        
+        .logo {
+            width: 160px;
+            position: relative;
+            top: -10px;
+            left: 58px;
+        }
+        
+        .prop2 {
+            /* width: 160px; */
+            position: relative;
+            top: 15px;
+            left: 270px;
+        }
+        
+        .txt {
+            margin: 75px 0 0 100px;
+            width: 550px;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 40px;
+            color: #2e3c49;
+            font-weight: 400;
+        }
+        
+        span {
+            background-color: #2e3c49;
+            color: white;
+            padding: 10px;
+            border-radius: 3px;
+        }
+        
+        .login {
+            margin: 40px 0 0 100px;
+            height: 290px;
+            width: 520px;
+        }
+        
+        .sign {
+            background-color: #d4d4d4ea;
+            color: rgba(99, 99, 99, 0.877);
+            display: flex;
+            width: 176px;
+            height: 40px;
+            border-radius: 7px;
+        }
+        
+        .sup,
+        .lin {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 18px;
+            padding: 9px 12px;
+            margin: 3px;
+            font-weight: 400;
+            z-index: 4;
+            cursor: pointer;
+        }
+        
+        .sel1 {
+            color: black;
+            font-weight: 600;
+        }
+        
+        .sel {
+            position: relative;
+            top: -37px;
+            left: 96px;
+            background-color: white;
+            height: 34px;
+            width: 76px;
+            border-radius: 4px;
+            transition: all ease 0.2s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grd">
+        <div class="g1"><img class="prop" src="money.jpg"></div>
+        <div class="g2">
+            <img class="logo" src="logo.png" alt="">
+            <img class="prop2" src="prop2.jpg" alt="">
+            <div class="txt">Welcome to a <span>safe</span> Banking Paradise</div>
+            <div class="login">
+                <div class="sign">
+                    <div class="sup" onclick="sup()">
+                        Sign up
+                    </div>
+                    <div class="lin sel1" onclick="lin()">
+                        Log in
+                    </div>
+                </div>
+                <div class="sel"></div>
+                <div class="name"></div>
+                <div class="email"></div>
+                <div class="pass"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var supp = document.getElementsByClassName("sup")[0];
+        var linn = document.getElementsByClassName("lin")[0]
+        var sel = document.getElementsByClassName("sel")[0];
+
+        function sup() {
+            sel.style.left = "3px";
+            sel.style.width = "90px";
+            linn.classList.toggle("sel1");
+            supp.classList.toggle("sel1");
+        }
+
+        function lin() {
+            linn.classList.toggle("sel1");
+            supp.classList.toggle("sel1");
+            sel.style.left = "96px";
+            sel.style.width = "76px";
+        }
+    </script>
+</body>
+
+</html>
