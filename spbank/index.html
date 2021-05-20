@@ -11,6 +11,7 @@
     <style>
         body {
             margin: 0;
+            font-family: 'Josefin Sans', sans-serif;
         }
         
         .grd {
@@ -52,7 +53,6 @@
         .txt {
             margin: 75px 0 0 100px;
             width: 550px;
-            font-family: 'Josefin Sans', sans-serif;
             font-size: 40px;
             color: #2e3c49;
             font-weight: 400;
@@ -82,7 +82,6 @@
         
         .sup,
         .lin {
-            font-family: 'Josefin Sans', sans-serif;
             font-size: 18px;
             padding: 9px 12px;
             margin: 3px;
@@ -108,6 +107,40 @@
             box-shadow: 0 2px 5px rgba(105, 105, 105, 0.68);
             transition: all 0.5s;
         }
+        
+        .fl {
+            display: flex;
+            margin: 5px 0 25px 0;
+        }
+        /* .name {
+            margin-top: 10px;
+        } */
+        
+        .field {
+            height: 15px;
+            flex: 0 0 80px;
+            color: rgba(66, 66, 66, 0.9);
+            background-color: #d4d4d4ea;
+            padding: 11px 0 9px 0;
+            padding-left: 15px;
+            font-size: 15px;
+            border-radius: 6px 0 0 6px;
+        }
+        
+        .answer {
+            height: 35px;
+            font-size: 14px !important;
+            border-radius: 6px 0 0 6px;
+        }
+        
+        input {
+            margin-left: -1px;
+            height: 29px;
+            padding-left: 18px;
+            border: 2px solid #d4d4d4ea;
+            border-radius: 0 6px 6px 0;
+            font-size: 13px;
+        }
     </style>
 </head>
 
@@ -129,9 +162,18 @@
                 </div>
                 <div class="sel"></div>
                 <div class="fields">
-                    <div class="name"></div>
-                    <div class="email"></div>
-                    <div class="pass"></div>
+                    <div class="name fl">
+                        <div class="field">Name</div>
+                        <div class="answer"><input name="name" placeholder="Enter Name"></div>
+                    </div>
+                    <div class="email fl">
+                        <div class="field">Email</div>
+                        <div class="answer"><input type="email" name="email" placeholder="Enter Email"></div>
+                    </div>
+                    <div class="pass fl">
+                        <div class="field">Password</div>
+                        <div class="answer"><input type="password" name="password" placeholder="Enter Password"></div>
+                    </div>
                 </div>
             </div>
         </div>
