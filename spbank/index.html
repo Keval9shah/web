@@ -20,7 +20,7 @@
         
         .g1 {
             background-color: #2e3c49;
-            flex: 0 0 400px;
+            flex: 0 0;
             height: 100%;
         }
         
@@ -31,7 +31,7 @@
         .prop {
             /* margin: 10% 0 10% 0; */
             height: 100%;
-            width: 400px;
+            /* width: 400px; */
             object-fit: cover;
         }
         
@@ -128,9 +128,11 @@
                     </div>
                 </div>
                 <div class="sel"></div>
-                <div class="name"></div>
-                <div class="email"></div>
-                <div class="pass"></div>
+                <div class="fields">
+                    <div class="name"></div>
+                    <div class="email"></div>
+                    <div class="pass"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -142,13 +144,13 @@
         function sup() {
             sel.style.left = "3px";
             sel.style.width = "90px";
-            linn.classList.toggle("sel1");
-            supp.classList.toggle("sel1");
+            linn.classList.remove("sel1");
+            supp.classList.add("sel1");
         }
 
         function lin() {
-            linn.classList.toggle("sel1");
-            supp.classList.toggle("sel1");
+            linn.classList.add("sel1");
+            supp.classList.remove("sel1");
             sel.style.left = "96px";
             sel.style.width = "76px";
         }
