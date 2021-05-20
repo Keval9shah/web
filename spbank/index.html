@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- <?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password);
+
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
+?> -->
 
 <head>
     <meta charset="UTF-8">
@@ -7,7 +21,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;600&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <title>Bank</title>
     <style>
         body {
             margin: 0;
@@ -39,7 +54,7 @@
         .logo {
             width: 160px;
             position: relative;
-            top: -10px;
+            top: 0px;
             left: 58px;
         }
         
@@ -51,7 +66,7 @@
         }
         
         .txt {
-            margin: 75px 0 0 100px;
+            margin: 63px 0 0 100px;
             width: 550px;
             font-size: 40px;
             color: #2e3c49;
@@ -105,41 +120,69 @@
             width: 76px;
             border-radius: 4px;
             box-shadow: 0 2px 5px rgba(105, 105, 105, 0.68);
-            transition: all 0.5s;
+            transition: all 0.4s;
         }
         
         .fl {
-            display: flex;
-            margin: 5px 0 25px 0;
+            margin: 0 0 25px 0;
         }
-        /* .name {
-            margin-top: 10px;
-        } */
+        
+        .name {
+            display: none;
+        }
         
         .field {
             height: 15px;
-            flex: 0 0 80px;
             color: rgba(66, 66, 66, 0.9);
-            background-color: #d4d4d4ea;
-            padding: 11px 0 9px 0;
-            padding-left: 15px;
+            padding: 11px 0 0 0;
             font-size: 15px;
             border-radius: 6px 0 0 6px;
         }
         
         .answer {
             height: 35px;
-            font-size: 14px !important;
+            font-size: 14px;
             border-radius: 6px 0 0 6px;
         }
         
         input {
-            margin-left: -1px;
             height: 29px;
             padding-left: 18px;
             border: 2px solid #d4d4d4ea;
-            border-radius: 0 6px 6px 0;
             font-size: 13px;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .go {
+            margin-left: 40px;
+        }
+        
+        .goo {
+            margin: 25px 0 0 15px;
+            border-radius: 7px;
+            height: 35px;
+            border: none;
+            background: #2e3c49;
+            width: 87px;
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+            padding: 2px 12px;
+            cursor: pointer;
+        }
+        
+        #ane {
+            width: 200px;
+            transition: all 0.4s;
+        }
+        
+        .anp {
+            width: 160px;
+            transition: all 0.4s;
+        }
+        
+        .fields1 {
+            display: flex;
         }
     </style>
 </head>
@@ -162,18 +205,27 @@
                 </div>
                 <div class="sel"></div>
                 <div class="fields">
-                    <div class="name fl">
-                        <div class="field">Name</div>
-                        <div class="answer"><input name="name" placeholder="Enter Name"></div>
-                    </div>
-                    <div class="email fl">
-                        <div class="field">Email</div>
-                        <div class="answer"><input type="email" name="email" placeholder="Enter Email"></div>
-                    </div>
-                    <div class="pass fl">
-                        <div class="field">Password</div>
-                        <div class="answer"><input type="password" name="password" placeholder="Enter Password"></div>
-                    </div>
+                    <form action="" method="post">
+                        <div class="fields1">
+                            <div class="name fl">
+                                <div class="field">Name</div>
+                                <div class="answer"><input name="name" placeholder="Enter Name"></div>
+                            </div>
+                            <div class="email fl">
+                                <div class="field">Email</div>
+                                <div class="answer"><input id="ane" type="email" name="email" placeholder="Enter Email"></div>
+                            </div>
+                        </div>
+                        <div class="fields1">
+                            <div class="pass fl">
+                                <div class="field">Password</div>
+                                <div class="answer"><input class="anp" type="password" name="password" placeholder="Enter Password"></div>
+                            </div>
+                            <div class="go fl">
+                                <button type="submit" class="goo">Next <svg width="16px" height="15px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" class="svg-inline--fa fa-chevron-right fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg></button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -182,12 +234,18 @@
         var supp = document.getElementsByClassName("sup")[0];
         var linn = document.getElementsByClassName("lin")[0]
         var sel = document.getElementsByClassName("sel")[0];
+        var name_fld = document.getElementsByClassName("name")[0];
+        var email_fld = document.getElementsByClassName("email")[0];
 
         function sup() {
             sel.style.left = "3px";
             sel.style.width = "90px";
             linn.classList.remove("sel1");
             supp.classList.add("sel1");
+            name_fld.style.display = "block";
+            email_fld.style.marginLeft = "40px";
+            document.getElementsByClassName("anp")[0].style.width = "260px";
+            document.getElementById("ane").style.width = "180px";
         }
 
         function lin() {
@@ -195,6 +253,10 @@
             supp.classList.remove("sel1");
             sel.style.left = "96px";
             sel.style.width = "76px";
+            name_fld.style.display = "none";
+            email_fld.style.marginLeft = "0";
+            document.getElementsByClassName("anp")[0].style.width = "160px";
+            document.getElementById("ane").style.width = "200px";
         }
     </script>
 </body>
