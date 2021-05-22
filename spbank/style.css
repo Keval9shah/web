@@ -1,0 +1,169 @@
+body {
+    margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+::selection {
+    color: #2e3c49;
+    background-color: #45dea8;
+}
+
+.grd {
+    height: 100vh;
+    display: flex;
+}
+
+.g1 {
+    background-color: #2e3c49;
+    flex: 0 0;
+    height: 100%;
+}
+
+.g2 {
+    flex: 0 0 calc(100%-400px);
+}
+
+.prop {
+    /* margin: 10% 0 10% 0; */
+    height: 100%;
+    /* width: 400px; */
+    object-fit: cover;
+}
+
+.logo {
+    width: 160px;
+    position: relative;
+    top: 0px;
+    left: 58px;
+}
+
+.prop2 {
+    /* width: 160px; */
+    position: relative;
+    top: 15px;
+    left: 270px;
+}
+
+.txt {
+    margin: 63px 0 0 100px;
+    width: 550px;
+    font-size: 40px;
+    color: #2e3c49;
+    font-weight: 400;
+}
+
+span {
+    background-color: #2e3c49;
+    color: white;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.login {
+    margin: 40px 0 0 100px;
+    height: 290px;
+    width: 520px;
+}
+
+.sign {
+    background-color: #d4d4d4ea;
+    color: rgba(99, 99, 99, 0.877);
+    display: flex;
+    width: 176px;
+    height: 40px;
+    border-radius: 7px;
+}
+
+.sup,
+.lin {
+    font-size: 18px;
+    padding: 9px 12px;
+    margin: 3px;
+    font-weight: 400;
+    z-index: 4;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.sel1 {
+    color: black;
+    font-weight: 600;
+}
+
+.sel {
+    position: relative;
+    top: -37px;
+    left: 96px;
+    background-color: rgb(255, 255, 255);
+    height: 34px;
+    width: 76px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(105, 105, 105, 0.68);
+    transition: all 0.4s;
+}
+
+.fl {
+    margin: 0 0 25px 0;
+}
+
+.name {
+    display: none;
+}
+
+#nm {
+    width: 170px;
+}
+
+.field {
+    height: 15px;
+    color: rgba(66, 66, 66, 0.9);
+    padding: 11px 0 0 0;
+    font-size: 15px;
+    border-radius: 6px 0 0 6px;
+}
+
+.answer {
+    height: 35px;
+    font-size: 14px;
+    border-radius: 6px 0 0 6px;
+}
+
+input {
+    height: 29px;
+    padding: 0 18px;
+    border: 2px solid #d4d4d4ea;
+    font-size: 13px;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.go {
+    margin-left: 40px;
+}
+
+.goo {
+    margin: 25px 0 0 15px;
+    border-radius: 7px;
+    height: 35px;
+    border: none;
+    background: #2e3c49;
+    width: 87px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    padding: 2px 12px;
+    cursor: pointer;
+}
+
+#ane {
+    width: 200px;
+    transition: all 0.4s;
+}
+
+.anp {
+    width: 160px;
+    transition: all 0.4s;
+}
+
+.fields1 {
+    display: flex;
+}
