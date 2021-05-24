@@ -1,0 +1,158 @@
+:root {
+    --receipt_back: white;
+    ;
+}
+
+.profile {
+    width: 700px;
+    margin: 40px auto;
+}
+
+body {
+    margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    /* background-color: rgb(222, 245, 220); */
+    /* background-color: rgb(8, 34, 6); */
+    background-color: #eee;
+}
+
+.hi {
+    margin: 0 10%;
+    font-size: 80px;
+    /* color: white; */
+}
+
+.navigation {
+    margin: 30px auto;
+    /* margin-bottom:0; */
+    background-color: rgb(221, 221, 221);
+    color: rgba(99, 99, 99, 0.877);
+    display: flex;
+    /* width: 700px; */
+    height: 42px;
+    border-radius: 7px;
+    /* rmv */
+    box-shadow: inset 0 0 5px #999999;
+}
+
+.sel {
+    position: relative;
+    top: -68px;
+    /* left: 300px; */
+    background-color: white;
+    ;
+    height: 34px;
+    /* width: 76px; */
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(105, 105, 105, 0.7);
+    transition: all ease-in-out 0.4s;
+}
+
+::selection {
+    color: black;
+    background-color: cadetblue;
+}
+
+.pf,
+.tr,
+.th,
+.ul {
+    font-size: 20px;
+    padding: 9px 12px;
+    margin: 4px;
+    font-weight: 400;
+    z-index: 4;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.sel1 {
+    color: black;
+    /* font-weight: 600; */
+}
+
+.bal {
+    margin: 0 10%;
+    font-size: 70px;
+}
+
+.bala {
+    background-color: rgba(0, 128, 0, 0.45);
+    /* background-color: transparent; */
+}
+
+.acc_no {
+    margin: 0 10%;
+    font-family: 'ClementFiveRegular';
+    font-size: 50px;
+    /* background-color: red; */
+    /* background-color: cadetblue; */
+}
+
+.accn {
+    cursor: pointer;
+    background-color: rgba(255, 255, 0, 0.25);
+    /* background-color: transparent; */
+    letter-spacing: 28px;
+}
+
+
+/* .partition::after{
+    
+} */
+
+.field {
+    height: 15px;
+    color: rgba(66, 66, 66, 0.9);
+    padding: 11px 0 0 0;
+    font-size: 15px;
+    border-radius: 6px 0 0 6px;
+}
+
+.answer {
+    height: 35px;
+    font-size: 14px;
+    border-radius: 6px 0 0 6px;
+}
+
+input {
+    height: 29px;
+    padding: 0 18px;
+    border: 2px solid #d4d4d4ea;
+    font-size: 13px;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.fields {
+    margin: 52px 60px 65px 60px;
+}
+
+.receiver {
+    margin: 0 0 20px 0;
+}
+
+.pay {
+    margin: 25px 0 0 55px;
+    /* border-radius: 7px; */
+    height: 35px;
+    border: none;
+    background: #2e3c49;
+    width: 87px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    padding: 2px 12px;
+    cursor: pointer;
+}
+
+#rec {
+    width: 250px;
+}
+
+#ana {
+    width: 150px;
+}
+
+.flx {
+    display: flex;
+}

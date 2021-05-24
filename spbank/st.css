@@ -1,0 +1,23 @@
+.receipt {
+    margin: 20px auto;
+    background: linear-gradient(135deg, white 2.8px, transparent 2.81px) bottom left, linear-gradient(45deg, transparent 5.68px, white 5.69px) bottom left;
+    /* linear-gradient(135deg, transparent 5.68px, white 5.69px) top left,linear-gradient(45deg, white 2.8px, transparent 2.81px) top left, */
+    background-repeat: repeat-x;
+    background-size: 8px 4px;
+    padding: 4px 0;
+}
+
+.receipt-list {
+    border-radius: 3px;
+    overflow: auto;
+    background-color: white;
+    height: 280px;
+}
+
+.receipt {
+    filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.2));
+    max-width: 520px;
+}
+
+
+/*# sourceMappingURL=st.css.map */

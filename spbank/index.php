@@ -33,8 +33,9 @@ if(isset($_POST['submit'])){
             session_start();
             $res=mysqli_query($con,"SELECT acc_no FROM user WHERE email='$email' AND password='$password' ");
             $row = mysqli_fetch_assoc($res);
-            // echo $row['acc_no'];
+            echo $row['acc_no'];
             $_SESSION['acc_no'] = $row['acc_no'];
+            header("location:details.php");
         }
         else{
             echo '<script type="text/javascript">alert("Email already exists");</script>';
@@ -49,7 +50,7 @@ if(isset($_POST['submit'])){
             $row = mysqli_fetch_assoc($res);
             echo $row['acc_no'];
             $_SESSION['acc_no'] = $row['acc_no'];
-            // header("location:google.com");
+            header("location:details.php");
         }
         else{
             echo "<script>alert('Woops! Email or Password is wrong.')</script>";
@@ -95,7 +96,7 @@ if(isset($_POST['submit'])){
                         <div class="fields1">
                             <div class="name fl">
                                 <div class="field">Name</div>
-                                <div class="answer"><input id="nm" minlength="3" maxlength="20" name="name" placeholder="Enter Name"></div>
+                                <div class="answer"><input id="nm" minlength="3" maxlength="18" name="name" placeholder="Enter Name"></div>
                             </div>
                             <div class="email fl">
                                 <div class="field">Email</div>
