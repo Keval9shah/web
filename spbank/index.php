@@ -33,7 +33,6 @@ if(isset($_POST['submit'])){
             session_start();
             $res=mysqli_query($con,"SELECT acc_no FROM user WHERE email='$email' AND password='$password' ");
             $row = mysqli_fetch_assoc($res);
-            echo $row['acc_no'];
             $_SESSION['acc_no'] = $row['acc_no'];
             header("location:details.php");
         }
@@ -48,7 +47,6 @@ if(isset($_POST['submit'])){
         if ($res->num_rows > 0){
             session_start();
             $row = mysqli_fetch_assoc($res);
-            echo $row['acc_no'];
             $_SESSION['acc_no'] = $row['acc_no'];
             header("location:details.php");
         }
@@ -57,6 +55,7 @@ if(isset($_POST['submit'])){
         }
     }
 }
+
 
 ?>
 

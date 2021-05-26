@@ -1,10 +1,9 @@
 :root {
     --receipt_back: white;
-    ;
 }
 
 .profile {
-    width: 700px;
+    width: 710px;
     margin: 40px auto;
 }
 
@@ -13,7 +12,8 @@ body {
     font-family: 'Josefin Sans', sans-serif;
     /* background-color: rgb(222, 245, 220); */
     /* background-color: rgb(8, 34, 6); */
-    background-color: #eee;
+    background-color: beige;
+    transition: ease-out 1s;
 }
 
 .hi {
@@ -25,7 +25,7 @@ body {
 .navigation {
     margin: 30px auto;
     /* margin-bottom:0; */
-    background-color: rgb(221, 221, 221);
+    background-color: rgb(236, 236, 236);
     color: rgba(99, 99, 99, 0.877);
     display: flex;
     /* width: 700px; */
@@ -72,8 +72,8 @@ body {
 }
 
 .bal {
-    margin: 0 10%;
-    font-size: 70px;
+    margin: 5px 10%;
+    font-size: 72px;
 }
 
 .bala {
@@ -90,7 +90,7 @@ body {
 }
 
 .accn {
-    cursor: pointer;
+    /* cursor: pointer; */
     background-color: rgba(255, 255, 0, 0.25);
     /* background-color: transparent; */
     letter-spacing: 28px;
@@ -125,7 +125,7 @@ input {
 }
 
 .fields {
-    margin: 52px 60px 65px 60px;
+    margin: 52px 60px 65px 70px;
 }
 
 .receiver {
@@ -134,8 +134,8 @@ input {
 
 .pay {
     margin: 25px 0 0 55px;
-    /* border-radius: 7px; */
-    height: 35px;
+    border-radius: 3px;
+    height: 33px;
     border: none;
     background: #2e3c49;
     width: 87px;
