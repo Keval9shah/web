@@ -10,65 +10,18 @@ $row = mysqli_fetch_assoc($res);
 // echo ".";
 $fullname=$row['name'];
 if(strpos($fullname," ")){
-$name=substr($fullname, 0, strpos($fullname," "));
+    $name=substr($fullname, 0, strpos($fullname," "));
+}
+else{
+    $name=$fullname;
 }
 $acc_no=$row['acc_no'];
 $balance=$row['balance'];
 // $name="abababaxxx shcdxcda";
 
 
-if(isset($_POST['submit'])){
-    $receiver=$_POST['receiver'];
-    $amount=$_POST['amount'];
-    $res1 = mysqli_query($con,"SELECT * FROM user WHERE acc_no='$acnt'");
-    $row1 = mysqli_fetch_assoc($res1);
-    if(strpos($receiver,"@")){
-        $r_email=$receiver;
-        $res2 = mysqli_query($con,"SELECT * FROM user WHERE email='$r_email'");
-        $row2 = mysqli_fetch_assoc($res2);
-        if($row2){
-            $r_acc_no=$row2['acc_no'];
-        }
-    }
-    else{
-        $r_acc_no=$receiver;
-        $res2 = mysqli_query($con,"SELECT * FROM user WHERE acc_no='$r_acc_no'");
-        $row2 = mysqli_fetch_assoc($res2);
-    }
-
-    if(mysqli_num_rows($res2)>0){
-        $s_bal=$row1['balance'];
-        $r_bal=$row2['balance'];
-        $s_newbal=$s_bal-$amount;
-        $r_newbal=$r_bal+$amount;
-        $s_name=$fullname;
-        $r_name=$row2['name'];
-        $namount=-$amount;
-
-        if($acc_no!=$r_acc_no){
-            mysqli_query($con,"UPDATE user SET balance='$r_newbal' WHERE acc_no='$r_acc_no'");
-            mysqli_query($con,"UPDATE user SET balance='$s_newbal' WHERE acc_no='$acc_no'");
-            mysqli_query($con,"INSERT INTO transaction (p_name,s_name,acc_no,amount,current_bal) VALUES ('$s_name','$r_name','$acc_no','$namount' ,'$s_newbal')");
-            mysqli_query($con,"INSERT INTO transaction (p_name,s_name,acc_no,amount,current_bal) VALUES ('$r_name','$s_name','$r_acc_no','$amount','$r_newbal')");
-            echo "<script>alert('Transaction successful');</script>";
-        }
-        else{
-            echo "<script>alert('it is your own account');</script>";
-        }
-    }
-    else{
-        echo "<script>alert('no such email or account exists');</script>";
-    }
-    //p_name
-    //s_name
-    //acc_no
-    //amount
-    //current_bal
-    //datetime
-}
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -153,7 +106,7 @@ if(isset($_POST['submit'])){
             sel.style.left = pf.offsetLeft+"px";
             sel.style.width=pf.offsetWidth+"px";
 
-            exm.innerHTML="<div class='profile'><div class='hi'>Hi,<?php echo ' ',$name; ?></div><div class='acc_no'><mark class='accn'><?php echo $acc_no; ?></mark></div><br><div class='bal'>Balance <mark class='bala'>₹<?php $balres=mysqli_query($con,"SELECT balance FROM user WHERE acc_no='$acc_no'"); $bal=mysqli_fetch_assoc($balres); echo $bal['balance']; ?></mark</div></div>";
+            exm.innerHTML="<div class='profile'><div class='hi'>Hi,<?php echo ' ',$name; ?></div><div class='acc_no'><mark class='accn'><?php echo $acc_no; ?></mark></div><br><div class='bal'>Balance <mark class='bala'>₹<?php echo mysqli_fetch_assoc(mysqli_query($con,"SELECT balance FROM user WHERE acc_no='$acc_no'"))['balance'];?></mark</div></div>";
             document.body.style.backgroundColor="beige";
         }
         function trct() {
@@ -165,10 +118,9 @@ if(isset($_POST['submit'])){
             sel.style.left = tr.offsetLeft+"px";
             sel.style.width=tr.offsetWidth+"px";
 
-            exm.innerHTML="<div class='receipt'><div class='receipt-list'><div class='fields'><form action='' method='POST'><div class='receiver fl'><div class='field'>Email/Account no.</div><div class='answer'><input id='rec' minlength='3' maxlength='30' name='receiver' required placeholder='Ex@xyz.com or 10080085'></div></div><div class='flx'><div class='amount fl'><div class='field'>Amount</div><div class='answer'><input id='ana' maxlength='10' static='' name='amount' required placeholder='Enter Amount'></div></div><div class='go fl'><button onclick='' name='submit' type='submit' class='pay'>Pay <svg width='16px' height='15px' aria-hidden='true' focusable='false' data-prefix='fas' data-icon='chevron-right' class='svg-inline--fa fa-chevron-right fa-w-10' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'><path fill='currentColor' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'></path></svg></button></div></div></form></div></div></div>";
+            exm.innerHTML="<div class='receipt'><div class='receipt-list'><div class='fields'><form action='trandata.php' method='POST'><div class='receiver fl'><div class='field'>Email/Account no.</div><div class='answer'><input id='rec' minlength='3' maxlength='30' name='receiver' required placeholder='Ex@xyz.com or 10080085'></div></div><div class='flx'><div class='amount fl'><div class='field'>Amount</div><div class='answer'><input id='ana' maxlength='10' static='' name='amount' required placeholder='Enter Amount'></div></div><div class='go fl'><button onclick='' name='submit' type='submit' class='pay'>Pay <svg width='16px' height='15px' aria-hidden='true' focusable='false' data-prefix='fas' data-icon='chevron-right' class='svg-inline--fa fa-chevron-right fa-w-10' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'><path fill='currentColor' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'></path></svg></button></div></div></form></div></div></div>";
             document.body.style.backgroundColor="#eee";
 
-            document.getElementsByTagName("form")[0].onsubmit((event)=> { event.preventDefault(); } );
         }
         function trht() {
             tr.classList.remove("sel1");
@@ -179,13 +131,7 @@ if(isset($_POST['submit'])){
             sel.style.left =th.offsetLeft+"px";
             sel.style.width=th.offsetWidth+"px";
 
-            // exm.innerHTML="<div class='trhistory'><?php
-            // $res3 = mysqli_query($con,"SELECT * FROM transaction WHERE acc_no='$acnt'");
-            // $row3 = mysqli_fetch_assoc($res3);
-            // for ($i=0; $i <5 ; $i++) { 
-            //     echo "hii";
-            // }
-            // ?></div>";
+            exm.innerHTML="<div class='trhistory'><section><table><tr><th>Pname</th><th>Sname</th><th>Amount</th><th>AccountNo.</th><th>Time</th></tr><!-- PHP CODE TO FETCH DATA FROM ROWS--><?php $sql = "SELECT * FROM transaction where acc_no= $acc_no"; $result = $con->query($sql);?> <?php while($rows=$result->fetch_assoc()){?><tr><!--FETCHING DATA FROM EACH ROW OF EVERY COLUMN--><td><?php echo $rows['p_name']; ?></td><td><?php echo $rows['s_name']; ?></td><td><?php echo $rows['amount']; ?></td><td><?php echo $rows['acc_no']; ?></td><td><?php echo $rows['datetime']; ?></td></tr><?php } ?></table></section></div>";
 
         }
         function usli() {
