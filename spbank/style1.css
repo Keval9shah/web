@@ -232,6 +232,39 @@ input {
     margin-right: auto;
     padding-left: 10px;
     padding-right: 10px;
+    height: 440px;
+    overflow-y: scroll;
+}
+
+
+/* .containerx::-webkit-scrollbar {
+    width: 10px;
+} */
+
+.containerx::-webkit-scrollbar {
+    width: 7px;
+}
+
+
+/* Track */
+
+
+/* .containerx::-webkit-scrollbar-track {
+    background: #f1f1f1;
+} */
+
+
+/* Handle */
+
+.containerx::-webkit-scrollbar-thumb {
+    background: rgb(136, 136, 136);
+}
+
+
+/* Handle on hover */
+
+.containerx::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 .responsive-table li {
@@ -271,10 +304,6 @@ input {
 
 ul {
     padding-inline-start: 0;
-}
-
-body::-webkit-scrollbar {
-    width: 0;
 }
 
 .responsive-table .cola-1 {
