@@ -106,13 +106,13 @@ body {
     color: rgba(66, 66, 66, 0.9);
     padding: 11px 0 0 0;
     font-size: 15px;
-    border-radius: 6px 0 0 6px;
+    /* border-radius: 6px 0 0 6px; */
 }
 
 .answer {
     height: 35px;
     font-size: 14px;
-    border-radius: 6px 0 0 6px;
+    /* border-radius: 6px 0 0 6px; */
 }
 
 input {
@@ -167,7 +167,7 @@ input {
 
 .greenary {
     z-index: -1;
-    opacity: 0.82;
+    opacity: 0.8;
     position: fixed;
     top: 0;
     left: 5px;
@@ -176,10 +176,10 @@ input {
 
 .greenary2 {
     z-index: -1;
-    opacity: 0.82;
+    opacity: 0.92;
     position: fixed;
     top: 42%;
-    left: 78%;
+    left: 78.5%;
     width: 230px;
 }
 
@@ -225,15 +225,31 @@ input {
 }
 
 .containerx {
-    margin-top: -30px;
+    margin-top: -10px;
+    font-family: "lato", sans-serif;
+    width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 5px;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.containerx1 {
+    margin-top: -15px;
     font-family: "lato", sans-serif;
     width: 650px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 10px;
     padding-right: 10px;
-    height: 440px;
-    overflow-y: scroll;
+    height: 40px;
+}
+
+.ulx1 {
+    margin-left: 10px;
+    margin-right: -5px;
 }
 
 
@@ -270,7 +286,6 @@ input {
 .responsive-table li {
     padding: 5px 10px;
     display: flex;
-    justify-content: space-between;
     margin-bottom: 5px;
 }
 
@@ -288,10 +303,12 @@ input {
 
 .responsive-table .col-1 {
     flex-basis: 32%;
+    text-align: start;
 }
 
 .responsive-table .col-2 {
     flex-basis: 26%;
+    text-align: start;
 }
 
 .responsive-table .col-3 {
@@ -304,6 +321,7 @@ input {
 
 ul {
     padding-inline-start: 0;
+    margin-block-start: 0;
 }
 
 .responsive-table .cola-1 {
@@ -311,15 +329,15 @@ ul {
 }
 
 .responsive-table .cola-2 {
-    flex-basis: 29%;
+    flex-basis: 25%;
 }
 
 .responsive-table .cola-3 {
-    flex-basis: 38%;
+    flex-basis: 40%;
 }
 
 .responsive-table .cola-4 {
-    flex-basis: 21%;
+    flex-basis: 23%;
 }
 
 .cola {
@@ -329,10 +347,16 @@ ul {
 }
 
 .cola-2 {
+    text-align: start;
     margin-right: 7%;
 }
 
 .cola-3 {
+    text-align: start;
     margin-right: 5%;
     border-radius: 5px;
+}
+
+.responsive-table .c1h {
+    padding-left: 30px;
 }

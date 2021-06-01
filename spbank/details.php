@@ -93,14 +93,15 @@ $balance=$row['balance'];
         // addAccImages();
 
 
-
-        var wdth=pf.offsetWidth+tr.offsetWidth+th.offsetWidth+ul.offsetWidth+34;
-
-        nav.style.width=wdth+"px";
+        var wdth;
+        function navwidth(){
+        wdth=pf.offsetWidth+tr.offsetWidth+th.offsetWidth+ul.offsetWidth+34;
+        nav.style.width=wdth+"px";}
+        
+        navwidth();
 
         prfl();
-        // trht();
-        // usli();
+        
         function prfl() {
             tr.classList.remove("sel1");
             th.classList.remove("sel1");
@@ -147,7 +148,7 @@ $balance=$row['balance'];
             sel.style.left =th.offsetLeft+"px";
             sel.style.width=th.offsetWidth+"px";
 
-            exm.innerHTML="<?php $result = mysqli_query($con," SELECT * FROM transaction WHERE acc_no= '$acc_no' ORDER BY datetime DESC "); ?><div class='containerx'><ul class='responsive-table'><li class='table-header'><div class='col col-1'>Date</div><div class='col col-2'>To/From</div><div class='col col-3'>Amount</div><div class='col col-4'>Balance</div> </li><?php while($rows=$result->fetch_assoc()) { ?><li class='table-row'><div class='col col-1'><?php echo date_format(date_create($rows['datetime']),'d/m/y  h:i A');?></div><div class='col col-2'><?php echo $rows['s_name'];?></div><?php $am = intval($rows['amount']); if($am>0){echo "<div class='col col-3 positive'>"; echo $am; echo "</div>";}else { echo "<div class='col col-3 negative'>"; echo $am; echo "</div>"; }  ?><div class='col col-4'><?php echo $rows['current_bal'];?></div></li><?php } ?></ul></div>";
+            exm.innerHTML="<?php $result = mysqli_query($con," SELECT * FROM transaction WHERE acc_no= '$acc_no' ORDER BY datetime DESC "); ?><div class='containerx1'><ul class='responsive-table ulx1'><li class='table-header'><div class='col c1h col-1'>Date</div><div class='col col-2'>To/From</div><div class='col col-3'>Amount</div><div class='col col-4'>Balance</div> </li></ul><div><div class='containerx'><ul class='responsive-table'><?php while($rows=$result->fetch_assoc()) { ?><li class='table-row'><div class='col col-1'><?php echo date_format(date_create($rows['datetime']),'d/m/y  h:i A');?></div><div class='col col-2'><?php echo $rows['s_name'];?></div><?php $am = intval($rows['amount']); if($am>0){echo "<div class='col col-3 positive'>"; echo $am; echo "</div>";}else { echo "<div class='col col-3 negative'>"; echo $am; echo "</div>"; }  ?><div class='col col-4'><?php echo $rows['current_bal'];?></div></li><?php } ?></ul></div>";
         }
         function usli() {
             tr.classList.remove("sel1");
@@ -159,7 +160,7 @@ $balance=$row['balance'];
             sel.style.left = ul.offsetLeft+"px";
             sel.style.width=wth+"px";
 
-            exm.innerHTML="<?php $result = mysqli_query($con," SELECT id,name,email,acc_no FROM user"); ?><div class='containerx'><ul class='responsive-table'><li class='table-header'><div class='cola cola-1'>No</div><div class='cola cola-2'>Name</div><div class='cola cola-3'>Email</div><div class='cola cola-4'>Account No</div> </li><?php while($rows=$result->fetch_assoc()) { ?><li class='table-row'><div class='cola cola-1'><?php echo $rows['id'];?></div><div class='cola cola-2'><?php echo $rows['name'];?></div><div class='cola cola-3'><?php echo $rows['email']; ?></div><div class='cola cola-4'><?php echo $rows['acc_no'];?></div></li><?php } ?></ul></div>";
+            exm.innerHTML="<?php $result = mysqli_query($con," SELECT id,name,email,acc_no FROM user"); ?><div class='containerx1'><ul class='responsive-table ulx1'><li class='table-header'><div class='cola cola-1'>No</div><div class='cola cola-2'>Name</div><div class='cola cola-3'>Email</div><div class='cola cola-4'>Account No</div> </li></ul><div><div class='containerx'><ul class='responsive-table'><?php while($rows=$result->fetch_assoc()) { ?><li class='table-row'><div class='cola cola-1'><?php echo $rows['id'];?></div><div class='cola cola-2'><?php echo $rows['name'];?></div><div class='cola cola-3'><?php echo $rows['email']; ?></div><div class='cola cola-4'><?php echo $rows['acc_no'];?></div></li><?php } ?></ul></div>";
 
         }
 </script>
