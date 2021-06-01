@@ -28,7 +28,6 @@ if(isset($_POST['submit'])){
         $res2 = mysqli_query($con,"SELECT * FROM user WHERE acc_no='$r_acc_no'");
         $row2 = mysqli_fetch_assoc($res2);
     }
-
     if(mysqli_num_rows($res2)>0){
         $s_bal=$row1['balance'];
         $r_bal=$row2['balance'];
@@ -38,16 +37,23 @@ if(isset($_POST['submit'])){
         $r_name=$row2['name'];
         $namount=-$amount;
 
-        if($acc_no!=$r_acc_no){
-            mysqli_query($con,"UPDATE user SET balance='$r_newbal' WHERE acc_no='$r_acc_no'");
-            mysqli_query($con,"UPDATE user SET balance='$s_newbal' WHERE acc_no='$acc_no'");
-            mysqli_query($con,"INSERT INTO transaction (p_name,s_name,acc_no,amount,current_bal) VALUES ('$s_name','$r_name','$acc_no','$namount' ,'$s_newbal')");
-            mysqli_query($con,"INSERT INTO transaction (p_name,s_name,acc_no,amount,current_bal) VALUES ('$r_name','$s_name','$r_acc_no','$amount','$r_newbal')");
-            echo "<script>alert('Transaction successful');</script>";
+        if(intval($amount)>0 && intval($amount)<intval($s_bal)){
+            if($acc_no!=$r_acc_no){
+                mysqli_query($con,"UPDATE user SET balance='$r_newbal' WHERE acc_no='$r_acc_no'");
+                mysqli_query($con,"UPDATE user SET balance='$s_newbal' WHERE acc_no='$acc_no'");
+                mysqli_query($con,"INSERT INTO transaction (p_name,s_name,acc_no,amount,current_bal) VALUES ('$s_name','$r_name','$acc_no','$namount' ,'$s_newbal')");
+                mysqli_query($con,"INSERT INTO transaction (p_name,s_name,acc_no,amount,current_bal) VALUES ('$r_name','$s_name','$r_acc_no','$amount','$r_newbal')");
+                echo "<script>alert('Transaction successful');</script>";
+            }
+            else{
+                echo "<script>alert('it is your own account');</script>";
+            }
         }
         else{
-            echo "<script>alert('it is your own account');</script>";
+            echo "<script>alert('amount sahi se daal bsdk');</script>";
         }
+
+        
     }
     else{
         echo "<script>alert('no such email or account exists');</script>";

@@ -1,5 +1,5 @@
 .receipt {
-    margin: 20px auto;
+    margin: 10px auto;
     background: linear-gradient(135deg, white 2.8px, transparent 2.81px) bottom left, linear-gradient(45deg, transparent 5.68px, white 5.69px) bottom left;
     /* linear-gradient(135deg, transparent 5.68px, white 5.69px) top left,linear-gradient(45deg, white 2.8px, transparent 2.81px) top left, */
     background-repeat: repeat-x;
@@ -8,15 +8,15 @@
 }
 
 .receipt-list {
-    border-radius: 3px;
+    /* border-radius: 10px 10px 0 0; */
     overflow: auto;
     background-color: white;
-    height: 280px;
+    height: 350px;
 }
 
 .receipt {
     filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.2));
-    max-width: 520px;
+    width: 550px;
 }
 
 

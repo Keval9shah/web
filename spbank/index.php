@@ -78,7 +78,7 @@ if(isset($_POST['submit'])){
         <div class="g1"><img class="prop" src="money.jpg"></div>
         <div class="g2">
             <img class="logo" src="logo.png" alt="">
-            <img class="prop2" src="prop2.jpg" alt="">
+            <img class="prop2" src="prop2.svg" alt="">
             <div class="txt">Welcome to a <span>safe</span> Banking Paradise</div>
             <div class="login">
                 <div class="sign">

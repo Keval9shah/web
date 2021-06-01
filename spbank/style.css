@@ -45,7 +45,7 @@ body {
 }
 
 .txt {
-    margin: 63px 0 0 100px;
+    margin: 100px 0 0 100px;
     width: 550px;
     font-size: 40px;
     color: #2e3c49;
@@ -160,10 +160,34 @@ input {
 }
 
 .anp {
-    width: 160px;
+    width: 170px;
     transition: all 0.4s;
 }
 
 .fields1 {
     display: flex;
+}
+
+
+/* extra */
+
+
+/* .login,
+.txt {
+    margin-left: 140px;
+}
+
+.logo {
+    left: 110px;
+} */
+
+.prop2 {
+    left: 260px;
+    width: 50%;
+    top: 10px;
+}
+
+.logo {
+    top: 40px;
+    left: 65px;
 }
