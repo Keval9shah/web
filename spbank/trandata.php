@@ -5,7 +5,7 @@ require('connection.inc.php');
 session_start();
 $acnt=$_SESSION['acc_no'];
 $acc_no=$acnt;
-$res = mysqli_query($con,"SELECT * FROM user WHERE acc_no='$acnt'");
+$res = mysqli_query($con,"SELECT name FROM user WHERE acc_no='$acnt'");
 $row = mysqli_fetch_assoc($res);
 // echo $row['acc_no'],", ",$row['name'],", ",$row['balance'];
 // echo ".";
@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
         $res2 = mysqli_query($con,"SELECT * FROM user WHERE acc_no='$r_acc_no'");
         $row2 = mysqli_fetch_assoc($res2);
     }
-    if(mysqli_num_rows($res2)>0){
+    if(mysqli_num_rows($res2)>0 && is_numeric($amount)){
         $s_bal=$row1['balance'];
         $r_bal=$row2['balance'];
         $s_newbal=$s_bal-$amount;
@@ -50,7 +50,7 @@ if(isset($_POST['submit'])){
             }
         }
         else{
-            echo "<script>alert('amount sahi se daal bsdk');</script>";
+            echo "<script>alert('amount is not right');</script>";
         }
 
         

@@ -52,6 +52,7 @@ $balance=$row['balance'];
         </div>
     </div>
     <div class="sel"></div>
+    <div class="links"></div>
     <div class="extra_maal">
         <div class="profile">
             <div class="hi">Hi,<?php echo " ",$name; ?></div>
@@ -72,6 +73,7 @@ $balance=$row['balance'];
         var ul = document.getElementsByClassName("ul")[0];
         var sel = document.getElementsByClassName("sel")[0];
         var nav = document.getElementsByClassName("navigation")[0];
+        var links = document.getElementsByClassName("links")[0];
         var exm = document.getElementsByClassName("extra_maal")[0];
 
         window.addEventListener('resize', () => {
@@ -95,12 +97,14 @@ $balance=$row['balance'];
 
         var wdth;
         function navwidth(){
-        wdth=pf.offsetWidth+tr.offsetWidth+th.offsetWidth+ul.offsetWidth+34;
-        nav.style.width=wdth+"px";}
+            wdth=pf.offsetWidth+tr.offsetWidth+th.offsetWidth+ul.offsetWidth+34;
+            nav.style.width=wdth+"px";
+            links.style.width=wdth+"px";
+        }
         
         navwidth();
 
-        prfl();
+        trct();
         
         function prfl() {
             tr.classList.remove("sel1");
@@ -112,21 +116,22 @@ $balance=$row['balance'];
             sel.style.width=pf.offsetWidth+"px";
 
             exm.innerHTML="<div class='profile'><div class='hi'>Hi,<?php echo ' ',$name; ?></div><div class='acc_no'><mark class='accn'><?php echo $acc_no; ?></mark></div><br><div class='bal'>Balance <mark class='bala'>₹<?php $balance=mysqli_fetch_assoc(mysqli_query($con,"SELECT balance FROM user WHERE acc_no='$acc_no'"))['balance']; echo $balance; ?></mark</div></div>";
+
             
-            const accn = document.getElementsByClassName("accn")[0];
-            accn.onclick = function() {document.execCommand("copy");}
-                accn.addEventListener("copy", function(event) {
-                event.preventDefault();
-                if (event.clipboardData) {
-                    event.clipboardData.setData("text/plain", accn.textContent);
-                    // console.log(event.clipboardData.getData("text"))
-                    alert("Account no copied to clipBoard");
-                    accn.style.cursor="text";
-                }
-                else{
-                    alert("not copied");
-                }
-                });
+            // const accn = document.getElementsByClassName("accn")[0];
+            // accn.onclick = function() {document.execCommand("copy");}
+            //     accn.addEventListener("copy", function(event) {
+            //     event.preventDefault();
+            //     if (event.clipboardData) {
+            //         event.clipboardData.setData("text/plain", accn.textContent);
+            //         // console.log(event.clipboardData.getData("text"))
+            //         alert("Account no copied to clipBoard");
+            //         accn.style.cursor="text";
+            //     }
+            //     else{
+            //         alert("not copied");
+            //     }
+            //     });
         }
         function trct() {
             pf.classList.remove("sel1");
@@ -138,6 +143,14 @@ $balance=$row['balance'];
             sel.style.width=tr.offsetWidth+"px";
 
             exm.innerHTML="<div class='receipt'><div class='receipt-list'><div class='fields'><div class='flbal'>your balance <br><div class='flbal1'>₹<span><?php $balance=mysqli_fetch_assoc(mysqli_query($con,"SELECT balance FROM user WHERE acc_no='$acc_no'"))['balance']; echo $balance; ?></span></div></div><form action='trandata.php' method='POST'><div class='receiver fl'><div class='field'>Email/Account no.</div><div class='answer'><input id='rec' minlength='3' maxlength='30' name='receiver' required placeholder='Ex@xyz.com or 10080085'></div></div><div class='flx'><div class='amount fl'><div class='field'>Amount</div><div class='answer'><input id='ana' maxlength='10' static='' name='amount' required placeholder='Enter Amount'></div></div><div class='go fl'><button onclick='' name='submit' type='submit' class='pay'>Pay <svg width='16px' height='15px' aria-hidden='true' focusable='false' data-prefix='fas' data-icon='chevron-right' class='svg-inline--fa fa-chevron-right fa-w-10' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'><path fill='currentColor' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'></path></svg></button></div></div></form></div></div></div>";
+
+            // var rname=document.getElementById("rec");
+            // var pay=document.getElementsByClassName("pay")[0];
+            // rname.onfocusout=function(){
+            //     if(rname.value.length>5){
+                   
+            //     }
+            // }
         }
         function trht() {
             tr.classList.remove("sel1");
@@ -148,7 +161,7 @@ $balance=$row['balance'];
             sel.style.left =th.offsetLeft+"px";
             sel.style.width=th.offsetWidth+"px";
 
-            exm.innerHTML="<?php $result = mysqli_query($con," SELECT * FROM transaction WHERE acc_no= '$acc_no' ORDER BY datetime DESC "); ?><div class='containerx1'><ul class='responsive-table ulx1'><li class='table-header'><div class='col c1h col-1'>Date</div><div class='col col-2'>To/From</div><div class='col col-3'>Amount</div><div class='col col-4'>Balance</div> </li></ul><div><div class='containerx'><ul class='responsive-table'><?php while($rows=$result->fetch_assoc()) { ?><li class='table-row'><div class='col col-1'><?php echo date_format(date_create($rows['datetime']),'d/m/y  h:i A');?></div><div class='col col-2'><?php echo $rows['s_name'];?></div><?php $am = intval($rows['amount']); if($am>0){echo "<div class='col col-3 positive'>"; echo $am; echo "</div>";}else { echo "<div class='col col-3 negative'>"; echo $am; echo "</div>"; }  ?><div class='col col-4'><?php echo $rows['current_bal'];?></div></li><?php } ?></ul></div>";
+            exm.innerHTML="<?php $result = mysqli_query($con," SELECT * FROM transaction WHERE acc_no= '$acc_no' ORDER BY datetime DESC "); ?><div class='containerx1'><ul class='responsive-table ulx1'><li class='table-header'><div class='col c1h col-1'>Date</div><div class='col col-2'>To/From</div><div class='col col-3'>Amount</div><div class='col col-4'>Balance</div> </li></ul><div class='containerx'><ul class='responsive-table'><?php while($rows=$result->fetch_assoc()) { ?><li class='table-row'><div class='col col-1'><?php echo date_format(date_create($rows['datetime']),'d/m/y  h:i A');?></div><div class='col col-2'><?php echo $rows['s_name'];?></div><?php $am = intval($rows['amount']); if($am>0){echo "<div class='col col-3 positive'>"; echo $am; echo "</div>";}else { echo "<div class='col col-3 negative'>"; echo $am; echo "</div>"; }  ?><div class='col col-4'>₹<?php echo $rows['current_bal'];?></div></li><?php } ?></ul></div></div>";
         }
         function usli() {
             tr.classList.remove("sel1");
@@ -160,8 +173,36 @@ $balance=$row['balance'];
             sel.style.left = ul.offsetLeft+"px";
             sel.style.width=wth+"px";
 
-            exm.innerHTML="<?php $result = mysqli_query($con," SELECT id,name,email,acc_no FROM user"); ?><div class='containerx1'><ul class='responsive-table ulx1'><li class='table-header'><div class='cola cola-1'>No</div><div class='cola cola-2'>Name</div><div class='cola cola-3'>Email</div><div class='cola cola-4'>Account No</div> </li></ul><div><div class='containerx'><ul class='responsive-table'><?php while($rows=$result->fetch_assoc()) { ?><li class='table-row'><div class='cola cola-1'><?php echo $rows['id'];?></div><div class='cola cola-2'><?php echo $rows['name'];?></div><div class='cola cola-3'><?php echo $rows['email']; ?></div><div class='cola cola-4'><?php echo $rows['acc_no'];?></div></li><?php } ?></ul></div>";
+            exm.innerHTML="<?php $result = mysqli_query($con," SELECT id,name,email,acc_no FROM user"); ?><div class='containerx1'><ul class='responsive-table ulx1'><li class='table-header'><div class='cola cola-1'>No</div><div class='cola cola-2'>Name</div><div class='cola cola-3'>Email</div><div class='cola cola-4'>Account No</div> </li></ul><div><div class='containerx'><ul class='responsive-table'><?php while($rows=$result->fetch_assoc()) { ?><li class='table-row'><div class='cola cola-1'><?php echo $rows['id'];?></div><div class='cola cola-2'><?php echo $rows['name'];?></div><div class='cola cola-3'><?php echo $rows['email']; ?></div><div class='cola cola-4'><?php echo $rows['acc_no'];?></div></li><?php } ?></ul></div></div>";
 
+
+            var buttons = document.getElementsByClassName("cola-4");
+            var buttonsCount = buttons.length;
+            for (var i = 0; i < buttonsCount; i += 1) {
+                // buttons[i].onclick = function(e) {
+                //     alert(this.innerHTML);
+                // }
+                var cptxt;
+                buttons[i].onclick = function() {
+                    cptxt=this.innerHTML;
+                    // document.execCommand("copy");
+                    trct();
+                    document.getElementById("rec").value=cptxt;
+                }
+                // buttons[i].addEventListener("copy", function(event) {
+                //     event.preventDefault();
+                //     // setTimeout(() => {
+                //         if (event.clipboardData) {
+                //             alert(cptxt+" copied to clipBoard");
+                //             event.clipboardData.setData("text/plain", cptxt);
+                //             // console.log(event.clipboardData.getData("text"))
+                //         }
+                //         else{
+                //             alert("not copied");
+                //         }
+                //     });
+                // }, 100); 
+            }
         }
 </script>
 </body>
