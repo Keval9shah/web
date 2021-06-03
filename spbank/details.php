@@ -30,11 +30,10 @@ $balance=$row['balance'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style1.css">
-    <link rel="stylesheet" href="st.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/clementfive" type="text/css"/>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="navigation">
@@ -52,7 +51,28 @@ $balance=$row['balance'];
         </div>
     </div>
     <div class="sel"></div>
-    <div class="links"></div>
+
+    <a href="https://twitter.com/keval2001" target="_blank" class="twitter social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
+        <span class="social-button__inner">
+           <i class="fa fa-twitter tw"></i>
+          </span>
+    </a>
+    <a href="https://www.linkedin.com/in/keval-shah-a4b2811a3/" target="_blank" class="linkedin social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
+        <span class="social-button__inner">
+           <i class="fa fa-linkedin"></i>
+          </span>
+    </a>
+    <a href="https://github.com/Keval9shah" target="_blank" class="github social-buttons__button social-button social-button--codepen" aria-label="CodePen">
+        <span class="social-button__inner">
+            <i class="fa fa-github gb"></i>
+          </span>
+    </a>
+    <a href="https://www.instagram.com/kvl.sh/" target="_blank" class="instagram social-buttons__button social-button social-button--github" aria-label="GitHub">
+        <span class="social-button__inner">
+                <i class="fa fa-instagram in"></i>
+          </span>
+    </a>
+    
     <div class="extra_maal">
         <div class="profile">
             <div class="hi">Hi,<?php echo " ",$name; ?></div>
@@ -94,17 +114,19 @@ $balance=$row['balance'];
         // }
         // addAccImages();
 
-
         var wdth;
         function navwidth(){
             wdth=pf.offsetWidth+tr.offsetWidth+th.offsetWidth+ul.offsetWidth+34;
             nav.style.width=wdth+"px";
-            links.style.width=wdth+"px";
+            // wdth2=nav.style.marginLeft+wdth;
+            // wdth2=parseInt(window.getComputedStyle(nav).marginLeft.substring(0, window.getComputedStyle(nav).marginLeft.length-2))+wdth-5;
+            // console.log(wdth2);
+            // links.style.left=wdth2+"px";
         }
         
         navwidth();
 
-        trct();
+        prfl();
         
         function prfl() {
             tr.classList.remove("sel1");
@@ -142,7 +164,7 @@ $balance=$row['balance'];
             sel.style.left = tr.offsetLeft+"px";
             sel.style.width=tr.offsetWidth+"px";
 
-            exm.innerHTML="<div class='receipt'><div class='receipt-list'><div class='fields'><div class='flbal'>your balance <br><div class='flbal1'>₹<span><?php $balance=mysqli_fetch_assoc(mysqli_query($con,"SELECT balance FROM user WHERE acc_no='$acc_no'"))['balance']; echo $balance; ?></span></div></div><form action='trandata.php' method='POST'><div class='receiver fl'><div class='field'>Email/Account no.</div><div class='answer'><input id='rec' minlength='3' maxlength='30' name='receiver' required placeholder='Ex@xyz.com or 10080085'></div></div><div class='flx'><div class='amount fl'><div class='field'>Amount</div><div class='answer'><input id='ana' maxlength='10' static='' name='amount' required placeholder='Enter Amount'></div></div><div class='go fl'><button onclick='' name='submit' type='submit' class='pay'>Pay <svg width='16px' height='15px' aria-hidden='true' focusable='false' data-prefix='fas' data-icon='chevron-right' class='svg-inline--fa fa-chevron-right fa-w-10' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'><path fill='currentColor' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'></path></svg></button></div></div></form></div></div></div>";
+            exm.innerHTML="<div class='receipt'><div class='receipt-list'><div class='fields'><div class='flbal'>your balance <br><div class='flbal1'>₹<span><?php $balance=mysqli_fetch_assoc(mysqli_query($con,"SELECT balance FROM user WHERE acc_no='$acc_no'"))['balance']; echo $balance; ?></span></div></div><form action='trandata.php' method='POST'><div class='receiver fl'><div class='field'>Email/Account no.</div><div class='answer'><input id='rec' minlength='3' maxlength='30' name='receiver' required placeholder='Ex@xyz.com or 10080085'></div></div><div class='fl'><div class='amount fl'><div class='field'>Amount</div><div class='answer'><input id='ana' maxlength='10' static='' name='amount' required placeholder='Enter Amount'></div></div><div class='go fl'><button onclick='' name='submit' type='submit' class='pay'>Pay <svg width='16px' height='15px' aria-hidden='true' focusable='false' data-prefix='fas' data-icon='chevron-right' class='svg-inline--fa fa-chevron-right fa-w-10' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'><path fill='currentColor' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'></path></svg></button></div></div></form></div></div></div>";
 
             // var rname=document.getElementById("rec");
             // var pay=document.getElementsByClassName("pay")[0];
@@ -169,7 +191,7 @@ $balance=$row['balance'];
             pf.classList.remove("sel1");
             ul.classList.add("sel1");
             
-            var wth=ul.offsetWidth+5;
+            var wth=ul.offsetWidth+3;
             sel.style.left = ul.offsetLeft+"px";
             sel.style.width=wth+"px";
 
