@@ -5,8 +5,6 @@ var name_fld = document.getElementsByClassName("name")[0];
 var email_fld = document.getElementsByClassName("email")[0];
 var pass = document.getElementsByClassName("anp")[0];
 
-sup();
-
 function sup() {
     sel.style.left = "4px";
     sel.style.width = "88px";

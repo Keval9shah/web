@@ -66,6 +66,7 @@ if(isset($_POST['submit'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
@@ -82,10 +83,10 @@ if(isset($_POST['submit'])){
             <div class="txt">Welcome to a <span>safe</span> Banking Paradise</div>
             <div class="login">
                 <div class="sign">
-                    <div class="sup" onclick="sup()">
+                    <div class="sup sel1" onclick="sup()">
                         Sign up
                     </div>
-                    <div class="lin sel1" onclick="lin()">
+                    <div class="lin" onclick="lin()">
                         Log in
                     </div>
                 </div>
