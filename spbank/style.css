@@ -52,7 +52,7 @@ body {
     font-weight: 400;
 }
 
-span {
+.safe {
     background-color: #2e3c49;
     color: white;
     padding: 10px;
@@ -106,8 +106,8 @@ span {
     margin: 0 0 25px 0;
 }
 
-.name {
-    display: none;
+.email {
+    margin-left: 40px;
 }
 
 #nm {
@@ -160,7 +160,7 @@ input {
 }
 
 .anp {
-    width: 170px;
+    width: 240px;
     transition: all 0.4s;
 }
 
@@ -190,4 +190,203 @@ input {
 .logo {
     top: 40px;
     left: 65px;
+}
+
+
+/* .social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: -10px;
+}
+ */
+
+.social-button {
+    /* position: relative; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    width: 70px;
+    height: 70px;
+    text-decoration: none;
+}
+
+.social-button__inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - var(--dist));
+    height: calc(100% - var(--dist));
+    border-radius: 100%;
+    /* background: #fff; */
+    text-align: center;
+}
+
+.social-button i,
+.social-button svg {
+    position: relative;
+    z-index: 1;
+    transition: 0.3s;
+}
+
+.social-button .gb {
+    font-size: 35px;
+}
+
+.social-button .in {
+    font-size: 30px;
+}
+
+.social-button .tw {
+    padding-top: 5px;
+    font-size: 32px;
+}
+
+.social-button i {
+    font-size: 28px;
+}
+
+.social-button svg {
+    height: 40%;
+    width: 40%;
+}
+
+
+/* .social-button::after {
+    content: "";
+    position: absolute;
+    top: 35.355%;
+    left: 35.355%;
+    display: block;
+    width: 0;
+    height: 0;
+    border-radius: 100%;
+    transition: 0.15s;
+} */
+
+
+/* .social-button:focus,
+.social-button:hover {
+    color: #fff;
+} */
+
+
+/* .social-button:focus::after,
+.social-button:hover::after {
+    width: calc(100% - var(--dist));
+    height: calc(100% - var(--dist));
+    margin-top: calc(-35.355% + var(--dist)/2);
+    margin-left: calc(-35.355% + var(--dist)/2);
+} */
+
+.social-button--mail {
+    color: #0072c6;
+}
+
+
+/* .social-button--mail::after {
+    background: #0072c6;
+} */
+
+.social-button--facebook {
+    color: #3b5999;
+}
+
+
+/* .social-button--facebook::after {
+    background: #3b5999;
+} */
+
+.social-button--linkedin {
+    color: #0077b5;
+}
+
+
+/* .social-button--linkedin::after {
+    background: #0077b5;
+} */
+
+.social-button--github {
+    color: #d83a66;
+}
+
+
+/* .social-button--github::after {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    ;
+} */
+
+.social-button--codepen {
+    color: #212121;
+}
+
+.social-button--codepen::after {
+    background: #212121;
+}
+
+.social-button--steam {
+    color: #7da10e;
+}
+
+.social-button--steam::after {
+    background: #7da10e;
+}
+
+.social-button--snapchat {
+    color: #eec900;
+}
+
+.social-button--snapchat::after {
+    background: #eec900;
+}
+
+.social-button--twitter {
+    color: #55acee;
+}
+
+.social-button--twitter::after {
+    background: #55acee;
+}
+
+.social-button--instagram {
+    color: #e4405f;
+}
+
+.social-button--instagram::after {
+    background: #e4405f;
+}
+
+.social-button--npmjs {
+    color: #c12127;
+}
+
+.social-button--npmjs::after {
+    background: #c12127;
+}
+
+a {
+    position: fixed;
+    /* z-index: -1; */
+    right: 25px;
+    text-shadow: 2px 2px 5px rgba(34, 34, 34, 0.32);
+}
+
+.linkedin {
+    bottom: 10px;
+}
+
+.instagram {
+    bottom: 120px;
+    right: 24px;
+}
+
+.twitter {
+    bottom: 175px;
+}
+
+.github {
+    bottom: 65px;
+    right: 23px;
 }

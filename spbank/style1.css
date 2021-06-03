@@ -348,6 +348,9 @@ ul {
 
 .responsive-table .cola-4 {
     flex-basis: 23%;
+}
+
+.trn {
     cursor: pointer;
 }
 
@@ -564,9 +567,10 @@ a {
     position: fixed;
     /* z-index: -1; */
     bottom: 0;
+    text-shadow: 2px 2px 5px rgba(34, 34, 34, 0.32);
 }
 
-.twitter {
+.linkedin {
     left: 10px;
 }
 
@@ -575,13 +579,13 @@ a {
     bottom: -1px;
 }
 
-.github {
+.twitter {
     left: 175px;
-    bottom: -2px;
 }
 
-.linkedin {
+.github {
     left: 65px;
+    bottom: -2px;
 }
 
 .receipt {

@@ -71,6 +71,7 @@ if(isset($_POST['submit'])){
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Bank</title>
 </head>
 
@@ -80,7 +81,7 @@ if(isset($_POST['submit'])){
         <div class="g2">
             <img class="logo" src="logo.png" alt="">
             <img class="prop2" src="prop2.svg" alt="">
-            <div class="txt">Welcome to a <span>safe</span> Banking Paradise</div>
+            <div class="txt">Welcome to a <span class="safe">safe</span> Banking Paradise</div>
             <div class="login">
                 <div class="sign">
                     <div class="sup sel1" onclick="sup()">
@@ -96,7 +97,7 @@ if(isset($_POST['submit'])){
                         <div class="fields1">
                             <div class="name fl">
                                 <div class="field">Name</div>
-                                <div class="answer"><input id="nm" minlength="3" maxlength="18" name="name" placeholder="Enter Name"></div>
+                                <div class="answer"><input id="nm" minlength="3" maxlength="18" name="name" required placeholder="Enter Name"></div>
                             </div>
                             <div class="email fl">
                                 <div class="field">Email</div>
@@ -106,7 +107,7 @@ if(isset($_POST['submit'])){
                         <div class="fields1">
                             <div class="pass fl">
                                 <div class="field">Password</div>
-                                <div class="answer"><input class="anp" minlength="8" maxlength="16" type="password" name="password" required placeholder="Password"></div>
+                                <div class="answer"><input class="anp" minlength="8" maxlength="16" type="password" name="password" required placeholder="Enter Password"></div>
                             </div>
                             <div class="go fl">
                                 <button name="submit" type="submit" class="goo">Next <svg width="16px" height="15px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" class="svg-inline--fa fa-chevron-right fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg></button>
@@ -117,6 +118,26 @@ if(isset($_POST['submit'])){
             </div>
         </div>
     </div>
+    <a href="https://twitter.com/keval2001" target="_blank" class="twitter social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
+        <span class="social-button__inner">
+           <i class="fa fa-twitter tw"></i>
+          </span>
+    </a>
+    <a href="https://www.linkedin.com/in/keval-shah-a4b2811a3/" target="_blank" class="linkedin social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
+        <span class="social-button__inner">
+           <i class="fa fa-linkedin"></i>
+          </span>
+    </a>
+    <a href="https://github.com/Keval9shah" target="_blank" class="github social-buttons__button social-button social-button--codepen" aria-label="CodePen">
+        <span class="social-button__inner">
+            <i class="fa fa-github gb"></i>
+          </span>
+    </a>
+    <a href="https://www.instagram.com/kvl.sh/" target="_blank" class="instagram social-buttons__button social-button social-button--github" aria-label="GitHub">
+        <span class="social-button__inner">
+                <i class="fa fa-instagram in"></i>
+          </span>
+    </a>
 
     <script src="script.js"></script>
 </body>

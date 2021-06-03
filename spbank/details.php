@@ -196,10 +196,10 @@ $balance=$row['balance'];
             sel.style.left = ul.offsetLeft+"px";
             sel.style.width=wth+"px";
 
-            exm.innerHTML="<?php $result = mysqli_query($con," SELECT id,name,email,acc_no FROM user"); ?><div class='containerx1'><ul class='responsive-table ulx1'><li class='table-header'><div class='cola cola-1'>No</div><div class='cola cola-2'>Name</div><div class='cola cola-3'>Email</div><div class='cola cola-4'>Account No</div> </li></ul><div><div class='containerx'><ul class='responsive-table'><?php while($rows=$result->fetch_assoc()) { ?><li class='table-row'><div class='cola cola-1'><?php echo $rows['id'];?></div><div class='cola cola-2'><?php echo $rows['name'];?></div><div class='cola cola-3'><?php echo $rows['email']; ?></div><div class='cola cola-4'><?php echo $rows['acc_no'];?></div></li><?php } ?></ul></div></div>";
+            exm.innerHTML="<?php $result = mysqli_query($con," SELECT id,name,email,acc_no FROM user"); ?><div class='containerx1'><ul class='responsive-table ulx1'><li class='table-header'><div class='cola cola-1'>No</div><div class='cola cola-2'>Name</div><div class='cola cola-3'>Email</div><div class='cola cola-4'>Account No</div> </li></ul><div><div class='containerx'><ul class='responsive-table'><?php while($rows=$result->fetch_assoc()) { ?><li class='table-row trn'><div class='cola cola-1'><?php echo $rows['id'];?></div><div class='cola cola-2'><?php echo $rows['name'];?></div><div class='cola cola-3'><?php echo $rows['email']; ?></div><div class='cola cola-4'><?php echo $rows['acc_no'];?></div></li><?php } ?></ul></div></div>";
 
 
-            var buttons = document.getElementsByClassName("cola-4");
+            var buttons = document.getElementsByClassName("trn");
             var buttonsCount = buttons.length;
             for (var i = 0; i < buttonsCount; i += 1) {
                 // buttons[i].onclick = function(e) {
@@ -207,10 +207,11 @@ $balance=$row['balance'];
                 // }
                 var cptxt;
                 buttons[i].onclick = function() {
-                    cptxt=this.innerHTML;
+                    cptxt=this.childNodes[2].innerHTML;
                     // document.execCommand("copy");
                     trct();
                     document.getElementById("rec").value=cptxt;
+                    document.getElementById("ana").focus();
                 }
                 // buttons[i].addEventListener("copy", function(event) {
                 //     event.preventDefault();

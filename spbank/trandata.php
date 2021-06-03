@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 require('connection.inc.php');
 
 session_start();
@@ -66,6 +66,6 @@ if(isset($_POST['submit'])){
     //datetime
     header("location:details.php");
 }
-
-
+ob_end_flush();
+?> 
 ?>
