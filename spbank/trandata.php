@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){
     $res1 = mysqli_query($con,"SELECT * FROM user WHERE acc_no='$acnt'");
     $row1 = mysqli_fetch_assoc($res1);
     if(strpos($receiver,"@")){
-        $r_email=$receiver;
+        $r_email=strtolower($receiver);
         $res2 = mysqli_query($con,"SELECT * FROM user WHERE email='$r_email'");
         $row2 = mysqli_fetch_assoc($res2);
         if($row2){
@@ -68,4 +68,3 @@ if(isset($_POST['submit'])){
 }
 ob_end_flush();
 ?> 
-?>

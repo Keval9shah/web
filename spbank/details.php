@@ -27,7 +27,7 @@ $balance=$row['balance'];
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <link rel="icon" type="image/png" href="favicon.png" />
     <title><?php echo $fullname ?></title>
     <link rel="stylesheet" href="style1.css">
@@ -38,15 +38,18 @@ $balance=$row['balance'];
 </head>
 <body>
     <div class="navigation">
-        <div class="pf sel1 partition" onclick="prfl()">
+        <div class="pf sel1" onclick="prfl()">
         <?php echo $name; ?>'s profile
         </div>
-        <div class="tr partition" onclick="trct()">
+        <div class="partition pfp"></div>
+        <div class="tr" onclick="trct()">
             Send Money
         </div>
-        <div class="th partition" onclick="trht()">
+        <div class="partition trp"></div>
+        <div class="th" onclick="trht()">
             Transactions
         </div>
+        <div class="partition thp"></div>
         <div class="ul" onclick="usli()">
             User's List
         </div>
@@ -88,14 +91,18 @@ $balance=$row['balance'];
     <img src="greenary.png" class="greenary">
     <img src="greenary2.png" class="greenary2">
 <script>
-        var pf = document.getElementsByClassName("pf")[0];
-        var tr = document.getElementsByClassName("tr")[0];
-        var th = document.getElementsByClassName("th")[0];
-        var ul = document.getElementsByClassName("ul")[0];
-        var sel = document.getElementsByClassName("sel")[0];
-        var nav = document.getElementsByClassName("navigation")[0];
-        var links = document.getElementsByClassName("links")[0];
-        var exm = document.getElementsByClassName("extra_maal")[0];
+        var pf = document.querySelector(".pf");
+        var tr = document.querySelector(".tr");
+        var th = document.querySelector(".th");
+        var ul = document.querySelector(".ul");
+        var sel = document.querySelector(".sel");
+        var nav = document.querySelector(".navigation");
+        // var links = document.querySelector(".links");
+        var exm = document.querySelector(".extra_maal");
+        var pfp=document.querySelector(".pfp");
+        var trp=document.querySelector(".trp");
+        var thp=document.querySelector(".thp");
+        
 
         window.addEventListener('resize', () => {
             prfl();
@@ -117,7 +124,7 @@ $balance=$row['balance'];
 
         var wdth;
         function navwidth(){
-            wdth=pf.offsetWidth+tr.offsetWidth+th.offsetWidth+ul.offsetWidth+34;
+            wdth=pf.offsetWidth+tr.offsetWidth+th.offsetWidth+ul.offsetWidth+36;
             nav.style.width=wdth+"px";
             // wdth2=nav.style.marginLeft+wdth;
             // wdth2=parseInt(window.getComputedStyle(nav).marginLeft.substring(0, window.getComputedStyle(nav).marginLeft.length-2))+wdth-5;
@@ -137,6 +144,10 @@ $balance=$row['balance'];
             
             sel.style.left = pf.offsetLeft+"px";
             sel.style.width=pf.offsetWidth+"px";
+
+            pfp.style.visibility="hidden";
+            trp.style.visibility="visible";
+            thp.style.visibility="visible";
 
             exm.innerHTML="<div class='profile'><div class='hi'>Hi,<?php echo ' ',$name; ?></div><div class='acc_no'><mark class='accn'><?php echo $acc_no; ?></mark></div><br><div class='bal'>Balance <mark class='bala'>₹<?php $balance=mysqli_fetch_assoc(mysqli_query($con,"SELECT balance FROM user WHERE acc_no='$acc_no'"))['balance']; echo $balance; ?></mark</div></div>";
 
@@ -165,6 +176,10 @@ $balance=$row['balance'];
             sel.style.left = tr.offsetLeft+"px";
             sel.style.width=tr.offsetWidth+"px";
 
+            pfp.style.visibility="hidden";
+            trp.style.visibility="hidden";
+            thp.style.visibility="visible";
+
             exm.innerHTML="<div class='receipt'><div class='receipt-list'><div class='fields'><div class='flbal'>your balance <br><div class='flbal1'>₹<span><?php $balance=mysqli_fetch_assoc(mysqli_query($con,"SELECT balance FROM user WHERE acc_no='$acc_no'"))['balance']; echo $balance; ?></span></div></div><form action='trandata.php' method='POST'><div class='receiver fl'><div class='field'>Email/Account no.</div><div class='answer'><input id='rec' minlength='3' maxlength='30' name='receiver' required placeholder='Ex@xyz.com or 10080085'></div></div><div class='fl'><div class='amount fl'><div class='field'>Amount</div><div class='answer'><input id='ana' maxlength='10' static='' name='amount' required placeholder='Enter Amount'></div></div><div class='go fl'><button onclick='' name='submit' type='submit' class='pay'>Pay <svg width='16px' height='15px' aria-hidden='true' focusable='false' data-prefix='fas' data-icon='chevron-right' class='svg-inline--fa fa-chevron-right fa-w-10' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'><path fill='currentColor' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'></path></svg></button></div></div></form></div></div></div>";
 
             // var rname=document.getElementById("rec");
@@ -180,17 +195,25 @@ $balance=$row['balance'];
             pf.classList.remove("sel1");
             ul.classList.remove("sel1");
             th.classList.add("sel1");
-            
+
+            pfp.style.visibility="visible";
+            trp.style.visibility="hidden";
+            thp.style.visibility="hidden";
+
             sel.style.left =th.offsetLeft+"px";
             sel.style.width=th.offsetWidth+"px";
 
-            exm.innerHTML="<?php $result = mysqli_query($con," SELECT * FROM transaction WHERE acc_no= '$acc_no' ORDER BY datetime DESC "); ?><div class='containerx1'><ul class='responsive-table ulx1'><li class='table-header'><div class='col c1h col-1'>Date</div><div class='col col-2'>To/From</div><div class='col col-3'>Amount</div><div class='col col-4'>Balance</div> </li></ul><div class='containerx'><ul class='responsive-table'><?php while($rows=$result->fetch_assoc()) { ?><li class='table-row'><div class='col col-1'><?php echo date_format(date_create($rows['datetime']),'d/m/y  h:i A');?></div><div class='col col-2'><?php echo $rows['s_name'];?></div><?php $am = intval($rows['amount']); if($am>0){echo "<div class='col col-3 positive'>"; echo $am; echo "</div>";}else { echo "<div class='col col-3 negative'>"; echo $am; echo "</div>"; }  ?><div class='col col-4'>₹<?php echo $rows['current_bal'];?></div></li><?php } ?></ul></div></div>";
+            exm.innerHTML="<?php $result = mysqli_query($con," SELECT * FROM transaction WHERE acc_no= '$acc_no' ORDER BY datetime DESC "); ?><div class='containerx1'><ul class='responsive-table ulx1'><li class='table-header'><div class='col c1h col-1'>Date</div><div class='col col-2'>To/From</div><div class='col col-3'>Amount</div><div class='col col-4'>Balance</div> </li></ul><div class='containerx'><ul class='responsive-table'><?php $ii=0; while($rows=$result->fetch_assoc()) { if($ii==0){ ?><div class='dtind'> <?php echo date_format(date_create($rows['datetime']),'d/m/y'); $cur_date=date_format(date_create($rows['datetime']),'d/m/y'); ?></div><?php } else if($cur_date!==date_format(date_create($rows['datetime']),'d/m/y')){ ?><div class='dtind'> <?php echo date_format(date_create($rows['datetime']),'d/m/y'); $cur_date=date_format(date_create($rows['datetime']),'d/m/y'); ?></div><?php } $ii=1; ?><li class='table-row'><div class='col col-1'><?php echo date_format(date_create($rows['datetime']),'h:i A');?></div><div class='col col-2'><?php echo $rows['s_name'];?></div><?php $am = intval($rows['amount']); if($am>0){ echo "<div class='col col-3 positive'>"; echo $am; echo "</div>"; } else { echo "<div class='col col-3 negative'>"; echo $am; echo "</div>"; }  ?><div class='col col-4'>₹<?php echo $rows['current_bal'];?></div></li><?php } ?></ul></div>";
         }
         function usli() {
             tr.classList.remove("sel1");
             th.classList.remove("sel1");
             pf.classList.remove("sel1");
             ul.classList.add("sel1");
+
+            pfp.style.visibility="visible";
+            trp.style.visibility="visible";
+            thp.style.visibility="hidden";
             
             var wth=ul.offsetWidth+3;
             sel.style.left = ul.offsetLeft+"px";

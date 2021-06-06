@@ -36,6 +36,21 @@ body {
     box-shadow: inset 0 0 3px rgba(100, 100, 100, 0.7);
 }
 
+.partition {
+    /* background: rgb(145, 145, 145); */
+    position: relative;
+    top: 10px;
+    width: 0;
+    border-right: 1.7px solid rgb(145, 145, 145);
+    height: 24px;
+}
+
+.trp,
+.thp,
+.pfp {
+    transition: all ease-in-out 0.2s;
+}
+
 .sel {
     position: relative;
     top: -68px;
@@ -162,6 +177,16 @@ input {
 
 /* new change */
 
+.dtind {
+    /* margin-left: 10px; */
+    box-shadow: inset 0 -1px 3px rgba(54, 54, 54, 0.4);
+    padding: 3px 10px;
+    width: 90px;
+    height: 18px;
+    background: rgba(184, 184, 184, 0.85);
+    border-radius: 4px 4px 0 0;
+}
+
 
 /* extraaaaaaaaaaaaaaaaaaaa */
 
@@ -243,6 +268,7 @@ input {
     padding-right: 5px;
     height: 400px;
     overflow-y: scroll;
+    overscroll-behavior: contain;
 }
 
 .containerx1 {

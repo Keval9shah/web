@@ -4,6 +4,7 @@ require('connection.inc.php');
 if(isset($_POST['submit'])){
     $username=$_POST['name'];
     $email=$_POST['email'];
+    $email=strtolower($email);
     $password=$_POST['password'];
     $balance=1000;
 
@@ -65,7 +66,7 @@ if(isset($_POST['submit'])){
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;600&display=swap" rel="stylesheet">
