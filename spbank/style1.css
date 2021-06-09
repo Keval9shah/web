@@ -14,13 +14,19 @@ body {
     /* background-color: rgb(222, 245, 220); */
     /* background-color: oldlace; */
     background-color: rgba(221, 240, 222, 0.9);
-    transition: ease-out 1.2s;
+    /* transition: ease-out 1.2s; */
 }
 
 .hi {
-    margin: 0 10%;
+    margin: 0 71px;
     font-size: 80px;
     /* color: white; */
+}
+
+.em {
+    font-size: 20px;
+    margin: 10px 201px;
+    margin-top: 0;
 }
 
 .navigation {
@@ -178,13 +184,21 @@ input {
 /* new change */
 
 .dtind {
-    /* margin-left: 10px; */
-    box-shadow: inset 0 -1px 3px rgba(54, 54, 54, 0.4);
-    padding: 3px 10px;
-    width: 90px;
+    font-size: 16px;
+    box-shadow: inset 0 -1px 3px rgba(187, 187, 187, 0.5);
+    padding: 3px 12px;
+    width: 100px;
     height: 18px;
-    background: rgba(184, 184, 184, 0.85);
-    border-radius: 4px 4px 0 0;
+    /* background: rgba(184, 184, 184, 0.75); */
+    background-color: rgba(195, 205, 206, 0.76);
+    border-radius: 2px 2px 0 0;
+}
+
+.backk {
+    padding: 0 0 0 6px;
+    margin-bottom: 8px;
+    /* background-color: rgba(184, 184, 184, 0.6); */
+    background-color: rgba(195, 205, 206, 0.76);
 }
 
 
@@ -325,7 +339,7 @@ input {
 }
 
 .responsive-table .table-header {
-    background-color: #95A5A6;
+    background-color: rgb(155, 172, 173);
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.03em;
@@ -337,22 +351,22 @@ input {
 }
 
 .responsive-table .col-1 {
-    flex-basis: 32%;
+    flex-basis: 26%;
     text-align: start;
     padding-left: 7px;
 }
 
 .responsive-table .col-2 {
-    flex-basis: 26%;
+    flex-basis: 27%;
     text-align: start;
 }
 
 .responsive-table .col-3 {
-    flex-basis: 8%;
+    flex-basis: 9%;
 }
 
 .responsive-table .col-4 {
-    flex-basis: 19%;
+    flex-basis: 23%;
 }
 
 ul {
@@ -362,6 +376,7 @@ ul {
 
 .responsive-table .cola-1 {
     flex-basis: 12%;
+    padding-right: 18px;
 }
 
 .responsive-table .cola-2 {
@@ -398,31 +413,8 @@ ul {
 }
 
 .responsive-table .c1h {
-    padding-left: 30px;
+    padding-left: 10px;
 }
-
-.note {
-    margin-top: -32px;
-}
-
-
-/* links */
-
-
-/* body {
-    background-color: #ddd;
-    padding: 100px 20px 20px 20px;
-}
- */
-
-
-/* .social-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: -10px;
-}
- */
 
 .social-button {
     /* position: relative; */

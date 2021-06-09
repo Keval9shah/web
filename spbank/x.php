@@ -1,6 +1,13 @@
 <?php 
 require('connection.inc.php');
 
+if(isset($_POST['d1']) && isset($_POST['d2'])){
+    $d1=$_POST['d1'];
+    $d2=$_POST['d2'];
+    // echo $d1;
+    // echo "\nto  ";
+    // echo $d2;
+}
 
 session_start();
 $acnt=$_SESSION['acc_no'];
@@ -17,12 +24,19 @@ else{
 }
 ?>
     <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="x.css">
 <?php
-$acc_no=$row['acc_no'];
+$acc_no=10080085;
 $balance=$row['balance'];
-$result = mysqli_query($con," SELECT * FROM transaction WHERE acc_no= '$acc_no' ORDER BY datetime DESC ");
+if(isset($_POST['d1']) && isset($_POST['d2'])) {
+$sql=" SELECT * FROM transaction WHERE acc_no=".$acc_no." AND datetime BETWEEN '".strval($d1)."' and '".strval($d2)."' ORDER BY datetime DESC ";
+$result = mysqli_query($con,$sql); 
+}
+else{
+$result = mysqli_query($con," SELECT * FROM transaction WHERE acc_no='$acc_no' ORDER BY datetime DESC ");
+} 
  ?>
-<div class='containerx1'>
+<div class='containerx1' style="margin-top:50px">
     <ul class='responsive-table ulx1'>
         <li class='table-header'>
             <div class='col c1h col-1'>Date</div>
@@ -33,16 +47,28 @@ $result = mysqli_query($con," SELECT * FROM transaction WHERE acc_no= '$acc_no' 
     </ul>
 <div class='containerx'>
     <ul class='responsive-table'>
-        
+    <!-- SELECT * FROM table_name WHERE yourdate BETWEEN '2012-12-12' and '2013-12-12' -->
         <?php $ii=0; while($rows=$result->fetch_assoc()) { if($ii==0){ ?>
-            <div class='dtind'> 
-                <?php echo date_format(date_create($rows['datetime']),'d/m/y'); $cur_date=date_format(date_create($rows['datetime']),'d/m/y'); ?>
-            </div><?php
+            <div class="frstwrap">
+                <div class='dtind fd'>
+                    <?php echo date_format(date_create($rows['datetime']),'d/m/y'); $cur_date=date_format(date_create($rows['datetime']),'d/m/y');$GLOBALS['frstdate']=date_format(date_create($rows['datetime']),'Y-m-d'); ?>
+                </div><?php
+                    
+                ?><div class="frto">
+                <form action="" method="post">
+                <input type="date" id="d1" name="d1"> to <input type="date" id="d2" name="d2">
+                </form>
+                
+                </div>
+            </div>
+            <div class='backk'><?php
              } else if($cur_date!==date_format(date_create($rows['datetime']),'d/m/y')){
                 ?>
-                <div class='dtind'> 
-                    <?php echo date_format(date_create($rows['datetime']),'d/m/y'); $cur_date=date_format(date_create($rows['datetime']),'d/m/y'); ?>
-                </div><?php
+                </div>
+                <div class='dtind'> <div class="frto"></div>
+                    <?php echo date_format(date_create($rows['datetime']),'d/m/y'); $cur_date=date_format(date_create($rows['datetime']),'d/m/y'); $GLOBALS['lastdate']=date_format(date_create($rows['datetime']),'Y-m-d'); ?>
+                </div>
+                <div class='backk'><?php
             } $ii=1; ?>
             <li class='table-row'>
                 <div class='col col-1'><?php echo date_format(date_create($rows['datetime']),'h:i A');?></div>
@@ -52,4 +78,29 @@ $result = mysqli_query($con," SELECT * FROM transaction WHERE acc_no= '$acc_no' 
             </li>
         <?php } ?>
     </ul>
+    <script>
+        var d1=document.querySelector("#d1");
+        var d2=document.querySelector("#d2");
+        var form=document.querySelector("form");
+        d1.onchange = function (e){
+            form.submit();
+        }
+        d2.onchange = function (e){
+            form.submit();
+        }
+        <?php if(isset($_POST['d1']) && isset($_POST['d2']) && $d2>$d1){
+            ?>
+            d2.value="<?php echo $d2 ?>";
+            d1.value="<?php echo $d1; ?>";
+            <?php
+        }
+        else{
+            ?>
+            d2.value="<?php echo $GLOBALS['frstdate']; ?>";
+            d1.value="<?php echo $GLOBALS['lastdate']; ?>";
+            <?php
+        }
+        ?>
+
+    </script>
 </div>

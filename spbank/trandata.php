@@ -1,5 +1,4 @@
 <?php
-ob_start();
 require('connection.inc.php');
 
 session_start();
@@ -43,28 +42,45 @@ if(isset($_POST['submit'])){
                 mysqli_query($con,"UPDATE user SET balance='$s_newbal' WHERE acc_no='$acc_no'");
                 mysqli_query($con,"INSERT INTO transaction (p_name,s_name,acc_no,amount,current_bal) VALUES ('$s_name','$r_name','$acc_no','$namount' ,'$s_newbal')");
                 mysqli_query($con,"INSERT INTO transaction (p_name,s_name,acc_no,amount,current_bal) VALUES ('$r_name','$s_name','$r_acc_no','$amount','$r_newbal')");
-                echo "<script>alert('Transaction successful');</script>";
+                ?>
+                <script>
+                alert('Transaction successful');
+                alert(<?php echo $receiver.$r_email ?>);
+                window.location.href = 'details.php?tr=done';
+                </script>
+            <?php
             }
             else{
-                echo "<script>alert('it is your own account');</script>";
+                ?>
+        <script>
+                alert('It\'s your own account');
+        window.location.href = 'details.php?tr=done';
+        </script>
+    <?php
             }
         }
         else{
-            echo "<script>alert('amount is not right');</script>";
+            ?>
+        <script>
+            alert('Amount is negative or greater than your balance');
+        window.location.href = 'details.php?tr=done';
+        </script>
+    <?php
         }
 
         
     }
-    else{
-        echo "<script>alert('no such email or account exists');</script>";
-    }
+    else{ ?>
+        <script>
+        alert('no such person exists or amount is wrong');
+        window.location.href = 'details.php?tr=done';
+        </script>
+    <?php }
     //p_name
     //s_name
     //acc_no
     //amount
     //current_bal
     //datetime
-    header("location:details.php");
 }
-ob_end_flush();
 ?> 

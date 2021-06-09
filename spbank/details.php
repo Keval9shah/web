@@ -1,7 +1,6 @@
 <?php
 require('connection.inc.php');
 
-
 session_start();
 $acnt=$_SESSION['acc_no'];
 $res = mysqli_query($con,"SELECT * FROM user WHERE acc_no='$acnt'");
@@ -17,6 +16,7 @@ else{
 }
 $acc_no=$row['acc_no'];
 $balance=$row['balance'];
+$email=$row['email'];
 // $name="abababaxxx shcdxcda";
 
 
@@ -80,6 +80,7 @@ $balance=$row['balance'];
     <div class="extra_maal">
         <div class="profile">
             <div class="hi">Hi,<?php echo " ",$name; ?></div>
+            <div class='em'><?php echo $email; ?></div>
             <div class="acc_no">
                 <mark class="accn"><?php echo $acc_no; ?></mark>
             </div>
@@ -124,7 +125,7 @@ $balance=$row['balance'];
 
         var wdth;
         function navwidth(){
-            wdth=pf.offsetWidth+tr.offsetWidth+th.offsetWidth+ul.offsetWidth+36;
+            wdth=pf.offsetWidth+tr.offsetWidth+th.offsetWidth+ul.offsetWidth+40;
             nav.style.width=wdth+"px";
             // wdth2=nav.style.marginLeft+wdth;
             // wdth2=parseInt(window.getComputedStyle(nav).marginLeft.substring(0, window.getComputedStyle(nav).marginLeft.length-2))+wdth-5;
@@ -149,7 +150,7 @@ $balance=$row['balance'];
             trp.style.visibility="visible";
             thp.style.visibility="visible";
 
-            exm.innerHTML="<div class='profile'><div class='hi'>Hi,<?php echo ' ',$name; ?></div><div class='acc_no'><mark class='accn'><?php echo $acc_no; ?></mark></div><br><div class='bal'>Balance <mark class='bala'>₹<?php $balance=mysqli_fetch_assoc(mysqli_query($con,"SELECT balance FROM user WHERE acc_no='$acc_no'"))['balance']; echo $balance; ?></mark</div></div>";
+            exm.innerHTML="<div class='profile'><div class='hi'>Hi,<?php echo ' ',$name; ?></div><div class='em'><?php echo $email; ?></div><div class='acc_no'><mark class='accn'><?php echo $acc_no; ?></mark></div><br><div class='bal'>Balance <mark class='bala'>₹<?php $balance=mysqli_fetch_assoc(mysqli_query($con,"SELECT balance FROM user WHERE acc_no='$acc_no'"))['balance']; echo $balance; ?></mark</div></div>";
 
             
             // const accn = document.getElementsByClassName("accn")[0];
@@ -203,7 +204,7 @@ $balance=$row['balance'];
             sel.style.left =th.offsetLeft+"px";
             sel.style.width=th.offsetWidth+"px";
 
-            exm.innerHTML="<?php $result = mysqli_query($con," SELECT * FROM transaction WHERE acc_no= '$acc_no' ORDER BY datetime DESC "); ?><div class='containerx1'><ul class='responsive-table ulx1'><li class='table-header'><div class='col c1h col-1'>Date</div><div class='col col-2'>To/From</div><div class='col col-3'>Amount</div><div class='col col-4'>Balance</div> </li></ul><div class='containerx'><ul class='responsive-table'><?php $ii=0; while($rows=$result->fetch_assoc()) { if($ii==0){ ?><div class='dtind'> <?php echo date_format(date_create($rows['datetime']),'d/m/y'); $cur_date=date_format(date_create($rows['datetime']),'d/m/y'); ?></div><?php } else if($cur_date!==date_format(date_create($rows['datetime']),'d/m/y')){ ?><div class='dtind'> <?php echo date_format(date_create($rows['datetime']),'d/m/y'); $cur_date=date_format(date_create($rows['datetime']),'d/m/y'); ?></div><?php } $ii=1; ?><li class='table-row'><div class='col col-1'><?php echo date_format(date_create($rows['datetime']),'h:i A');?></div><div class='col col-2'><?php echo $rows['s_name'];?></div><?php $am = intval($rows['amount']); if($am>0){ echo "<div class='col col-3 positive'>"; echo $am; echo "</div>"; } else { echo "<div class='col col-3 negative'>"; echo $am; echo "</div>"; }  ?><div class='col col-4'>₹<?php echo $rows['current_bal'];?></div></li><?php } ?></ul></div>";
+            exm.innerHTML="<?php $result = mysqli_query($con," SELECT * FROM transaction WHERE acc_no= '$acc_no' ORDER BY datetime DESC "); ?><div class='containerx1'><ul class='responsive-table ulx1'><li class='table-header'><div class='col c1h col-1'>Date & Time</div><div class='col col-2'>To/From</div><div class='col col-3'>Amount</div><div class='col col-4'>Balance</div> </li></ul><div class='containerx'><ul class='responsive-table'><?php $ii=0; while($rows=$result->fetch_assoc()) { if($ii==0){ ?><div class='dtind'> <?php echo date_format(date_create($rows['datetime']),'d M Y'); $cur_date=date_format(date_create($rows['datetime']),'d/m/y'); ?></div><div class='backk'><?php } else if($cur_date!==date_format(date_create($rows['datetime']),'d/m/y')){ ?></div><div class='dtind'> <?php echo date_format(date_create($rows['datetime']),'d M Y'); $cur_date=date_format(date_create($rows['datetime']),'d/m/y'); ?></div><div class='backk'><?php } $ii=1; ?><li class='table-row'><div class='col col-1'><?php echo date_format(date_create($rows['datetime']),'h:i A');?></div><div class='col col-2'><?php echo $rows['s_name'];?></div><?php $am = intval($rows['amount']); if($am>0){ echo "<div class='col col-3 positive'>"; echo $am; echo "</div>"; } else { echo "<div class='col col-3 negative'>"; echo $am; echo "</div>"; }  ?><div class='col col-4'>₹<?php echo $rows['current_bal'];?></div></li><?php } ?></ul></div>";
         }
         function usli() {
             tr.classList.remove("sel1");
@@ -251,6 +252,12 @@ $balance=$row['balance'];
                 // }, 100); 
             }
         }
+        <?php
+        if(isset($_GET['tr'])){
+    ?>
+    trht();
+    <?php
+} ?>
 </script>
 </body>
 </html>
