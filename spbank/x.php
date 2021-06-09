@@ -4,9 +4,6 @@ require('connection.inc.php');
 if(isset($_POST['d1']) && isset($_POST['d2'])){
     $d1=$_POST['d1'];
     $d2=$_POST['d2'];
-    // echo $d1;
-    // echo "\nto  ";
-    // echo $d2;
 }
 
 session_start();
@@ -28,8 +25,8 @@ else{
 <?php
 $acc_no=10080085;
 $balance=$row['balance'];
-if(isset($_POST['d1']) && isset($_POST['d2'])) {
-$sql=" SELECT * FROM transaction WHERE acc_no=".$acc_no." AND datetime BETWEEN '".strval($d1)."' and '".strval($d2)."' ORDER BY datetime DESC ";
+if(isset($_POST['d1']) && isset($_POST['d2']) && $d2>$d1) {
+$sql=" SELECT * FROM transaction WHERE acc_no=".$acc_no." AND datetime BETWEEN '".$d1."' and '".$d2."' ORDER BY datetime DESC ";
 $result = mysqli_query($con,$sql); 
 }
 else{
@@ -50,11 +47,9 @@ $result = mysqli_query($con," SELECT * FROM transaction WHERE acc_no='$acc_no' O
     <!-- SELECT * FROM table_name WHERE yourdate BETWEEN '2012-12-12' and '2013-12-12' -->
         <?php $ii=0; while($rows=$result->fetch_assoc()) { if($ii==0){ ?>
             <div class="frstwrap">
-                <div class='dtind fd'>
+                <div class='dtind'>
                     <?php echo date_format(date_create($rows['datetime']),'d/m/y'); $cur_date=date_format(date_create($rows['datetime']),'d/m/y');$GLOBALS['frstdate']=date_format(date_create($rows['datetime']),'Y-m-d'); ?>
-                </div><?php
-                    
-                ?><div class="frto">
+                </div><div class="frto">
                 <form action="" method="post">
                 <input type="date" id="d1" name="d1"> to <input type="date" id="d2" name="d2">
                 </form>
@@ -65,7 +60,7 @@ $result = mysqli_query($con," SELECT * FROM transaction WHERE acc_no='$acc_no' O
              } else if($cur_date!==date_format(date_create($rows['datetime']),'d/m/y')){
                 ?>
                 </div>
-                <div class='dtind'> <div class="frto"></div>
+                <div class='dtind'>
                     <?php echo date_format(date_create($rows['datetime']),'d/m/y'); $cur_date=date_format(date_create($rows['datetime']),'d/m/y'); $GLOBALS['lastdate']=date_format(date_create($rows['datetime']),'Y-m-d'); ?>
                 </div>
                 <div class='backk'><?php
@@ -78,6 +73,7 @@ $result = mysqli_query($con," SELECT * FROM transaction WHERE acc_no='$acc_no' O
             </li>
         <?php } ?>
     </ul>
+<div>
     <script>
         var d1=document.querySelector("#d1");
         var d2=document.querySelector("#d2");
@@ -103,4 +99,4 @@ $result = mysqli_query($con," SELECT * FROM transaction WHERE acc_no='$acc_no' O
         ?>
 
     </script>
-</div>
+

@@ -626,3 +626,29 @@ a {
     filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.2));
     width: 530px;
 }
+
+
+/* datepicker */
+
+form {
+    margin-block-end: 0;
+    /* margin: 5px 0; */
+}
+
+.frstwrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+#d1,
+#d2 {
+    height: 20px;
+    width: 132px;
+    border-radius: 5px;
+    padding: 0 3px 0 8px;
+}
+
+.frto {
+    background: rgb(202, 214, 211);
+    border-radius: 5px;
+}

@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
                 <script>
                 alert('Transaction successful');
                 alert(<?php echo $receiver.$r_email ?>);
-                window.location.href = 'details.php?tr=done';
+                window.location.href = 'details.php';
                 </script>
             <?php
             }
@@ -54,7 +54,7 @@ if(isset($_POST['submit'])){
                 ?>
         <script>
                 alert('It\'s your own account');
-        window.location.href = 'details.php?tr=done';
+        window.location.href = 'details.php';
         </script>
     <?php
             }
@@ -63,7 +63,7 @@ if(isset($_POST['submit'])){
             ?>
         <script>
             alert('Amount is negative or greater than your balance');
-        window.location.href = 'details.php?tr=done';
+        window.location.href = 'details.php';
         </script>
     <?php
         }
