@@ -129,7 +129,7 @@ $email=$row['email'];
 
         var wdth;
         function navwidth(){
-            wdth=pf.offsetWidth+tr.offsetWidth+th.offsetWidth+ul.offsetWidth+40;
+            wdth=pf.offsetWidth+tr.offsetWidth+th.offsetWidth+ul.offsetWidth+36;
             nav.style.width=wdth+"px";
             // wdth2=nav.style.marginLeft+wdth;
             // wdth2=parseInt(window.getComputedStyle(nav).marginLeft.substring(0, window.getComputedStyle(nav).marginLeft.length-2))+wdth-5;
@@ -139,7 +139,6 @@ $email=$row['email'];
         
         navwidth();
 
-        prfl();
         
         function prfl() {
             tr.classList.remove("sel1");
@@ -271,7 +270,9 @@ $email=$row['email'];
             ?>
             trht();
             <?php
-        } ?>
+        } else { ?>
+            prfl();
+        <?php } ?>
 </script>
 </body>
 </html>

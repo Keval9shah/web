@@ -6,7 +6,7 @@ if(isset($_POST['submit'])){
     $email=$_POST['email'];
     $email=strtolower($email);
     $password=$_POST['password'];
-    $balance=1000;
+    $balance=7000;
 
     //name
     //email
