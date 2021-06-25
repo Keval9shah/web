@@ -37,7 +37,7 @@ body {
     display: flex;
     /* width: 700px; */
     height: 42px;
-    border-radius: 7px;
+    border-radius: 8px;
     /* rmv */
     box-shadow: inset 0 0 3px rgba(100, 100, 100, 0.7);
 }
@@ -61,18 +61,17 @@ body {
     position: relative;
     top: -68px;
     /* left: 300px; */
-    background-color: white;
-    ;
+    background-color: rgba(255, 255, 255, 0.7);
     height: 34px;
     /* width: 76px; */
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(105, 105, 105, 0.7);
-    transition: all ease-in-out 0.4s;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(105, 105, 105, 0.65);
+    transition: all ease-in-out 0.34s;
 }
 
 ::selection {
-    color: black;
-    background-color: cadetblue;
+    color: white;
+    background-color: black;
 }
 
 .pf,
@@ -220,7 +219,6 @@ input {
     top: 0;
     left: 5px;
     width: 320px;
-    user-select: none;
 }
 
 .greenary2 {
@@ -230,7 +228,6 @@ input {
     top: 42%;
     left: 78.5%;
     width: 230px;
-    user-select: none;
 }
 
 .flbal1 span {
@@ -543,14 +540,6 @@ ul {
     background: #212121;
 }
 
-.social-button--steam {
-    color: #7da10e;
-}
-
-.social-button--steam::after {
-    background: #7da10e;
-}
-
 .social-button--snapchat {
     color: #eec900;
 }
@@ -653,4 +642,8 @@ form {
 .frto {
     background: rgb(202, 214, 211);
     border-radius: 5px;
+}
+
+img {
+    user-select: none;
 }

@@ -35,7 +35,7 @@ if(isset($_POST['submit'])){
             $res=mysqli_query($con,"SELECT acc_no FROM user WHERE email='$email' AND password='$password' ");
             $row = mysqli_fetch_assoc($res);
             $_SESSION['acc_no'] = $row['acc_no'];
-            header("location:details.php");
+            header("location:details/");
         }
         else{
             echo '<script type="text/javascript">alert("Email already exists");</script>';
@@ -49,7 +49,7 @@ if(isset($_POST['submit'])){
             session_start();
             $row = mysqli_fetch_assoc($res);
             $_SESSION['acc_no'] = $row['acc_no'];
-            header("location:details.php");
+            header("location:details/");
         }
         else{
             echo "<script>alert('Woops! Email or Password is wrong.')</script>";

@@ -1,5 +1,5 @@
 <?php
-require('connection.inc.php');
+require('../connection.inc.php');
 
 if(isset($_POST['d1']) && isset($_POST['d2'])){
     $d1=$_POST['d1'];
@@ -32,9 +32,9 @@ $email=$row['email'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="icon" type="image/png" href="../favicon.png" />
     <title><?php echo $fullname ?></title>
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="../style1.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/clementfive" type="text/css"/>
@@ -129,7 +129,7 @@ $email=$row['email'];
 
         var wdth;
         function navwidth(){
-            wdth=pf.offsetWidth+tr.offsetWidth+th.offsetWidth+ul.offsetWidth+36;
+            wdth=pf.offsetWidth+tr.offsetWidth+th.offsetWidth+ul.offsetWidth+38;
             nav.style.width=wdth+"px";
             // wdth2=nav.style.marginLeft+wdth;
             // wdth2=parseInt(window.getComputedStyle(nav).marginLeft.substring(0, window.getComputedStyle(nav).marginLeft.length-2))+wdth-5;
