@@ -169,12 +169,17 @@ select {
         margin-top: 120px;
     }
     select {
-        margin: 5px 0 0 8px;
+        margin: 5px 5px 0 8px;
         height: 35px;
-        width: 70px;
-        border-radius: 2px;
+        padding-left: 15px;
+        width: 120px;
+        border-radius: 7px;
         border: none;
         font-size: medium;
+        background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #f1f1f1;
+        -webkit-appearance: none;
+        background-position-x: 90px;
+        box-shadow: 0px 2px 5px rgb(0 0 0 / 30%);
     }
     .pm {
         height: 37px;
