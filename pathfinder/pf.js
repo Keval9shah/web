@@ -10,17 +10,21 @@ var notecheck = 1;
 
 document.getElementsByTagName("h3")[0].innerHTML = "Path Finder   (" + size[0] + "x" + size[1] + ")";
 if (window.matchMedia("(max-width: 1680px) and (min-width:1080px)").matches) {
-    btnWd = 72;
+    btnWd = 78;
     btnWd2 = 88;
 } else if (window.matchMedia("(max-width: 1080px) and (min-width:787px)").matches) {
-    btnWd = 68;
+    btnWd = 75;
     btnWd2 = 85;
 } else if (window.matchMedia("(max-width: 787px) and (min-width:430px)").matches) {
-    btnWd = 63;
-    btnWd2 = 72;
+    btnWd = 72;
+    btnWd2 = 82;
 }
 
-document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + size[0] + ", clamp(" + btnWd + "px, 12%, " + btnWd2 + "px)";
+if (window.matchMedia("(max-width: 430px) and (min-width:50px)").matches) {
+    document.querySelector("select").selectedIndex = 1;
+}
+
+document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + size[0] + ", clamp(" + btnWd + "px, 13%, " + btnWd2 + "px)";
 
 
 var arr = new Array(size[0]).fill(0).map(() => new Array(size[1]).fill(0).map(() => new Array(3).fill(0)));
