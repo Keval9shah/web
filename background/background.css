@@ -1,0 +1,153 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: green;
+    background-size: cover;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.bttn {
+    display: inline-block;
+    padding: 17px 29px;
+    margin: 0 15px 10px 0;
+    border-radius: 6px;
+    border-width: 3px;
+}
+
+.btn {
+    outline: none;
+    cursor: pointer;
+}
+
+.inp {
+    position: relative;
+    top: 6px;
+    cursor: pointer;
+    border-top: 3px solid rgb(129, 129, 129);
+    border-left: 3px solid rgb(129, 129, 129);
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+.inp:active {
+    border-top: 3px solid black;
+    border-left: 3px solid black;
+    border-right: 3px solid rgb(129, 129, 129);
+    border-bottom: 3px solid rgb(129, 129, 129);
+}
+
+.in2 {
+    background: rgba(240, 248, 255, 0.4);
+    margin: 0 10px 5px 0;
+    height: 22px;
+    border-radius: 4px;
+}
+
+#intxt {
+    width: 47%;
+    min-width: 170px;
+}
+
+::placeholder {
+    color: black;
+}
+
+select {
+    cursor: pointer;
+}
+
+.bttn2 {
+    display: none;
+    outline: none;
+}
+
+img {
+    height: 70px;
+    margin: 0 10px 10px 0;
+    border-radius: 7px;
+    border-top: 4px solid rgb(129, 129, 129);
+    border-left: 4px solid rgb(129, 129, 129);
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+    cursor: pointer;
+}
+
+img:active {
+    border-top: 4px solid black;
+    border-left: 4px solid black;
+    border-right: 4px solid rgb(129, 129, 129);
+    border-bottom: 4px solid rgb(129, 129, 129);
+}
+
+.frst {
+    width: 22%;
+    background-color: rgba(75, 75, 75, 0.39);
+    padding: 15px;
+    backdrop-filter: blur(2px);
+    border-bottom-right-radius: 5px;
+    min-width: 250px;
+    max-width: 480px;
+}
+
+#scnd {
+    position: relative;
+    border-radius: 7px;
+    top: -10px;
+    height: 16px;
+    background-color: rgb(0, 0, 0);
+    width: 135.5px;
+}
+
+#bttn1 {
+    border-radius: 7px;
+    padding: 10px;
+    z-index: 3;
+    position: relative;
+    top: 0;
+    border: 3px solid rgb(0, 0, 0);
+    transition: all 0.2s;
+}
+
+#bttn1:active {
+    top: 4.5px;
+}
+
+.fa-bars,
+.fa-times {
+    cursor: pointer;
+    padding: 15px 20px;
+    border-bottom-right-radius: 4px;
+    background-color: antiquewhite;
+}
+
+.fa-bars {
+    display: none;
+}
+
+.fax {
+    padding: 10px 13px;
+    background-color: rgba(250, 255, 228);
+    position: absolute;
+    top: 15px;
+    /*hii*/
+    border-radius: 7px;
+    z-index: 3;
+    border: 3px solid rgb(0, 0, 0);
+    transition: all 0.2s;
+    left: 77%;
+}
+
+.fax:active {
+    top: 19.5px;
+}
+
+#scnd1 {
+    transition: all 0.2s;
+    position: absolute;
+    border-radius: 7px;
+    top: 45px;
+    left: 77%;
+    height: 16px;
+    background-color: rgb(0, 0, 0);
+    width: 44px;
+}

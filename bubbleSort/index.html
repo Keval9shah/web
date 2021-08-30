@@ -1,0 +1,28 @@
+<html lang="en">
+
+<head>
+    <title>Excel V(-1)</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="stylesheet" href="bbs.css">
+    <link rel="icon" type="image/svg" href="sort.svg" />
+</head>
+
+<body>
+    <table id="tbl" cellpadding=5>
+        <tr id="0">
+            <th>no.</th>
+            <th>value</th>
+        </tr>
+        <tr id='1'>
+            <td class="no">1</td>
+            <td><input onkeydown='go_down(event,this.parentNode.parentNode.id)' type='text' placeholder=" val"></td>
+            <td><button class='minus' onclick='remove(this.parentNode.parentNode.id)'>-</button></td>
+        </tr>
+    </table><br>
+    <button id="add" onclick="add()" style="position:absolute;top:59px;left:155px;">+</button>
+    <button id="srt" onclick="sort()">Sort</button>
+    <button id="rst" onclick="reset()" style="margin-left: 10px;">Reset</button>
+    <script src="bbs.js"></script>
+</body>
+
+</html>

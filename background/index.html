@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="icon" type="image/png" href="icon.png" />
+    <title>Background</title>
+    <script src="background.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="background.css">
+</head>
+
+<body>
+    <i class="fa fa-bars" id="i" onclick="ifun()"></i>
+    <div class="frst">
+        <i class="fa fax fa-times" id="i1" onclick="ifun2()"></i>
+        <div id="scnd1"></div>
+        <button class="btn" Id="bttn1" onClick="myFun()">background image</button>
+        <div id="scnd"></div>
+        <br>
+        <button class="bttn btn" Id="rgb(184, 41, 41)" style="background-color: rgb(184, 41, 41);" onClick="Fun('rgb(184, 41, 41)')"></button>
+        <button class="bttn btn" Id="green" style="background-color: green;" onClick="Fun('green')"></button>
+        <button class="bttn btn" Id="rgb(69, 174, 235)" style="background-color: rgb(69, 174, 235);" onClick="Fun('rgb(69, 174, 235)')"></button>
+        <br>
+        <button class="bttn btn" Id="ltr" style="background-color: white;" onClick="sett()"></button>
+        <button class="bttn btn" Id="crnt" style="background-color: white;" onClick="crntt()"></button>
+        <input type="color" class=" inp bttn btn" Id="33" style="background-image:linear-gradient(45deg,orange,yellow,green,blue);">
+
+        <img id="1" class="bttn2" src="https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/08-06-2020_Coral-Reef-Image_Solomon-Islands.jpg/image1170x530cropped.jpg" alt="" onclick="fntn('https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/08-06-2020_Coral-Reef-Image_Solomon-Islands.jpg/image1170x530cropped.jpg','1')">
+        <img id="2" class="bttn2" src="https://free4kwallpapers.com/uploads/originals/2019/12/16/nature-wallpaper.jpg" alt="" onclick="fntn('https://free4kwallpapers.com/uploads/originals/2019/12/16/nature-wallpaper.jpg','2')">
+        <img id="3" class="bttn2" src="https://images7.alphacoders.com/411/thumb-1920-411820.jpg" alt="" onclick="fntn('https://images7.alphacoders.com/411/thumb-1920-411820.jpg','3')">
+        <br>
+        <input type="text" class="bttn2 in2" name="" placeholder="  Image-URL" id="intxt">
+        <select id="slct" class="bttn2 in2" oninput="slctt()">
+            <option value="cover">crop</option>
+            <option value="contain">full</option>
+        </select>
+    </div>
+</body>
+
+</html>
