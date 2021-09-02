@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 ::selection{
     background-color: rgba(30,46,73);
@@ -58,16 +59,18 @@ body{
     margin-left: 6px;
 }
 .explore-button button{
+    font-family: 'Source Sans Pro', sans-serif;
     padding: 0;
     padding-left: 4px;
     border-radius: 3px;
     width:92px;
     height:100%;
     font-size: 14px;
-    font-weight: bold;
+    font-weight:700;
     color:white;
     background-color:#0056d2;
     border: none;
+    line-height: 36px;
 }
 .explore-button:hover button{
     color:#0056d2;
@@ -91,6 +94,9 @@ body{
     max-width: 480px;
 }
 .search-box input{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
     border: 1px #636363 solid;
     border-radius: 2px 0 0 2px;
     width:100%;
@@ -110,7 +116,7 @@ body{
     background-color: #0056d2;
 }
 .sec2{
-    font-family: 'Inter', sans-serif;
+    font-size: 14px;
     width: 50%;
     display: flex;
     align-items: center;
@@ -148,8 +154,6 @@ body{
 }
 
 .content{
-    font-family: "Arial";
-    /* font-family: 'ZCOOL KuaiLe', cursive; */
     max-width: 1240px;
     box-sizing: border-box;
     margin: 0 auto calc(9rem) auto;
