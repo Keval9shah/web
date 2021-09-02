@@ -7,6 +7,11 @@ if(isset($_POST['d1']) && isset($_POST['d2'])){
 }
 
 session_start();
+if(!$_SESSION['acc_no']){
+    echo '<script type="text/JavaScript">
+    window.location.href = "redirect.html";
+    </script>';
+}
 $acnt=$_SESSION['acc_no'];
 $res = mysqli_query($con,"SELECT * FROM user WHERE acc_no='$acnt'");
 $row = mysqli_fetch_assoc($res);

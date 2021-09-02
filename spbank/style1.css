@@ -66,7 +66,7 @@ body {
     /* width: 76px; */
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(105, 105, 105, 0.65);
-    transition: all ease-in-out 0.34s;
+    transition: all ease-out 0.34s;
 }
 
 ::selection {
