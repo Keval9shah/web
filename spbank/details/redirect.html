@@ -9,28 +9,24 @@
         .L1{
             font-size: 45px;
             width: 400px;
-            margin: 100px;
-            margin-bottom: 30px;
+            margin: 100px 0 30px 100px;
         }
         .L2{
+            display: flex;
             font-size: 18px;
-            width: 210px;
             margin-left: 100px;
         }
         img{
-            position: relative;
-            top: -18px;
-            left: 310px;
+            margin:0 0 0 12px;
         }
     </style>
 </head>
 <body>
     <div class="L1">Login/Sign Up First</div>
-    <div class="L2">Redirecting to sign up page</div>
-    <img width="20px" height="20px" src="Fading line.gif" alt="">
+    <div class="L2">Redirecting to sign up page <img width="24px" height="24px" src="Fading line.gif" alt=""></div>
     <script>
         setTimeout(()=>{
-            location.href="../../";
+            // location.href="../../";
         },2200)
     </script>
 </body>
