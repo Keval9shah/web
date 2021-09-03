@@ -106,7 +106,7 @@ body{
     padding: 0 10px;
     outline: none;
 }
-.search-button button{
+.search-button{
     cursor: pointer;
     border: 1px #636363 solid;
     border-radius: 0 2px 2px 0;
@@ -164,8 +164,8 @@ body{
 }
 
 .content p{
-    /* addition */line-height: 52px;
-    font-size: 42px;
+    line-height: 52px;
+    font-size: 44px;
     margin-bottom: 16px;
     margin-top: 0;
     box-sizing: border-box;
@@ -176,15 +176,54 @@ body{
     align-items: stretch;
 }
 
+.navsmall{
+    display: none;
+}
+.navsmall1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.expand,.search-button1{
+    align-items: center;
+    box-sizing: border-box;
+    border: none;
+    background-color: white;
+}
+.search-button1 svg{
+    vertical-align: middle;
+    user-select: none;
+}
+.expand svg{
+    margin-top:15px ;
+}
+
 body::-webkit-scrollbar {
     width: 9px;
-  }
-   
-  body::-webkit-scrollbar-track {
-      background-color: rgb(230, 230, 230);
-  }
-   
-  body::-webkit-scrollbar-thumb {
+}
+
+body::-webkit-scrollbar-track {
+    background-color: rgb(230, 230, 230);
+}
+
+body::-webkit-scrollbar-thumb {
     background-color: rgba(109, 109, 109, 0.945);
     outline: 1px solid rgb(81, 92, 102);
-  }
+}
+
+@media screen and (max-width: 990px) {
+    .dnone{
+        display: none;
+    }
+    .navsmall{
+        display: block;
+    }
+    .search-button1 svg{
+        width: 18px;
+        height: 18px;
+    }
+    .content p{
+        font-size: 36px;
+        line-height: 48px;
+    }
+}

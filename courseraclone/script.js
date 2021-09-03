@@ -1,12 +1,14 @@
 const explore = document.querySelector(".explore-button");
 const overlay = document.querySelector(".overlay");
-const nav = document.querySelector('.nav');
+const nav = document.querySelectorAll('.nav');
 // const body = document.querySelector("body");
 window.onscroll=(e)=>{
     if(window.pageYOffset>0){
-      nav.classList.add("add-shadow");
+      nav[0].classList.add("add-shadow");
+      nav[1].classList.add("add-shadow");
     }else{
-      nav.classList.remove("add-shadow");
+      nav[0].classList.remove("add-shadow");
+      nav[1].classList.remove("add-shadow");
     }
   };
 explore.onmouseover = ()=>{
@@ -28,3 +30,14 @@ explore.onmouseout = ()=>{
 //   var z=y[x%2]
 //   nav.style.borderBottom=z+"px rgb(224, 224, 224) solid";
 // }
+
+window.onresize=()=>{
+  if(window.matchMedia("(max-width: 1080px)").matches){
+    document.querySelector("#student").innerHTML="Students";
+    document.querySelector("#enterprise").innerHTML="Enterprise";
+  }
+  else{
+    document.querySelector("#student").innerHTML="For Students";
+    document.querySelector("#enterprise").innerHTML="For Enterprise";
+  }
+}
