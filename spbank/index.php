@@ -1,6 +1,13 @@
 <?php
 require('connection.inc.php');
 
+session_start();
+if(array_key_exists("acc_no", $_SESSION)){
+    echo '<script type="text/JavaScript">
+    window.location.href = "./details";
+    </script>';
+}
+
 if(isset($_POST['submit'])){
     $username=$_POST['name'];
     $email=$_POST['email'];
@@ -31,7 +38,6 @@ if(isset($_POST['submit'])){
             // echo "sign up";
             $sql="INSERT INTO user (name, email, password,acc_no,balance) VALUES ('$username','$email','$password','$ano','$balance')";
             mysqli_query($con,$sql);
-            session_start();
             $res=mysqli_query($con,"SELECT acc_no FROM user WHERE email='$email' AND password='$password' ");
             $row = mysqli_fetch_assoc($res);
             $_SESSION['acc_no'] = $row['acc_no'];
@@ -46,7 +52,6 @@ if(isset($_POST['submit'])){
         //login
         $res = mysqli_query($con,"SELECT acc_no FROM user WHERE email='$email' AND password='$password' ");
         if ($res->num_rows > 0){
-            session_start();
             $row = mysqli_fetch_assoc($res);
             $_SESSION['acc_no'] = $row['acc_no'];
             header("location:details/");

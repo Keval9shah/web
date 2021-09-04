@@ -92,6 +92,23 @@ body {
     /* font-weight: 600; */
 }
 
+.logout{
+    font-size: 11px;
+    cursor: pointer;
+    width: 48px;
+    height: 38px;
+    position: absolute;
+    top: 32px;
+    right: 35px;
+}
+
+.logout svg{
+    color: rgb(40, 52, 63);
+    margin-left: 8px;
+    width: 32px;
+    height: 32px;
+}
+
 .bal {
     margin: 5px 10%;
     font-size: 72px;

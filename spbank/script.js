@@ -17,7 +17,7 @@ function sup() {
     document.getElementById("ane").style.width = "180px";
     document.getElementById("nm").required = true;
     // <img class="prop2" src="prop2.svg" alt="">
-    document.getElementsByClassName("prop2")[0].outerHTML = "<img class='prop2' src='prop2.svg'></img>";
+    document.getElementsByClassName("prop2")[0].src = "prop2.svg";
 }
 
 function lin() {
@@ -32,5 +32,5 @@ function lin() {
     pass.placeholder = "Password";
     document.getElementById("ane").style.width = "200px";
     document.getElementById("nm").required = false;
-    document.getElementsByClassName("prop2")[0].outerHTML = "<img class='prop2' src='prop3.svg'></img>";
+    document.getElementsByClassName("prop2")[0].src = "prop3.svg";
 }

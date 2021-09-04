@@ -35,6 +35,7 @@ body {
     position: relative;
     top: 0px;
     left: 58px;
+    cursor: pointer;
 }
 
 .prop2 {
