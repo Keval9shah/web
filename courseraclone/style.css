@@ -156,7 +156,7 @@ body{
 .content{
     max-width: 1240px;
     box-sizing: border-box;
-    margin: 0 auto calc(9rem) auto;
+    margin: 0 auto 128px auto;
     margin-top: 65px;
     padding: 0 20px;
     padding-top: 20px;
@@ -169,11 +169,6 @@ body{
     margin-bottom: 16px;
     margin-top: 0;
     box-sizing: border-box;
-}
-.items{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
 }
 
 .navsmall{
@@ -196,6 +191,34 @@ body{
 }
 .expand svg{
     margin-top:15px ;
+}
+
+.items{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    /* margin-top: 100px; */
+}
+
+.items a{
+    box-sizing: border-box;
+    padding-right: 20px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    flex-basis: 25%;
+}
+.tile{
+    box-shadow: rgba(31, 31, 31, 0.12) 0px 1px 6px, rgba(31, 31, 31, 0.12) 0px 1px 4px;
+    border-radius: 3px;
+    display: flex;
+    height: 100%;
+}
+.tile_img{
+    margin-right: 10px;
+    border-radius: 3px 0 0 3px;
+    width: 80px;
+    height: 80px;
+    background-size: cover;
 }
 
 body::-webkit-scrollbar {
