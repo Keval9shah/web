@@ -13,7 +13,7 @@ body{
     width: calc(100vw - 9px);
     background-color: rgba(0, 0, 0);
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.55s ease-in-out;
 }
 .nav{
     z-index: 10;
@@ -23,7 +23,7 @@ body{
     height: 65px;
     width: 100%;
     box-sizing: border-box;
-    border-bottom: 1.5px rgb(224, 224, 224) solid;
+    border-bottom: 1px rgba(0, 0, 0,0.12) solid;
     transition: all 0.3s ease-out;
 }
 .add-shadow{
@@ -142,10 +142,12 @@ body{
     align-items: center;
 }
 .joinfree button{
+    font-family: inherit;
     cursor: pointer;
     color: white;
-    border-radius: 3px;
-    font-weight: bold;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: 700;
     background-color: #0056d2;
     border: none;
     height: 36px;
@@ -219,10 +221,11 @@ body{
     width: 80px;
     height: 80px;
     background-size: cover;
+    z-index: -2;
 }
 
 body::-webkit-scrollbar {
-    width: 9px;
+    width: 8px;
 }
 
 body::-webkit-scrollbar-track {

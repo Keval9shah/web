@@ -11,6 +11,8 @@ window.onscroll=(e)=>{
       nav[1].classList.remove("add-shadow");
     }
   };
+
+const tiles = document.querySelectorAll(".tile");
 explore.onmouseover = ()=>{
     overlay.style.opacity=0.5;
     overlay.style.zIndex=2;
