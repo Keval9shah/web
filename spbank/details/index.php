@@ -7,9 +7,9 @@ if(isset($_POST['d1']) && isset($_POST['d2'])){
 }
 
 session_start();
-if(!$_SESSION['acc_no']){
+if(!array_key_exists("acc_no", $_SESSION)){
     echo '<script type="text/JavaScript">
-    window.location.href = "redirect.html";
+    window.location.href = "../redirect";
     </script>';
 }
 $acnt=$_SESSION['acc_no'];
