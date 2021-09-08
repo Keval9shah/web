@@ -22,7 +22,7 @@ explore.onmouseout = ()=>{
     overlay.style.opacity=0;
     overlay.style.zIndex=-1;
     //addition body.style.overflow="visible";
-}
+};
 
 // var breathe = setInterval(myTimer, 1000);
 // var x=0;
@@ -44,4 +44,4 @@ window.onresize=()=>{
     document.querySelector("#student").innerHTML="For Students";
     document.querySelector("#enterprise").innerHTML="For Enterprise";
   }
-}
+};

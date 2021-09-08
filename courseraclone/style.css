@@ -235,10 +235,14 @@ body{
 .tile_txt{
     align-self: center;
     color: #636363;
+    font-family: "Helvetica";
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
 }
 
 .tile_txt span{
-    color: black;
+    color: rgb(31, 31, 31);
 }
 
 body::-webkit-scrollbar {
