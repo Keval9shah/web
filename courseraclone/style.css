@@ -206,22 +206,36 @@ body{
     box-sizing: border-box;
     padding-right: 20px;
     margin-bottom: 20px;
-    text-decoration: none;
     flex-basis: 25%;
+    text-decoration: none;
 }
 .tile{
     box-shadow: rgba(31, 31, 31, 0.12) 0px 1px 6px, rgba(31, 31, 31, 0.12) 0px 1px 4px;
     border-radius: 3px;
     display: flex;
     height: 100%;
+    transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+.tile:hover{
+    box-shadow: 0px 3px 11px rgba(31, 31, 31, 0.44);
 }
 .tile_img{
     margin-right: 10px;
     border-radius: 3px 0 0 3px;
     width: 80px;
+    min-width: 80px;
     height: 80px;
     background-size: cover;
     z-index: -2;
+}
+
+.tile_txt{
+    align-self: center;
+    color: #636363;
+}
+
+.tile_txt span{
+    color: black;
 }
 
 body::-webkit-scrollbar {
@@ -251,5 +265,23 @@ body::-webkit-scrollbar-thumb {
     .content p{
         font-size: 36px;
         line-height: 48px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .items a{
+        flex-basis: 33%;
+    }
+}
+
+@media screen and (max-width: 808px) {
+    .items a{
+        flex-basis: 50%;
+    }
+}
+
+@media screen and (max-width: 592px) {
+    .items a{
+        flex-basis: 100%;
     }
 }

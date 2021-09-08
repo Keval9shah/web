@@ -24,14 +24,16 @@ explore.onmouseout = ()=>{
     //addition body.style.overflow="visible";
 }
 
-// var breathe = setInterval(myTimer, 7000);
+// var breathe = setInterval(myTimer, 1000);
 // var x=0;
 // function myTimer() {
 //   x++;
-//   var y=[2,8];
-//   var z=y[x%2]
-//   nav.style.borderBottom=z+"px rgb(224, 224, 224) solid";
+//   var y=[70,60,40,20,0];
+//   var z=y[x%5]
+//   document.querySelector(".items").style.marginBottom=z+"px";
 // }
+// document.querySelector(".items").style.transition="all 1s";
+
 
 window.onresize=()=>{
   if(window.matchMedia("(max-width: 1080px)").matches){
