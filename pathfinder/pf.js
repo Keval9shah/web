@@ -37,7 +37,7 @@ var txt = document.getElementsByClassName("txt")[0];
 var grid = document.getElementsByClassName("grid")[0];
 var lng = document.getElementById("x1").offsetWidth;
 x = 55 + 45 + 5 * lng;
-if (window.matchMedia("(max-width:1680px) and (min-width:1080px)").matches) {
+if (window.matchMedia("(min-width:1080px)").matches) {
     info.style.top = "180px";
     txt.style.top = "80px";
     info.style.left = x + 15 + "px";

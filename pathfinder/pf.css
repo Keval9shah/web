@@ -44,12 +44,12 @@ i {
 }
 
 .bttn {
-    padding: 0 15px;
+    padding: 0;
     height: 38px;
     border-radius: 5px;
     margin: 30px 0 30px 20px;
     border: none;
-    transition: all 0.15s;
+    transition: all 0.6s;
     box-shadow: 0px 2px 4px 1px rgba(65, 46, 46, 0.08);
 }
 
@@ -58,7 +58,7 @@ i {
 }
 
 .bttn:hover {
-    box-shadow: 0px 2px 4px 1px rgba(70, 70, 70, 0.42);
+    box-shadow: 1px 2px 4px 1px rgba(70, 70, 70, 0.42);
 }
 
 button {
