@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>background</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .main{
+            display: flex;
+        }
+        .div1 {
+            width: 33%;
+            background-image: url(wall-events-pattern.svg);
+        }
+        .div2 {
+            width: 34%;
+            background-image: url(bg-dots-gradient.svg);
+        }
+        .div3{
+            width: 33%;
+            background: linear-gradient(#ceddf0, #fff);
+        }
+        .p1 {
+            font-size: 40px !important;
+            padding: calc(50vh - 23px) 0 !important;
+        }
+        .p2 {
+            font-size: 32px;
+            color: rgba(0, 0, 0);
+            margin: 0;
+            text-align: center;
+            padding: calc(50vh - 18px) 0;
+        }
+        .shadow{
+            text-shadow:rgba(0, 0, 0, 0.7) 0 0 1px;
+        }
+        @media only screen and (max-width: 427px) {
+            .main{
+                display: block;
+            }
+            .div1,.div2,.div3{
+                width: 100%;
+            }
+            .div1 {
+                height: 33vh;
+                background-image: url(wall-events-pattern.svg);
+            }
+            .div2 {
+                height: 34vh;
+                background-image: url(bg-dots-gradient.svg);
+            }
+            .div3{
+                height: 33vh;
+                background: linear-gradient(#ceddf0, #fff);
+            }
+            .p2{
+                padding: calc(16.7vh - 20.5px) 0;
+            }
+            .p1{
+                padding: calc(16.7vh - 26.8px) 0 !important;
+            }
+            .p3{
+                padding: calc(16.7vh - 22.5px) 0;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+        <div class="div1">
+          <p class="p2 p1">Bonjour👋</p>
+        </div>
+        <div class="div2">
+          <p class="p2 shadow">Namaste🙏</p>
+        </div>
+        <div class="div3">
+            <p class="p2 p3">Kon'nichiwa👋</p>
+        </div>
+    </div>
+  </body>
+</html>
