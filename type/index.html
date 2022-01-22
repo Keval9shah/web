@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>type test</title>
+    <style>
+      /* :root {
+        --size: 16px;
+      } */
+      body {
+        margin: 0;
+        font-family: monospace;
+      }
+      .text {
+        padding: 10px;
+        height: 150px;
+        width: 380px;
+        font-size: 16px;
+        border: 2px solid grey;
+        border-radius: 8px;
+        background-color: transparent;
+        letter-spacing: 1px;
+      }
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #888;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+      textarea {
+        resize: none;
+      }
+      #text {
+        top: calc(50vh - 87px);
+        left:calc(50vw - 260px);
+        opacity: 0.7;
+        position: absolute;
+        width: 380px;
+        height: 150px;
+        font-size: 16px;
+        padding: 12px;
+        z-index: -1;
+        letter-spacing: 1px;
+      }
+      .main{
+          padding: calc(50vh - 87px) 0 0 calc(50vw - 260px);
+          display: flex;
+      }
+      .div1{
+        display: flex;
+        flex-direction:column;
+        align-items: center;
+        margin-left: 6px;
+        height: 164px;
+        width: 110px;
+        padding-top: 10px;
+      }
+      button{
+          border: 1px solid grey;
+          border-radius: 3px;
+          width: 60px;
+          padding: 2px 6px;
+          margin-top: 5px;
+        }
+        #score{
+            font-size: 50px;
+            margin: 12px auto;
+        }
+        #submit{
+            margin-top: 15px;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="text"></div>
+    <div class="main">
+        <textarea class="text" id="tarea" cols="30" rows="10"></textarea>
+        <div class="div1">
+            <div id="score">0</div>
+            <div>Score</div>
+                <button id="submit">submit</button>
+                <button id="reset">reset</button>
+        </div>
+    </div>
+    <script>
+      var text = "";
+      const tarea = document.querySelector("#tarea");
+      const submit = document.querySelector("#submit");
+      const reset = document.querySelector("#reset");
+      const textdiv = document.querySelector("#text");
+      const score = document.querySelector("#score");
+      var scoreval = 0;
+      //   const body=document.querySelector("body");
+      submit.onclick = () => {
+        text = tarea.value;
+        var str = "";
+        for (i = 0; i < text.length; i++) {
+          str += "<letter>" + text[i] + "</letter>";
+        }
+        // tarea.disabled=true;
+        tarea.focus();
+        tarea.value = "";
+        var pointer = 0;
+        tarea.onkeydown = (e) => {
+          pointer = tarea.value.length + 1;
+          if (pointer > 0 && e.key == text[pointer - 1] && e.key != " ") {
+            scoreval += 1;
+          } else if (scoreval > 0 && e.keyCode == 8) {
+            if (
+              text[pointer - 2] == tarea.value[pointer - 2] &&
+              text[pointer - 2] != " "
+            ) {
+              scoreval -= 1;
+            }
+          }
+          score.innerHTML = scoreval;
+        };
+        textdiv.innerHTML = str;
+      };
+      reset.onclick = () => {
+        textdiv.innerHTML = "";
+        tarea.onkeydown = "";
+        scoreval = 0;
+        score.innerHTML = scoreval;
+      };
+    </script>
+  </body>
+</html>
