@@ -15,12 +15,12 @@
         font-family: monospace;
       }
       .text {
-        padding: 10px 10px 66px 10px;
-        height: 94px;
-        width: 380px;
-        font-size: 16px;
-        border: 2px solid grey;
-        border-radius: 8px;
+        padding: 16px 20px 132px 20px;
+        height: 180px;
+        width: 760px;
+        font-size: 32px;
+        border: 4px solid grey;
+        border-radius: 16px;
         background-color: transparent;
         letter-spacing: 1px;
       }
@@ -31,58 +31,62 @@
         resize: none;
       }
       #text {
-        top: calc(50vh - 87px);
-        left: calc(50vw - 260px);
+        top: calc(50vh - 172px);
+        left: calc(50vw - 520px);
         opacity: 0.6;
         position: absolute;
-        width: 380px;
-        height: 150px;
-        font-size: 16px;
-        padding: 12px;
+        width: 760px;
+        height: 292px;
+        font-size: 32px;
+        padding: 24px;
+        padding-top: 20px;
         z-index: -1;
         letter-spacing: 1px;
         overflow: hidden;
       }
       .main {
-        padding: calc(50vh - 107px) 0 0 calc(50vw - 260px);
+        padding: calc(50vh - 214px) 0 0 calc(50vw - 520px);
         display: flex;
       }
       .div1 {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-left: 6px;
-        height: 164px;
-        width: 110px;
-        padding-top: 10px;
+        margin-left: 20px;
+        height: 348px;
+        width: 180px;
+        padding-top: 30px;
+        font-size: 26px;
       }
       button {
         border: 1px solid grey;
         border-radius: 3px;
-        width: 60px;
-        padding: 2px 6px;
+        padding: 12px 16px;
         margin-top: 5px;
         cursor: pointer;
       }
       #score {
-        font-size: 50px;
-        margin: 12px auto;
+        font-size: 100px;
+        margin: 25px auto;
       }
       #submit {
-        margin-top: 15px;
-        height: 28px;
+        margin-top: 28px;
+        font-size: 28px;
+        height: 60px;
+        border: 2px solid gray;
+        border-radius: 5px;
       }
       .div2 {
         display: flex;
         flex-direction: column;
       }
       #timer {
-        height: 20px;
-        font-size: 15px;
-        padding-left: 10px;
+        height: 42px;
+        font-size: 32px;
+        padding-left: 20px;
       }
       .empty{
-          height: 100px;
+          height: 200px;
       }
     </style>
   </head>
@@ -96,7 +100,7 @@
       <div class="div1">
         <div id="score">0</div>
         <div>Score</div>
-        <button id="submit">Done!!</button>
+        <button id="submit">Next!!</button>
       </div>
     </div>
     <script>
