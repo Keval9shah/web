@@ -23,6 +23,7 @@
         border-radius: 16px;
         background-color: transparent;
         letter-spacing: 1px;
+        outline: none;
       }
       ::-webkit-scrollbar {
         width: 0px;
@@ -166,7 +167,7 @@
           }
           temp1 = getCurrentLine(tarea.value + "l");
           if (temp1 > 5) {
-            tarea.scrollTop = (temp1 - 5) * 20;
+            tarea.scrollTop = (temp1 - 5) * 45;
           }
           score.innerHTML = scoreval;
           if (start == 0) {
