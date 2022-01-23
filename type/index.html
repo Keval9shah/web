@@ -125,18 +125,7 @@
       var start = 0;
       var time = 0;
 
-      submit.onclick = () => {
-        start=0;
-        clearInterval(timeInterval);
-        timer.innerHTML="0s last score "+(Math.floor(scoreval*12/time)).toString()+" wpm";
-        time=0;
-        textdiv.scrollTop = 0;
-        incr += 1;
-        scoreval = 0;
-        score.innerHTML = scoreval;
-        text = textArray[incr % 7];
-        mainFn();
-      };
+
 
       var incr = 0;
       var text = "";
@@ -152,6 +141,9 @@
         tarea.focus();
         tarea.value = "";
         var pointer = 0;
+        var noOfWords=text.split(" ").length;
+        var newLength=text.length-noOfWords+1;
+        textdiv.innerHTML = text+"<div class='empty'></div>";
 
         tarea.onkeydown = (e) => {
           pointer = tarea.value.length + 1;
@@ -170,6 +162,9 @@
             tarea.scrollTop = (temp1 - 5) * 45;
           }
           score.innerHTML = scoreval;
+          if(scoreval==newLength){
+            setTimeout(submitfn, 200);
+          }
           if (start == 0) {
             start = 1;
             timeInterval=setInterval(() => {
@@ -186,7 +181,6 @@
             }, 1000);
           }
         };
-        textdiv.innerHTML = text+"<div class='empty'></div>";
       }
 
       tarea.onscroll = () => {
@@ -199,6 +193,21 @@
           return false;
         }
       }
+
+      submit.onclick = submitfn;
+      function submitfn(){
+        start=0;
+        clearInterval(timeInterval);
+        timer.innerHTML="0s last score "+(Math.floor(scoreval*14/time)).toString()+" wpm";
+        time=0;
+        textdiv.scrollTop = 0;
+        incr += 1;
+        scoreval = 0;
+        score.innerHTML = scoreval;
+        text = textArray[incr % 7];
+        mainFn();
+      }
+
       tarea.addEventListener("keydown", preventDefaultForScrollKeys, false);
       function getCurrentLine(text) {
         var lineArray = [];
