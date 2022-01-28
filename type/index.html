@@ -54,7 +54,6 @@
         border-radius: 16px;
         position: absolute;
         width: calc(78vw - 180px);
-        min-width: 250px;
         height: calc(65vh - 46px);
         min-height: 156px;
         font-size: 28px;
@@ -116,7 +115,39 @@
       }
       @media only screen and (min-width: 50px) and (max-width: 430px){
         .main{
+          padding-top: 12vh;
           flex-direction: column;
+          height: calc(65vh + 112px);
+        }
+        .textarea,#text{
+          width: 78vw;
+          min-width: 220px;
+          font-size: 24px;
+          line-height: 38px;
+        }
+        #text{
+          top: calc(12vh + 42px)
+        }
+        .div1{
+          margin-top: 30px;
+          flex-direction: row;
+          height: 70px;
+          width: 280px;
+          padding: 0;
+          align-items:flex-end;
+        }
+        #score{
+          margin: 0 10px -5px 0;
+          font-size: 56px;
+          display: block;
+          flex-shrink: 0;
+          width: 92px;
+        }
+        #submit{
+          font-size: 24px;
+          padding: 9px 12px;
+          height: 50px;
+          margin: 0 0 0 30px;
         }
       }
     </style>
