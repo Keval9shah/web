@@ -54,6 +54,7 @@
         border-radius: 16px;
         position: absolute;
         width: calc(78vw - 180px);
+        min-width: 250px;
         height: calc(65vh - 46px);
         min-height: 156px;
         font-size: 28px;
@@ -113,37 +114,38 @@
       #wpmscore {
         padding-right: 25px;
       }
-      @media only screen and (min-width: 50px) and (max-width: 430px){
-        .main{
+      @media only screen and (min-width: 50px) and (max-width: 430px) {
+        .main {
           padding-top: 12vh;
           flex-direction: column;
           height: calc(65vh + 112px);
         }
-        .textarea,#text{
+        .textarea,
+        #text {
           width: 78vw;
           min-width: 220px;
           font-size: 24px;
           line-height: 38px;
         }
-        #text{
-          top: calc(12vh + 42px)
+        #text {
+          top: calc(12vh + 42px);
         }
-        .div1{
+        .div1 {
           margin-top: 30px;
           flex-direction: row;
           height: 70px;
           width: 280px;
           padding: 0;
-          align-items:flex-end;
+          align-items: flex-end;
         }
-        #score{
+        #score {
           margin: 0 10px -5px 0;
           font-size: 56px;
           display: block;
           flex-shrink: 0;
           width: 92px;
         }
-        #submit{
+        #submit {
           font-size: 24px;
           padding: 9px 12px;
           height: 50px;
@@ -153,7 +155,9 @@
     </style>
   </head>
   <body>
-    <div id="text"><div class="empty"></div></div>
+    <div id="text">
+      <div class="empty"></div>
+    </div>
     <div class="main">
       <div class="div2">
         <div id="timer">
@@ -216,13 +220,19 @@
           pointer = tarea.value.length + 1;
           if (e.key == text[pointer - 1]) {
             scoreval += 1;
-          } else if (e.keyCode == 8 && pointer>1) {
+          } else if (e.keyCode == 8 && pointer > 1) {
             if (scoreval > 0 && text[pointer - 2] == tarea.value[pointer - 2]) {
               scoreval -= 1;
             }
             spans[pointer - 2].style = "background-color:;color:;";
-          } else if((e.keyCode>=48 && e.keyCode<=90) || (e.keyCode>=96 && e.keyCode<=111) || (e.keyCode>=186 && e.keyCode<=222) || e.keyCode==32) {
-            spans[pointer - 1].style = "background-color:#de3545;color:#de3545;";
+          } else if (
+            (e.keyCode >= 48 && e.keyCode <= 90) ||
+            (e.keyCode >= 96 && e.keyCode <= 111) ||
+            (e.keyCode >= 186 && e.keyCode <= 222) ||
+            e.keyCode == 32
+          ) {
+            spans[pointer - 1].style =
+              "background-color:#de3545;color:#de3545;";
           }
           // document.querySelector("body").style.backgroundColor=color[scoreval%8];
           temp1 = getCurrentLine(tarea.value + "l");
@@ -262,7 +272,7 @@
       };
 
       function preventDefaultForScrollKeys(e) {
-        if (e.keyCode == 13 || e.keyCode ==37 || e.keyCode==46) {
+        if (e.keyCode == 13 || e.keyCode == 37 || e.keyCode == 46) {
           e.preventDefault();
           return false;
         }
