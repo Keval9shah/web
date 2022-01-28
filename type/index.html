@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>type test</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
     <style>
       /* :root {
         --size: 16px;
@@ -189,7 +190,7 @@
               scoreval -= 1;
             }
             spans[pointer - 2].style = "background-color:;color:;";
-          } else {
+          } else if(e.keyCode>=32 && e.keyCode<=126) {
             spans[pointer - 1].style = "background-color:#de3545;color:#de3545;";
           }
           // document.querySelector("body").style.backgroundColor=color[scoreval%8];
