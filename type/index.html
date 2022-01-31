@@ -18,23 +18,24 @@
       body {
         margin: 0;
         font-family: "gilroy";
-        background-color: gainsboro;
+        background-color: #1c1c1c;
       }
       .textarea {
-        padding: 16px 20px 24vh 20px;
+        padding: 0 20px 60px 20px;
         font-size: 28px;
-        border: 4px solid grey;
+        color: #f5f3ed;
+        /* border: 4px solid rgb(36, 36, 36); */
+        border: none;
         border-radius: 16px;
         background-color: transparent;
         letter-spacing: 1px;
         outline: none;
         font-family: monospace;
-        opacity: 0.8;
         line-height: 45px;
-        width: calc(78vw - 180px);
+        width: 78vw;
         min-width: 250px;
-        height: calc(65vh - 42px);
-        min-height: 156px;
+        height: calc(29vh - 42px);
+        min-height: 128px;
         box-sizing: border-box;
       }
       ::-webkit-scrollbar {
@@ -47,54 +48,47 @@
         box-sizing: border-box;
         line-height: 45px;
         font-family: monospace;
-        background-color: #eaeaea;
-        color: #8c8c8c;
-        top: calc(16vh + 42px);
+        background-color: transparent;
+        color: #444444;
+        top: calc(32vh + 42px);
         left: 11vw;
         border-radius: 16px;
         position: absolute;
-        width: calc(78vw - 180px);
+        width: 78vw;
         min-width: 250px;
-        height: calc(65vh - 46px);
-        min-height: 156px;
+        height: calc(29vh - 46px);
+        min-height: 128px;
         font-size: 28px;
-        padding: 24px;
-        padding-top: 20px;
+        padding: 20px;
+        padding-top: 0;
         z-index: -1;
         letter-spacing: 1px;
         overflow: hidden;
       }
       .main {
-        padding: 16vh 0 0 11vw;
-        display: flex;
-        width: 78vw;
-        height: 65vh;
-        min-height: 198px;
-      }
-      .div1 {
+        padding: 32vh 0 0 11vw;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        padding-left: 20px;
-        height: 328px;
-        width: 180px;
-        margin-top: 40px;
-        font-size: 26px;
+        width: 78vw;
+        height: calc(29vh + 68px);
+        min-height: 198px;
       }
       button {
         padding: 12px 16px;
-        margin-top: 5px;
+        margin: 8px 0 20px 20px;
         cursor: pointer;
+        width: 180px;
+        background-color: #222222;
+        color:#555555;
+        transition: all 0.3s;
       }
-      #score {
-        font-size: 89px;
-        margin: 25px auto 15px auto;
+      button:hover{
+        color: #f6f4efb3;
       }
       #submit {
-        margin-top: 40px;
         font-size: 28px;
         height: 60px;
-        border: 2px solid grey;
+        border: 2px solid rgb(36, 36, 36);
         border-radius: 5px;
       }
       .div2 {
@@ -103,9 +97,10 @@
       }
       #timer {
         height: 42px;
-        font-size: 32px;
+        font-size: 30px;
         padding-left: 20px;
         display: flex;
+        color: #dfd7af;
         justify-content: space-between;
       }
       .empty {
@@ -116,7 +111,7 @@
       }
       @media only screen and (min-width: 50px) and (max-width: 430px) {
         .main {
-          padding-top: 12vh;
+          padding-top: 22vh;
           flex-direction: column;
           height: calc(65vh + 112px);
         }
@@ -129,21 +124,6 @@
         }
         #text {
           top: calc(12vh + 42px);
-        }
-        .div1 {
-          margin-top: 30px;
-          flex-direction: row;
-          height: 70px;
-          width: 280px;
-          padding: 0;
-          align-items: flex-end;
-        }
-        #score {
-          margin: 0 10px -5px 0;
-          font-size: 56px;
-          display: block;
-          flex-shrink: 0;
-          width: 92px;
         }
         #submit {
           font-size: 24px;
@@ -166,11 +146,7 @@
         </div>
         <textarea class="textarea" id="tarea" cols="30" rows="10"></textarea>
       </div>
-      <div class="div1">
-        <div id="score">0</div>
-        <div>Score</div>
-        <button id="submit">Next!!</button>
-      </div>
+      <button id="submit">Next!!</button>
     </div>
     <script>
       const textArray = [
@@ -224,7 +200,7 @@
             if (scoreval > 0 && text[pointer - 2] == tarea.value[pointer - 2]) {
               scoreval -= 1;
             }
-            spans[pointer - 2].style = "background-color:;color:;";
+            spans[pointer - 2].style = "background-color:;color:#444444;";
           } else if (
             (e.keyCode >= 48 && e.keyCode <= 90) ||
             (e.keyCode >= 96 && e.keyCode <= 111) ||
@@ -232,14 +208,9 @@
             e.keyCode == 32
           ) {
             spans[pointer - 1].style =
-              "background-color:#de3545;color:#de3545;";
+              "background-color:#5d3123;color:#5d3123;";
           }
           // document.querySelector("body").style.backgroundColor=color[scoreval%8];
-          temp1 = getCurrentLine(tarea.value + "l");
-          if (temp1 > 5) {
-            tarea.scrollTop = (temp1 - 5) * 55;
-          }
-          score.innerHTML = scoreval;
           if (scoreval == newLength) {
             setTimeout(submitfn, 200);
           }
@@ -288,7 +259,7 @@
         textdiv.scrollTop = 0;
         incr += 1;
         scoreval = 0;
-        score.innerHTML = scoreval;
+        // score.innerHTML = scoreval;
         text = textArray[incr % 7];
         mainFn();
       }
