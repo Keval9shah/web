@@ -123,12 +123,12 @@ $email=$row['email'];
             prfl();
         });
 
-        document.querySelector(".logout").onclick=()=>{
-            <?php
-                session_destroy();
-            ?>
-            location.href="../";
-        }
+        // document.querySelector(".logout").onclick=()=>{
+        //     <?php
+        //         session_destroy();
+        //     ?>
+        //     location.href="../";
+        // }
 
         var balance=<?php echo $row['balance'];?>;
         var acc_no=<?php echo $row['acc_no'];?>;

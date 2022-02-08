@@ -1,5 +1,5 @@
 <?php
-require('connection.inc.php');
+require('../connection.inc.php');
 
 session_start();
 $acnt=$_SESSION['acc_no'];
