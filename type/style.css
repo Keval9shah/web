@@ -1,0 +1,119 @@
+/* :root {
+--size: 16px;
+} */
+@font-face {
+  font-family: "gilroy";
+  src: url("Gilroy-FREE/Gilroy-FREE/Gilroy-Light.otf") format("opentype");
+}
+body {
+  margin: 0;
+  font-family: "gilroy";
+  background-color: #1c1c1c;
+}
+.textarea {
+  padding: 0 20px 42px 20px;
+  font-size: 28px;
+  color: #f5f3ed;
+  /* border: 4px solid rgb(36, 36, 36); */
+  border: none;
+  border-radius: 16px;
+  background-color: transparent;
+  letter-spacing: 1px;
+  outline: none;
+  font-family: "Roboto Mono";
+  line-height: 45px;
+  width: 78vw;
+  min-width: 250px;
+  height: 132.5px;
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+textarea {
+  resize: none;
+}
+#text {
+  box-sizing: border-box;
+  line-height: 45px;
+  font-family: "Roboto Mono";
+  background-color: transparent;
+  color: #444444;
+  top: calc(32vh + 42px);
+  left: 11vw;
+  border-radius: 16px;
+  position: absolute;
+  width: 78vw;
+  min-width: 250px;
+  height: 132.5px;
+  font-size: 28px;
+  padding: 20px;
+  padding-top: 0;
+  z-index: -1;
+  letter-spacing: 1px;
+  overflow: hidden;
+}
+.main {
+  padding: 32vh 0 0 11vw;
+  display: flex;
+  flex-direction: column;
+  width: 78vw;
+  height: 269px;
+  min-height: 198px;
+  /* align-items: center; */
+}
+#submit {
+  font-size: 28px;
+  height: 60px;
+  border: 2px solid rgb(36, 36, 36);
+  border-radius: 5px;
+  padding: 12px 16px;
+  margin: 20px 20px 0 20px;
+  cursor: pointer;
+  width: 180px;
+  background-color: #222222;
+  color: #555555;
+  transition: all 0.3s;
+}
+#submit:hover {
+  color: #f5f3ed;
+  /* background-color: #222222; */
+}
+.div2 {
+  display: flex;
+  flex-direction: column;
+}
+#timer {
+  height: 42px;
+  font-size: 30px;
+  padding-left: 20px;
+  display: flex;
+  color: #dfd7af;
+  justify-content: space-between;
+}
+.empty {
+  height: 200px;
+}
+#wpmscore {
+  padding-right: 25px;
+}
+@media only screen and (min-width: 50px) and (max-width: 430px) {
+  .main {
+    padding-top: 28vh;
+    flex-direction: column;
+    height: calc(29vh + 68px);
+  }
+  .textarea,
+  #text {
+    width: 78vw;
+    min-width: 220px;
+    font-size: 24px;
+    line-height: 38px;
+  }
+  #text {
+    top: calc(28vh + 42px);
+  }
+  button {
+    margin-top: 16px;
+  }
+}
