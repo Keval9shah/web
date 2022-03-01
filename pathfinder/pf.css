@@ -85,7 +85,7 @@ button {
 }
 
 #bottom {
-    width: 600px;
+    max-width: 600px;
 }
 
 .html {
@@ -201,9 +201,6 @@ select {
     }
     .sizechng {
         margin-left: -7px;
-    }
-    #bottom {
-        width: 500px;
     }
     .b1,
     .b2 {
