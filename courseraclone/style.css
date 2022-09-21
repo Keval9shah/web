@@ -76,6 +76,7 @@ body{
     line-height: 36px;
 }
 .explore-button:hover button{
+    cursor: pointer;
     color:#0056d2;
     background-color: white;
     box-shadow: 0 0 7px rgba(143, 143, 143, 0.781);
