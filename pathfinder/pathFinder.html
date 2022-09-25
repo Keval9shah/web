@@ -8,15 +8,15 @@
     <link rel="icon" type="image/png" href="pf.png" />
     <title>Path Finder</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="pf.css">
+    <link rel="stylesheet" href="pathFinder.css">
 </head>
 
 <body>
-    <div class="version"><a href="pathFinder.html">New Version</a></div>
+    <div class="version"><a href="index.html">Old Version</a></div>
     <div class="txt">
         <h3>Path Finder</h3>
-        <div class="html">
-            <p id="show">Path was found in
+        <div class="d-flex align-items-center">
+            <p id="show" class="my-0">Path was found in
                 <span id="steps">_</span> steps.</p>
 
             <div class="sizechng">
@@ -29,34 +29,18 @@
             </div>
         </div>
     </div>
-    <div id="info">
-        <div class="row1">
-            <div class="col1">
-                <button class="inf" style="width:67px;background: #0b032d;"></button>
-            </div>
-            <div class="col2">
-                On One tap <br>
-                <div class="label label-default">Obstacle</div>
-            </div>
-        </div><br>
-        <div class="row1">
-            <div class="col1">
-                <button class="inf" style="width:67px;background: #B6CEC7;">src/dest</button>
-            </div>
-            <div class="col2">
-                On Double tap <br>
-                <div class="label label-info">src</div> /
-                <div class="label label-warning">dest</div>
-            </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div id="grid"></div>
+            <div id="info"></div>
         </div>
     </div>
-    <!-- script added here to avoid weird adding of elements from JS -->
-    <script src="../jquery.js"></script>
-    <script src="pf.js"></script>
     <div id='bottom'>
         <button class='bttn b1' onclick='editMode(fiind)'><i class='fa fa-search' aria-hidden='true'></i>Find</button>
         <button class='bttn b2' onclick='reset()'><i class='fa fa-refresh' aria-hidden='true'></i>Reset</button>
     </div>
+    <script src="../jquery.js"></script>
+    <script src="pathFinder.js"></script>
 </body>
 
 </html>

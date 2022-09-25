@@ -160,7 +160,7 @@ function timeout(sd, now, a, i) {
         if (now[0] == sd[1][0] && now[1] == sd[1][1]) {
             document.getElementById("x" + a).style.background = "#FFD700";
         }
-    }, 250 + 250 * i);
+    }, 200 + 200 * i);
 }
 
 function findMin() {
@@ -184,6 +184,12 @@ function findMin() {
 function nearbyBtns(Btn) {
     var cBtn;
     var psblmv = [
+        // cross-move start
+        [1, -1],
+        [-1, 1],
+        [-1, -1],
+        [1, 1],
+        // end
         [0, 1],
         [1, 0],
         [-1, 0],
@@ -204,19 +210,21 @@ function nearbyBtns(Btn) {
 function findDist(x) {
     crntBtn = [x[0], x[1]];
     //destdist
-    var destDist = new Array(4).fill(0); //Array(5);
+    var destDist = new Array(5).fill(0); //Array(5);
     destDist[0] = Math.abs(crntBtn[0] - sd[1][0]);
     destDist[1] = Math.abs(crntBtn[1] - sd[1][1]);
-    destDist[2] = destDist[0] * 10 + destDist[1] * 10;
+    destDist[3] = Math.min(destDist[0], destDist[1])
+    destDist[2] = destDist[3] * 14 + (destDist[0] - destDist[3]) * 10 + (destDist[1] - destDist[3]) * 10;
 
     // src
     destDist[0] = Math.abs(crntBtn[0] - sd[0][0]);
     destDist[1] = Math.abs(crntBtn[1] - sd[0][1]);
-    destDist[3] = destDist[0] * 3 + destDist[1] * 3;
+    destDist[3] = Math.min(destDist[0], destDist[1])
+    destDist[4] = destDist[3] * 4 + (destDist[0] - destDist[3]) * 3 + (destDist[1] - destDist[3]) * 3;
     if (x[0] == sd[1][0] && x[1] == sd[1][1]) {
         return 1;
     }
-    return destDist[2] + destDist[3];
+    return destDist[2] + destDist[4];
 }
 
 function reset() {

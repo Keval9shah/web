@@ -125,6 +125,12 @@ select {
     flex: 0 0 90px;
 }
 
+.version {
+    position: fixed;
+    right: 5px;
+    top: 5px;
+}
+
 @media only screen and (min-width: 430px) and (max-width: 787px) {
     .grid {
         margin: 85px 0 0 35px;
