@@ -3,9 +3,9 @@ var defaultColor = "green";
 var defaultImageURL = "https://free4kwallpapers.com/uploads/originals/2019/12/16/nature-wallpaper.jpg";
 var current = "white";
 var set = "white";
-var colorButtons = document.querySelectorAll(".bttn");
-var imageButtons = document.querySelectorAll(".bttn2");
-var e, inpimg: HTMLInputElement;
+var colorButtons: NodeListOf<HTMLElement> = document.querySelectorAll(".bttn");
+var imageButtons: NodeListOf<HTMLElement> = document.querySelectorAll(".bttn2");
+var e: HTMLSelectElement, inpimg: HTMLInputElement;
 
 function openMenu() {
     (<HTMLElement>document.querySelector("#i")).style.display = "none";
@@ -29,8 +29,8 @@ function toggleColorImage() {
     x++;
     if (x % 2 == 1) {
         document.getElementsByTagName("div")[0].style.width = "22%";
-        document.querySelector("#bttn1").innerHTML = "background image";
-        document.querySelector("#scnd").style.width = document.querySelector("#bttn1").offsetWidth + 0.5;
+        (<HTMLElement>document.querySelector("#bttn1")).innerHTML = "background image";
+        (<HTMLElement>document.querySelector("#scnd")).style.width = ((<HTMLElement>document.querySelector("#bttn1")).offsetWidth + 0.5).toString();
         document.body.style.backgroundImage = "none";
         document.body.style.backgroundColor = defaultColor;
         for (let i = 0; i < colorButtons.length; i++) {
@@ -42,8 +42,8 @@ function toggleColorImage() {
     } else {
         document.getElementsByTagName("div")[0].style.width = "40%";
         document.body.style.backgroundImage = "url(" + defaultImageURL + ")";
-        document.querySelector("#bttn1").innerHTML = "background color";
-        document.querySelector("#scnd").style.width = document.querySelector("#bttn1").offsetWidth;
+        (<HTMLElement>document.querySelector("#bttn1")).innerHTML = "background color";
+        (<HTMLElement>document.querySelector("#scnd")).style.width = (<HTMLElement>document.querySelector("#bttn1")).offsetWidth.toString();
         for (let i = 0; i < colorButtons.length; i++) {
             colorButtons[i].style.display = "none";
         }

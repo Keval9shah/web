@@ -9,9 +9,7 @@ const textArray = [
 ];
 const tarea = <HTMLTextAreaElement>document.querySelector("#tarea");
 const submit = <HTMLButtonElement>document.querySelector("#submit");
-const reset = <HTMLButtonElement>document.querySelector("#reset");
 const textdiv = <HTMLElement>document.querySelector("#text");
-// const score = document.querySelector("#score");
 const timer = <HTMLElement>document.querySelector("section");
 const wpmsc = <HTMLElement>document.querySelector("#wpmscore");
 
@@ -107,7 +105,6 @@ function submitfn() {
   textdiv.scrollTop = 0;
   incr += 1;
   scoreval = 0;
-  // score.innerHTML = scoreval;
   text = textArray[incr % 7];
   mainFn();
 }

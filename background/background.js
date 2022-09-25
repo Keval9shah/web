@@ -28,7 +28,7 @@ function toggleColorImage() {
     if (x % 2 == 1) {
         document.getElementsByTagName("div")[0].style.width = "22%";
         document.querySelector("#bttn1").innerHTML = "background image";
-        document.querySelector("#scnd").style.width = document.querySelector("#bttn1").offsetWidth + 0.5;
+        document.querySelector("#scnd").style.width = (document.querySelector("#bttn1").offsetWidth + 0.5).toString();
         document.body.style.backgroundImage = "none";
         document.body.style.backgroundColor = defaultColor;
         for (let i = 0; i < colorButtons.length; i++) {
@@ -42,7 +42,7 @@ function toggleColorImage() {
         document.getElementsByTagName("div")[0].style.width = "40%";
         document.body.style.backgroundImage = "url(" + defaultImageURL + ")";
         document.querySelector("#bttn1").innerHTML = "background color";
-        document.querySelector("#scnd").style.width = document.querySelector("#bttn1").offsetWidth;
+        document.querySelector("#scnd").style.width = document.querySelector("#bttn1").offsetWidth.toString();
         for (let i = 0; i < colorButtons.length; i++) {
             colorButtons[i].style.display = "none";
         }
