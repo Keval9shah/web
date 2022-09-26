@@ -8,12 +8,14 @@ var NodeType;
 })(NodeType || (NodeType = {}));
 const colors = ["white", "black", "#b6cec7", "#ffd700"];
 // nodes structure grid obj -> nodes array -> row array -> node obj
-let rowSize = 7;
-let columnSize = 12;
+let rowSize = 0;
+let columnSize = 0;
 const nodes = [];
+let source = {};
+let destination = {};
 constructGrid();
 function constructGrid() {
-    let newColumnSize = Math.floor((window.innerWidth - 110) / 52);
+    let newColumnSize = Math.floor((window.innerWidth - 132) / 52);
     let newRowSize = Math.floor((window.innerHeight - 220) / 52);
     if (columnSize == newColumnSize && rowSize == newRowSize && $("#grid button").length != 0) {
         return;
@@ -58,5 +60,22 @@ function constructGrid() {
 }
 window.onresize = constructGrid;
 function clicked(id) {
-    $("#" + id).css('background-color', 'black');
+    let x, y;
+    [x, y] = id.split("_");
+    x = Number(x);
+    y = Number(y);
+    let currentNode = nodes[x][y];
+    (currentNode.type != NodeType.destinationFound) && (currentNode.type = (currentNode.type + 1) % 3);
+    if (currentNode.type == NodeType.endpoint && !source.x) {
+        source = { x, y };
+        $("#" + id).text("src");
+    }
+    else if (currentNode.type == NodeType.endpoint && !destination.x) {
+        destination = { x, y };
+        $("#" + id).text("dest");
+    }
+    else if (currentNode.type == NodeType.endpoint) {
+        currentNode.type = NodeType.blank;
+    }
+    $("#" + id).css('background-color', currentNode.color);
 }
