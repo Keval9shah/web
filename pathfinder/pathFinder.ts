@@ -30,6 +30,7 @@ constructGrid();
 function constructGrid() {
     let newColumnSize = Math.floor((window.innerWidth - 132)/52);
     let newRowSize = Math.floor((window.innerHeight - 220)/52);
+    let gridElement: JQuery<HTMLElement> = $("#grid");
     if(columnSize == newColumnSize && rowSize == newRowSize && $("#grid button").length != 0) { return; }
     for (let rowNum = 0; rowNum < newRowSize; rowNum++) {
         !nodes[rowNum] && nodes.push([]);
@@ -45,7 +46,7 @@ function constructGrid() {
                 type: NodeType.blank
             });
             if ($("#grid button").length == 0) {
-                $("#grid").append("<button class='grid-node' onclick='clicked(this.id)' id=" + rowNum + "_" + columnNum + "></button>");
+                gridElement.append("<button class='grid-node' onclick='clicked(this.id)' id=" + rowNum + "_" + columnNum + "></button>");
             } else {
                 $("<button class='grid-node' onclick='clicked(this.id)' id=" + rowNum + "_" + columnNum + "></button>").insertAfter("#" + (columnNum == 0 ? rowNum - 1 : rowNum) + "_" + (columnNum == 0 ? newColumnSize - 1 : columnNum - 1));
             }
@@ -64,7 +65,8 @@ function constructGrid() {
     }
     columnSize = newColumnSize;
     rowSize = newRowSize;
-    $("#grid").css('width',columnSize*52)
+    gridElement.css('width',columnSize*52);
+    gridElement.css('grid-template-columns','repeat(' + columnSize + ', 52px)')
 }
 
 window.onresize = constructGrid;
