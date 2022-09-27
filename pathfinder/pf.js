@@ -113,7 +113,25 @@ setTimeout(() => {
 }, 1000);
 
 
-function fiind() {
+async function fiind() {
+    for (let i = 0; i < size[0]; i++) {
+        for (let j = 0; j < size[1]; j++) {
+            for (let k = 0; k < 3; k++) {
+                if (k != 0) {
+                    if (k == 2 && arr[i][j][k] == 1 && arr[i][j][0] == 0) {
+                        var temp = i + 1 + j * size[0];
+                        document.getElementById("x" + temp).style.background = "white";
+                        document.getElementById("x" + temp).innerHTML = "";
+                    }
+                    arr[i][j][k] = 0;
+                } else if (arr[i][j][k] == 2) {
+                    var tmp = i + 1 + j * size[0];
+                    document.getElementById("x" + tmp).style.background = "#B6CEC7";
+                }
+            }
+        }
+    }
+
     if (sd[0][0] == -1 || sd[1][0] == -1) {
         note.innerHTML = "Select Source and Destination";
         setTimeout(() => {
@@ -134,7 +152,7 @@ function fiind() {
         nearbyBtns(now);
         now = [...findMin()];
         var a = now[0] + 1 + now[1] * size[0];
-        timeout(sd, now, a, i);
+        await timeout(sd, now, a, i);
         if (now[0] == sd[1][0] && now[1] == sd[1][1]) {
             break;
         }
@@ -151,8 +169,8 @@ function fiind() {
     }
 }
 
-function timeout(sd, now, a, i) {
-    setTimeout(function() {
+async function timeout(sd, now, a, i) {
+    await new Promise ((res,rej) => setTimeout(function() {
         if (now[0] != sd[1][0] || now[1] != sd[1][1]) {
             document.getElementById("x" + a).style.background = "green";
             document.getElementById("x" + a).innerHTML = (i + 1).toString();
@@ -160,7 +178,8 @@ function timeout(sd, now, a, i) {
         if (now[0] == sd[1][0] && now[1] == sd[1][1]) {
             document.getElementById("x" + a).style.background = "#FFD700";
         }
-    }, 200 + 200 * i);
+        res(true);
+    }, 200));
 }
 
 function findMin() {
@@ -245,27 +264,6 @@ function reset() {
         document.getElementById("x" + i).innerHTML = "";
     }
     pinFull = 3;
-}
-
-function editMode(callback) {
-    for (let i = 0; i < size[0]; i++) {
-        for (let j = 0; j < size[1]; j++) {
-            for (let k = 0; k < 3; k++) {
-                if (k != 0) {
-                    if (k == 2 && arr[i][j][k] == 1 && arr[i][j][0] == 0) {
-                        var temp = i + 1 + j * size[0];
-                        document.getElementById("x" + temp).style.background = "white";
-                        document.getElementById("x" + temp).innerHTML = "";
-                    }
-                    arr[i][j][k] = 0;
-                } else if (arr[i][j][k] == 2) {
-                    var tmp = i + 1 + j * size[0];
-                    document.getElementById("x" + tmp).style.background = "#B6CEC7";
-                }
-            }
-        }
-    }
-    callback();
 }
 
 var e = document.getElementById("slct");

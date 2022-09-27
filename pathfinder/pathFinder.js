@@ -93,3 +93,5 @@ function clicked(id) {
     }
     $("#" + id).css('background-color', node.color);
 }
+function find() {
+}

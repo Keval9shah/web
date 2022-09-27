@@ -94,16 +94,20 @@ function clicked(id: string) {
         if (!source.exists) {
             node.type = NodeType.source;
             source = { x, y, exists: true };
-            $("#"+id).text("src");
+            $("#" + id).text("src");
         } else if (!destination.exists) {
             node.type = NodeType.destination;
             destination = { x, y, exists: true };
-            $("#"+id).text("dest");
+            $("#" + id).text("dest");
         }
     } else {
-        $("#"+id).text("");
+        $("#" + id).text("");
         node.type == NodeType.source ? (source.exists = false) : (destination.exists = false);
         node.type = NodeType.blank;
     }
     $("#" + id).css('background-color', node.color);
+}
+
+function find() {
+    
 }
