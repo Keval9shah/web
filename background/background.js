@@ -8,8 +8,8 @@ var colorButtons = document.querySelectorAll(".bttn");
 var imageButtons = document.querySelectorAll(".bttn2");
 var e, inpimg;
 function openMenu() {
-    document.querySelector("#i").style.display = "none";
-    document.querySelector("#i1").style.display = "inline-flex";
+    $("#i").css('display', 'none');
+    $("#i1").css('display', 'inline-flex');
     document.querySelectorAll(".frst")[0].style.display = "block";
     var col = document.querySelector("#33");
     col.addEventListener("input", function () {
@@ -19,8 +19,8 @@ function openMenu() {
     });
 }
 function closeMenu() {
-    document.querySelector("#i1").style.display = "none";
-    document.querySelector("#i").style.display = "inline-flex";
+    $("#i1").css('display', 'none');
+    $("#i").css('display', 'inline-flex');
     document.querySelectorAll(".frst")[0].style.display = "none";
 }
 function toggleColorImage() {
@@ -70,19 +70,17 @@ function currentSelectedColor() {
 }
 function storeSelectedColor() {
     set = current;
-    document.querySelector("#crnt").style.backgroundColor = current;
+    $("#crnt").css('background-color', current);
 }
 function onImageSizeSelection() {
     document.body.style.backgroundSize = e.options[e.selectedIndex].value;
 }
 function setBackgroundColor(color) {
-    if (x % 2 == 0) {
-        x++;
-    }
+    x % 2 == 0 && x++;
     defaultColor = color;
-    document.body.style.backgroundColor = color;
+    $("body").css('background-color', color);
 }
 function setBackgroundImage(url) {
     defaultImageURL = url;
-    document.body.style.backgroundImage = "url(" + defaultImageURL + ")";
+    $("body").css('background-image', "url(" + defaultImageURL + ")");
 }
