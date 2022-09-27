@@ -1,12 +1,19 @@
 "use strict";
 var NodeType;
 (function (NodeType) {
-    NodeType[NodeType["blank"] = 0] = "blank";
-    NodeType[NodeType["obstacle"] = 1] = "obstacle";
-    NodeType[NodeType["endpoint"] = 2] = "endpoint";
-    NodeType[NodeType["destinationFound"] = 3] = "destinationFound";
+    NodeType["blank"] = "blank";
+    NodeType["obstacle"] = "obstacle";
+    NodeType["source"] = "source";
+    NodeType["destination"] = "destination";
+    NodeType["destinationFound"] = "destinationFound";
 })(NodeType || (NodeType = {}));
-const colors = ["white", "black", "#b6cec7", "#ffd700"];
+const colors = {
+    blank: "white",
+    obstacle: "black",
+    source: "#b6cec7",
+    destination: "#b6cec7",
+    destinationFound: "#ffd700"
+};
 // nodes structure grid obj -> nodes array -> row array -> node obj
 let rowSize = 0;
 let columnSize = 0;
@@ -66,18 +73,27 @@ function clicked(id) {
     [x, y] = id.split("_");
     x = Number(x);
     y = Number(y);
-    let currentNode = nodes[x][y];
-    (currentNode.type != NodeType.destinationFound) && (currentNode.type = (currentNode.type + 1) % 3);
-    if (currentNode.type == NodeType.endpoint && !source.x) {
-        source = { x, y };
-        $("#" + id).text("src");
+    let node = nodes[x][y];
+    if (node.type == NodeType.blank) {
+        node.type = NodeType.obstacle;
     }
-    else if (currentNode.type == NodeType.endpoint && !destination.x) {
-        destination = { x, y };
-        $("#" + id).text("dest");
+    else if (node.type == NodeType.obstacle) {
+        node.type = NodeType.blank;
+        if (!source.exists) {
+            node.type = NodeType.source;
+            source = { x, y, exists: true };
+            $("#" + id).text("src");
+        }
+        else if (!destination.exists) {
+            node.type = NodeType.destination;
+            destination = { x, y, exists: true };
+            $("#" + id).text("dest");
+        }
     }
-    else if (currentNode.type == NodeType.endpoint) {
-        currentNode.type = NodeType.blank;
+    else {
+        $("#" + id).text("");
+        node.type == NodeType.source ? (source.exists = false) : (destination.exists = false);
+        node.type = NodeType.blank;
     }
-    $("#" + id).css('background-color', currentNode.color);
+    $("#" + id).css('background-color', node.color);
 }

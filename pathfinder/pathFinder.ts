@@ -1,13 +1,19 @@
 interface Coordinates {
     x: number;
     y: number;
+    exists?: boolean;
 }
 
 enum NodeType {
-    blank,
-    obstacle,
-    endpoint,
-    destinationFound
+    blank = "blank",
+    obstacle = "obstacle",
+    source = "source",
+    destination = "destination",
+    destinationFound = "destinationFound"
+}
+
+type Colors = {
+    [key in NodeType] : string;
 }
 
 interface GridNode extends Coordinates {
@@ -16,7 +22,13 @@ interface GridNode extends Coordinates {
     type: NodeType;
 }
 
-const colors = ["white", "black", "#b6cec7", "#ffd700"]
+const colors: Colors = {
+    blank: "white", 
+    obstacle: "black", 
+    source: "#b6cec7", 
+    destination: "#b6cec7", 
+    destinationFound: "#ffd700"
+}
 
 // nodes structure grid obj -> nodes array -> row array -> node obj
 let rowSize = 0;
@@ -41,7 +53,7 @@ function constructGrid() {
                 y: rowNum,
                 visited: false,
                 get color() {
-                    return colors[this.type];
+                    return colors[this.type as NodeType];
                 },
                 type: NodeType.blank
             });
@@ -65,7 +77,7 @@ function constructGrid() {
     }
     columnSize = newColumnSize;
     rowSize = newRowSize;
-    gridElement.css('width',columnSize*52);
+    gridElement.css('width', columnSize * 52 );
     gridElement.css('grid-template-columns','repeat(' + columnSize + ', 52px)')
 }
 
@@ -76,16 +88,25 @@ function clicked(id: string) {
     [x,y] = id.split("_");
     x = Number(x);
     y = Number(y);
-    let currentNode: GridNode = nodes[x][y];
-    (currentNode.type != NodeType.destinationFound) && (currentNode.type = (currentNode.type + 1) % 3);
-    if (currentNode.type == NodeType.endpoint && !source.x) {
-        source = {x,y};
-        $("#"+id).text("src");
-    } else if (currentNode.type == NodeType.endpoint && !destination.x) {
-        destination = {x,y};
-        $("#"+id).text("dest");
-    } else if (currentNode.type == NodeType.endpoint) {
-        currentNode.type = NodeType.blank
+    let node: GridNode = nodes[x][y];
+    if (node.type == NodeType.blank) {
+        node.type = NodeType.obstacle;
     }
-    $("#"+id).css('background-color',currentNode.color);
+    else if (node.type == NodeType.obstacle) {
+        node.type = NodeType.blank;
+        if (!source.exists) {
+            node.type = NodeType.source;
+            source = { x, y, exists: true };
+            $("#"+id).text("src");
+        } else if (!destination.exists) {
+            node.type = NodeType.destination;
+            destination = { x, y, exists: true };
+            $("#"+id).text("dest");
+        }
+    } else {
+        $("#"+id).text("");
+        node.type == NodeType.source ? (source.exists = false) : (destination.exists = false);
+        node.type = NodeType.blank;
+    }
+    $("#" + id).css('background-color', node.color);
 }

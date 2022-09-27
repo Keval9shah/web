@@ -86,6 +86,7 @@ select {
 
 button {
     background-color: white;
+    font-size: 20px;
 }
 
 .grid-node {
@@ -99,7 +100,7 @@ button {
 
 .grid-parent {
     margin: 20px 55px 0 55px;
-    font-size: 0;
+    /* font-size: 0; */
 }
 
 /* @keyframes border-rotate {
@@ -118,6 +119,7 @@ button {
 } */
 
 #grid {
+    display: grid;
     box-shadow: 0px 2px 4px 1px rgba(65, 46, 46, 0.08);
     font-size: 0;
 }
