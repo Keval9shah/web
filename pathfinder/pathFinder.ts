@@ -7,6 +7,7 @@ interface Coordinates {
 enum NodeType {
     blank = "blank",
     obstacle = "obstacle",
+    step = "step",
     source = "source",
     destination = "destination",
     destinationFound = "destinationFound"
@@ -23,10 +24,11 @@ interface GridNode extends Coordinates {
 }
 
 const colors: Colors = {
-    blank: "white", 
-    obstacle: "black", 
-    source: "#b6cec7", 
-    destination: "#b6cec7", 
+    blank: "white",
+    obstacle: "black",
+    step: "#008000",
+    source: "#b6cec7",
+    destination: "#b6cec7",
     destinationFound: "#ffd700"
 }
 
@@ -44,6 +46,7 @@ function constructGrid() {
     let newRowSize = Math.floor((window.innerHeight - 220)/52);
     let gridElement: JQuery<HTMLElement> = $("#grid");
     if(columnSize == newColumnSize && rowSize == newRowSize && $("#grid button").length != 0) { return; }
+    !nodes[0] && gridElement.append("<button class='grid-node' onclick='clicked(this.id)' id = '0_0'></button>");
     for (let rowNum = 0; rowNum < newRowSize; rowNum++) {
         !nodes[rowNum] && nodes.push([]);
         for (let columnNum = 0; columnNum < newColumnSize; columnNum++) {
@@ -57,11 +60,7 @@ function constructGrid() {
                 },
                 type: NodeType.blank
             });
-            if ($("#grid button").length == 0) {
-                gridElement.append("<button class='grid-node' onclick='clicked(this.id)' id=" + rowNum + "_" + columnNum + "></button>");
-            } else {
-                $("<button class='grid-node' onclick='clicked(this.id)' id=" + rowNum + "_" + columnNum + "></button>").insertAfter("#" + (columnNum == 0 ? rowNum - 1 : rowNum) + "_" + (columnNum == 0 ? newColumnSize - 1 : columnNum - 1));
-            }
+            $("<button class='grid-node' onclick='clicked(this.id)' id =" + rowNum + "_" + columnNum + "></button>").insertAfter("#" + (columnNum == 0 ? rowNum - 1 : rowNum) + "_" + (columnNum == 0 ? newColumnSize - 1 : columnNum - 1));
         }
     }
     if(columnSize > newColumnSize || rowSize > newRowSize) {
@@ -84,10 +83,8 @@ function constructGrid() {
 window.onresize = constructGrid;
 
 function clicked(id: string) {
-    let x,y;
-    [x,y] = id.split("_");
-    x = Number(x);
-    y = Number(y);
+    let x: number, y: number;
+    [x,y] = id.split("_").map(x => Number(x));
     let node: GridNode = nodes[x][y];
     if (node.type == NodeType.blank) {
         node.type = NodeType.obstacle;
