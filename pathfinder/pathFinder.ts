@@ -44,9 +44,12 @@ constructGrid();
 function constructGrid() {
     let newColumnSize = Math.floor((window.innerWidth - 132)/52);
     let newRowSize = Math.floor((window.innerHeight - 220)/52);
+    newColumnSize = (newColumnSize>0 && newColumnSize<35) ? newColumnSize : 0;
+    newRowSize = (newRowSize>0 && newRowSize<35) ? newRowSize : 0;
+    $(".grid-size").text(" ( " + newColumnSize + "x" + newRowSize + " ) ")
     let gridElement: JQuery<HTMLElement> = $("#grid");
     if(columnSize == newColumnSize && rowSize == newRowSize && $("#grid button").length != 0) { return; }
-    !nodes[0] && gridElement.append("<button class='grid-node' onclick='clicked(this.id)' id = '0_0'></button>");
+    (!nodes[0] && newColumnSize*newRowSize>0) && gridElement.append("<button class='grid-node' onclick='clicked(this.id)' id = '0_0'></button>");
     for (let rowNum = 0; rowNum < newRowSize; rowNum++) {
         !nodes[rowNum] && nodes.push([]);
         for (let columnNum = 0; columnNum < newColumnSize; columnNum++) {
