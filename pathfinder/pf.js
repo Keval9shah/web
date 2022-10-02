@@ -1,30 +1,18 @@
 document.write("<div class='grid'>");
-var size = [5, 7];
+var size = [10, 7];
 for (var i = 1; i < (size[0] * size[1]) + 1; i++) {
     document.write("<button onclick='clicked(this.id)' id='x" + i + "'></button>");
 }
 document.write("</div>");
-var btnWd = 68;
-var btnWd2 = 85;
 var notecheck = 1;
 
 document.getElementsByTagName("h3")[0].innerHTML = "Path Finder   (" + size[0] + "x" + size[1] + ")";
-if (window.matchMedia("(max-width: 1680px) and (min-width:1080px)").matches) {
-    btnWd = 78;
-    btnWd2 = 88;
-} else if (window.matchMedia("(max-width: 1080px) and (min-width:787px)").matches) {
-    btnWd = 75;
-    btnWd2 = 85;
-} else if (window.matchMedia("(max-width: 787px) and (min-width:430px)").matches) {
-    btnWd = 72;
-    btnWd2 = 82;
-}
 
 if (window.matchMedia("(max-width: 430px) and (min-width:50px)").matches) {
     document.querySelector("select").selectedIndex = 1;
 }
 
-document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + size[0] + ", clamp(" + btnWd + "px, 13%, " + btnWd2 + "px)";
+document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + size[0] + ", 48px";
 
 
 var arr = new Array(size[0]).fill(0).map(() => new Array(size[1]).fill(0).map(() => new Array(3).fill(0)));
@@ -283,7 +271,7 @@ function plus() {
     } else if (e.options[e.selectedIndex].value == "clm") {
         arr.push([]);
         var x = size[0] + 1; //experiment
-        document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + x + ", clamp(" + btnWd + "px, 12%, " + btnWd2 + "px)";
+        document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + x + ", clamp(48px)";
         for (let i = 0; i < size[1]; i++) {
             buton = document.createElement("button");
             uls = size[0] * size[1] + 1 + i;
@@ -341,7 +329,7 @@ function minus() {
         if (size[0] <= 0) {
             return 0;
         }
-        document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + x + ", clamp(" + btnWd + "px, 12%, " + btnWd2 + "px)";
+        document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + x + ", clamp(48px)";
         for (let i = 0; i < size[1]; i++) {
             uls = (size[0] - 1) * size[1] + 1 + i;
             buton = document.getElementById("x" + uls);
