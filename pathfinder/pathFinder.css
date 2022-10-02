@@ -10,14 +10,14 @@ body{
 }
 
 .pm {
-    margin: 5px 0 0 7px;
-    padding: 2px 8px;
-    cursor: pointer;
+    margin: 2px 7px;
+    padding: 2px 4px;
     height: 20px;
-    width: 25px;
-    border-radius: 10%;
-    border: none;
+    width: 32px;
+    border-radius: 0;
+    border: 1px solid black;
     font-size: small;
+    outline: none;
 }
 
 i {
@@ -55,21 +55,7 @@ i {
 #bottom {
     display: flex;
     flex-direction: row;
-}
-
-#bottom {
     max-width: 600px;
-}
-
-.pm {
-    margin: 0 0 0 7px;
-    padding: 2px 8px;
-    cursor: pointer;
-    height: 20px;
-    width: 25px;
-    border-radius: 10%;
-    border: none;
-    font-size: small;
 }
 
 select {
@@ -122,4 +108,10 @@ button {
     display: grid;
     box-shadow: 0px 2px 4px 1px rgba(65, 46, 46, 0.08);
     font-size: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

@@ -24,7 +24,7 @@ let source = {};
 let destination = {};
 constructGrid();
 function constructGrid() {
-    let newColumnSize = Math.floor((window.innerWidth - 132) / 52);
+    let newColumnSize = Math.floor((window.innerWidth - 125) / 52);
     let newRowSize = Math.floor((window.innerHeight - 220) / 52);
     newColumnSize = (newColumnSize > 0 && newColumnSize < 35) ? newColumnSize : 0;
     newRowSize = (newRowSize > 0 && newRowSize < 35) ? newRowSize : 0;
@@ -47,7 +47,8 @@ function constructGrid() {
                 get color() {
                     return colors[this.type];
                 },
-                type: NodeType.blank
+                type: NodeType.blank,
+                gDist: 0
             });
             $("<button class='grid-node' onclick='clicked(this.id)' id =" + rowNum + "_" + columnNum + "></button>").insertAfter("#" + (columnNum == 0 ? rowNum - 1 : rowNum) + "_" + (columnNum == 0 ? newColumnSize - 1 : columnNum - 1));
         }
@@ -63,12 +64,12 @@ function constructGrid() {
         }
         nodes.splice(newRowSize, rowSize);
     }
-    columnSize = newColumnSize;
-    rowSize = newRowSize;
+    [rowSize, columnSize] = [newRowSize, newColumnSize];
+    (source.x >= columnSize || source.y >= rowSize) && (source.exists = false);
+    (destination.x >= columnSize || destination.y >= rowSize) && (destination.exists = false);
     gridElement.css('width', columnSize * 52);
     gridElement.css('grid-template-columns', 'repeat(' + columnSize + ', 52px)');
 }
-window.onresize = constructGrid;
 function clicked(id) {
     let x, y;
     [x, y] = id.split("_").map(x => Number(x));
@@ -96,5 +97,77 @@ function clicked(id) {
     }
     $("#" + id).css('background-color', node.color);
 }
+function findPath() {
+    console.log("finding...");
+}
 function find() {
+    if (!source.exists && !destination.exists)
+        alert("source or destination is not selected");
+    // 1.  Initialize the open list
+    let openList = new Set([]);
+    // 2.  Initialize the closed list
+    // put the starting node on the open 
+    // list (you can leave its f at zero)
+    let closedList = new Set([]);
+    openList.add(nodes[source.x][source.y]);
+    // 3.  while the open list is not empty
+    // a) find the node with the least f on 
+    //    the open list, call it "q"
+    let q;
+    while (openList.size != 0) {
+        q = Array.from(openList).sort((a, b) => {
+            return (a.fDist - b.fDist);
+        })[0];
+        // b) pop q off the open list
+        openList.delete(q);
+        // c) generate q's 8 successors and set their 
+        // parents to q
+        let qSuccessors = getSuccessors(q);
+        // d) for each successor
+        // i) if successor is the goal, stop search
+        qSuccessors.forEach(successor => {
+            if (successor.type == NodeType.destination)
+                return;
+            // ii) else, compute both g and h for successor
+            // successor.g = q.g + distance between successor and q
+            // successor.h = distance from goal to 
+            // successor (This can be done using many 
+            // ways, we will discuss three heuristics- 
+            // Manhattan, Diagonal and Euclidean Heuristics)
+            // successor.f = successor.g + successor.h
+            let hDist = Math.abs(successor.x - destination.x) + Math.abs(successor.y - destination.y); // Manhattan Distance
+            let fDist = (successor.parent.gDist + 1) + hDist;
+            // iii) if a node with the same position as 
+            // successor is in the OPEN list which has a 
+            // lower f than successor, skip this successor
+            if (Array.from(openList).find(o => o.x == successor.x && o.y == successor.y && o.fDist < successor.fDist)) {
+                return;
+            }
+        });
+        closedList.add(q);
+    }
+}
+function getSuccessors(node) {
+    let successors = [];
+    // possible moves (first four cross-moves)
+    [
+        [1, -1],
+        [-1, 1],
+        [-1, -1],
+        [1, 1],
+        [0, 1],
+        [1, 0],
+        [-1, 0],
+        [0, -1]
+    ].forEach(move => {
+        let moveArr = [node.y + move[0], node.x + move[1]];
+        if (moveArr[0] >= 0 && moveArr[0] < rowSize && moveArr[1] >= 0 && moveArr[1] < columnSize) {
+            let successorNode = nodes[moveArr[0]][moveArr[1]];
+            if (successorNode.type != NodeType.obstacle && successorNode.type != NodeType.source) {
+                successorNode.parent = { x: node.x, y: node.y, gDist: node.gDist };
+                successors.push(successorNode);
+            }
+        }
+    });
+    return successors;
 }

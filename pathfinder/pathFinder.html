@@ -17,14 +17,19 @@
         <h3>Path Finder<span class="grid-size"></span></h3>
         <div class="d-flex align-items-center">
             <p id="show" class="my-0">Path was found in<span id="steps">_</span> steps.</p>
-            <div class="sizechng">
+            <!-- <div class="sizechng">
                 <select id="slct">
                     <option value="row">row</option>
                     <option value="clm">column</option>
                 </select>
                 <button class="pm" id="plus" onclick="plus()">+</button>
                 <button class="pm" id="minus" onclick="minus()">–</button>
-            </div>
+            </div> -->
+            &nbsp;<button style="font-size:16px" onclick="constructGrid()">Resize to fit screen</button>
+            &nbsp;OR&nbsp;<button style="font-size:16px" onclick="constructGrid()">
+                Set Size to
+            </button>
+            <input class="pm" type="number">x<input class="pm" type="number">
         </div>
     </div>
     <div class="d-flex grid-parent">
@@ -32,7 +37,7 @@
         <div id="info"></div>
     </div>
     <div id='bottom'>
-        <button class='bttn b1' onclick='find()'><i class='fa fa-search' aria-hidden='true'></i>Find</button>
+        <button class='bttn b1' onclick='findPath()'><i class='fa fa-search' aria-hidden='true'></i>Find</button>
         <button class='bttn b2' onclick='reset()'><i class='fa fa-refresh' aria-hidden='true'></i>Reset</button>
     </div>
     <script src="../jquery.js"></script>
