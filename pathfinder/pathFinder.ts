@@ -23,12 +23,11 @@ interface Endpoint extends Coordinates {
 }
 
 interface GridNode extends Coordinates {
-    visited: boolean;
     color: string;
     type: NodeType;
     hDist?: number;
     gDist: number;
-    fDist?: number;
+    fDist: number;
     parent?: Coordinates;
     successors?: Coordinates[]
 }
@@ -49,11 +48,11 @@ const nodes: GridNode[][] = [];
 let source = {} as Endpoint;
 let destination = {} as Endpoint;
 
-constructGrid();
+let newColumnSize = Math.floor((window.innerWidth - 125)/52);
+let newRowSize = Math.floor((window.innerHeight - 220)/52);
+constructGrid(newColumnSize, newRowSize);
 
-function constructGrid() {
-    let newColumnSize = Math.floor((window.innerWidth - 125)/52);
-    let newRowSize = Math.floor((window.innerHeight - 220)/52);
+function constructGrid(newColumnSize: number, newRowSize: number) {
 
     newColumnSize = (newColumnSize>0 && newColumnSize<35) ? newColumnSize : 0;
     newRowSize = (newRowSize>0 && newRowSize<35) ? newRowSize : 0;
@@ -71,10 +70,10 @@ function constructGrid() {
             nodes[rowNum].push({
                 x: columnNum,
                 y: rowNum,
-                visited: false,
                 get color() {
                     return colors[this.type as NodeType];
                 },
+                fDist: Math.max(),
                 type: NodeType.blank,
                 gDist: 0
             });
@@ -101,6 +100,18 @@ function constructGrid() {
 
     gridElement.css('width', columnSize * 52 );
     gridElement.css('grid-template-columns','repeat(' + columnSize + ', 52px)')
+}
+
+function constructCustomGrid(resizeToScreen?: string) { // changes required in this logic structure
+    let sizeX = parseInt((<HTMLInputElement>$("#sizeX")[0]).value);
+    let sizeY = parseInt((<HTMLInputElement>$("#sizeY")[0]).value);
+    if(!sizeX || !sizeY || resizeToScreen) {
+        let newColumnSize = Math.floor((window.innerWidth - 125)/52);
+        let newRowSize = Math.floor((window.innerHeight - 220)/52);
+        constructGrid(newColumnSize, newRowSize);
+    } else {
+        constructGrid(sizeX, sizeY);
+    }
 }
 
 function clicked(id: string) {
@@ -130,12 +141,17 @@ function clicked(id: string) {
 }
 
 function findPath() {
-    console.log("finding...")
+    console.log("finding...");
+    find();
+    console.log("found");
 }
 
 function find() {
 
-    if (!source.exists && !destination.exists) alert("source or destination is not selected");
+    if (!source.exists || !destination.exists) {
+        alert("source or destination is not selected");
+        return;
+    }
 
     // 1.  Initialize the open list
     let openList: Set<GridNode> = new Set([]);
@@ -154,7 +170,8 @@ function find() {
         q = Array.from(openList).sort((a,b) => {
             return (<number>a.fDist - <number>b.fDist);
         })[0];
-
+        console.log(q);
+        
         // b) pop q off the open list
         openList.delete(q);
 
@@ -163,10 +180,17 @@ function find() {
         let qSuccessors: GridNode[] = getSuccessors(q);
 
         // d) for each successor
-        // i) if successor is the goal, stop search
-        qSuccessors.forEach(successor => {                //convert this to for loop
-            if (successor.type == NodeType.destination) return;
+        for (let successorIndex = 0; successorIndex < qSuccessors.length; successorIndex++) {
+            let successor = qSuccessors[successorIndex];
+            
+            $("#"+successor.x+"_"+successor.y).css('background-color', "red")
 
+            // i) if successor is the goal, stop search
+            console.log(successor.type, NodeType.destination);
+            if (successor.type == NodeType.destination) {
+                return;
+            }
+            
             // ii) else, compute both g and h for successor
             // successor.g = q.g + distance between successor and q
             // successor.h = distance from goal to 
@@ -174,18 +198,31 @@ function find() {
             // ways, we will discuss three heuristics- 
             // Manhattan, Diagonal and Euclidean Heuristics)
             // successor.f = successor.g + successor.h
-            let hDist = Math.abs(successor.x - destination.x) + Math.abs(successor.y - destination.y);  // Manhattan Distance
-            let fDist = (<number>(<Coordinates>successor.parent).gDist + 1) + hDist;
-
+            successor.hDist = Math.abs(successor.x - destination.x) + Math.abs(successor.y - destination.y);  // Manhattan Distance
+            successor.fDist = (<number>(<Coordinates>successor.parent).gDist + 1) + successor.hDist;
+            
             // iii) if a node with the same position as 
             // successor is in the OPEN list which has a 
             // lower f than successor, skip this successor
-            if (Array.from(openList).find(o => o.x == successor.x && o.y == successor.y && <number>o.fDist < <number>successor.fDist)) {
-                return;
+            if (Array.from(openList).find(o => <number>o.fDist < (<number>successor.fDist))) {
+                continue;
             }
             
-        })
+            // iV) if a node with the same position as 
+            // successor is in the CLOSED list which has
+            // a lower f than successor, skip this successor
+            // otherwise, add  the node to the open list
+            if (Array.from(closedList).find(c => <number>c.fDist < (<number>successor.fDist))) {
+                continue;
+            } else {
+                openList.add(successor);
+            }
+            // end (for loop)
+            // console.log(openList, closedList);
+            // console.log("hii");
+        }
         closedList.add(q);
+        $("#"+q.y+"_"+q.x).css('background-color', "green")
     }
 }
 
@@ -202,10 +239,10 @@ function getSuccessors(node: GridNode) {
         [-1, 0],
         [0, -1]
     ].forEach(move => {
-        let moveArr = [node.y + move[0], node.x + move[1]];
+        let newPosition = [node.y + move[0], node.x + move[1]];
         
-        if (moveArr[0] >= 0 && moveArr[0] < rowSize && moveArr[1] >= 0 && moveArr[1] < columnSize) {
-            let successorNode = nodes[moveArr[0]][moveArr[1]];
+        if (newPosition[0] >= 0 && newPosition[0] < rowSize && newPosition[1] >= 0 && newPosition[1] < columnSize) {
+            let successorNode = nodes[newPosition[0]][newPosition[1]];
             if (successorNode.type != NodeType.obstacle && successorNode.type != NodeType.source) {
                 successorNode.parent = { x: node.x, y: node.y, gDist: node.gDist };
                 successors.push(successorNode);

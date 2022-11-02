@@ -103,7 +103,8 @@ function submitfn() {
   timer.innerHTML = "0s";
   time = 0;
   textdiv.scrollTop = 0;
-  incr += 1;
+  let randomIndex = Math.floor(Math.random() * textArray.length);
+  incr = (randomIndex == incr) ? incr+1 : randomIndex;
   scoreval = 0;
   text = textArray[incr % 7];
   mainFn();
