@@ -3,14 +3,16 @@ var defaultColor = "green";
 var defaultImageURL = "https://free4kwallpapers.com/uploads/originals/2019/12/16/nature-wallpaper.jpg";
 var current = "white";
 var set = "white";
-var colorButtons: NodeListOf<HTMLElement> = document.querySelectorAll(".bttn");
-var imageButtons: NodeListOf<HTMLElement> = document.querySelectorAll(".bttn2");
+var colorButtons: NodeListOf<HTMLElement> = document.querySelectorAll(".background-button");
+var imageButtons: NodeListOf<HTMLElement> = document.querySelectorAll(".hide-button");
 var e: HTMLSelectElement, inpimg: HTMLInputElement;
+var optionToolkit = <HTMLElement>document.querySelector(".option-toolkit");
+var toggleButton = <HTMLElement>document.querySelector("#toggle-button");
 
 function openMenu() {
     $("#i").css('display','none');
     $("#i1").css('display','inline-flex');
-    (<HTMLElement>document.querySelectorAll(".frst")[0]).style.display = "block";
+    optionToolkit.style.display = "block";
     var col = <HTMLInputElement>document.querySelector("#33");
     col.addEventListener("input", function() {
         document.body.style.backgroundColor = col.value;
@@ -22,15 +24,15 @@ function openMenu() {
 function closeMenu() {
     $("#i1").css('display','none');
     $("#i").css('display','inline-flex');
-    (<HTMLElement>document.querySelectorAll(".frst")[0]).style.display = "none";
+    optionToolkit.style.display = "none";
 }
 
 function toggleColorImage() {
     x++;
     if (x % 2 == 1) {
-        document.getElementsByTagName("div")[0].style.width = "22%";
-        (<HTMLElement>document.querySelector("#bttn1")).innerHTML = "background image";
-        (<HTMLElement>document.querySelector("#scnd")).style.width = ((<HTMLElement>document.querySelector("#bttn1")).offsetWidth + 0.5).toString();
+        optionToolkit.style.width = "22%";
+        toggleButton.innerText = "background image";
+        (<HTMLElement>document.querySelector("#scnd")).style.width = (toggleButton.offsetWidth + 0.5).toString();
         document.body.style.backgroundImage = "none";
         document.body.style.backgroundColor = defaultColor;
         for (let i = 0; i < colorButtons.length; i++) {
@@ -40,10 +42,10 @@ function toggleColorImage() {
             imageButtons[i].style.display = "none";
         }
     } else {
-        document.getElementsByTagName("div")[0].style.width = "40%";
+        optionToolkit.style.width = "40%";
         document.body.style.backgroundImage = "url(" + defaultImageURL + ")";
-        (<HTMLElement>document.querySelector("#bttn1")).innerHTML = "background color";
-        (<HTMLElement>document.querySelector("#scnd")).style.width = (<HTMLElement>document.querySelector("#bttn1")).offsetWidth.toString();
+        toggleButton.innerText = "background color";
+        (<HTMLElement>document.querySelector("#scnd")).style.width = toggleButton.offsetWidth.toString();
         for (let i = 0; i < colorButtons.length; i++) {
             colorButtons[i].style.display = "none";
         }
@@ -58,11 +60,11 @@ function toggleColorImage() {
             inpimg.style.backgroundSize = "cover";
             setTimeout(() => {
                 inpimg.value = "";
-            }, 6200);
+            }, 8000);
         });
     }
     if (x > 4) {
-        x = x - 2;
+        x -= 2;
     }
 }
 
@@ -73,7 +75,7 @@ function currentSelectedColor() {
 
 function storeSelectedColor() {
     set = current;
-    $("#crnt").css('background-color', current);
+    $("#current-color").css('background-color', current);
 }
 
 function onImageSizeSelection() {
@@ -83,10 +85,10 @@ function onImageSizeSelection() {
 function setBackgroundColor(color: string) {
     x%2 == 0 && x++;
     defaultColor = color;
-    $("body").css('background-color', color);
+    $(".background-body").css('background-color', color);
 }
 
 function setBackgroundImage(url: string) {
     defaultImageURL = url;
-    $("body").css('background-image', "url(" + defaultImageURL + ")");
+    $(".background-body").css('background-image', "url(" + defaultImageURL + ")");
 }

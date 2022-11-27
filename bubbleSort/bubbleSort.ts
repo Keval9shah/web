@@ -6,7 +6,7 @@ var para = 1;
         add();
         let table = <HTMLTableElement>document.querySelector("#table")
         let tableLength = table.rows.length - 1;
-        let childnode = (<HTMLElement>(<HTMLElement>document.getElementById(tableLength.toString())).childNodes[1].firstChild).focus();
+        // let childnode = (<HTMLElement>(<HTMLElement>document.getElementById(tableLength.toString())).childNodes[1].firstChild).focus();
     }
 });
 
@@ -49,7 +49,7 @@ function go_down(event: KeyboardEvent, ID: string) {
 
 function sort() {
     var elems = document.getElementsByTagName("input");
-    var arr = new Array(elems.length);
+    let arr: number[] = new Array(elems.length);
     for (let i = 0; i < elems.length; i++) {
         arr[i] = parseInt(elems[i].value);
     }
@@ -61,7 +61,7 @@ function sort() {
         }
     }
     for (let i = 0; i < elems.length; i++) {
-        elems[i].value = arr[i];
+        elems[i].value = arr[i].toString();
     }
 }
 

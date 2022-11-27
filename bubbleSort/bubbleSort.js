@@ -6,7 +6,7 @@ document.querySelector("#table").addEventListener("keydown", (event) => {
         add();
         let table = document.querySelector("#table");
         let tableLength = table.rows.length - 1;
-        let childnode = document.getElementById(tableLength.toString()).childNodes[1].firstChild.focus();
+        // let childnode = (<HTMLElement>(<HTMLElement>document.getElementById(tableLength.toString())).childNodes[1].firstChild).focus();
     }
 });
 function add() {
@@ -48,7 +48,7 @@ function go_down(event, ID) {
 }
 function sort() {
     var elems = document.getElementsByTagName("input");
-    var arr = new Array(elems.length);
+    let arr = new Array(elems.length);
     for (let i = 0; i < elems.length; i++) {
         arr[i] = parseInt(elems[i].value);
     }
@@ -60,7 +60,7 @@ function sort() {
         }
     }
     for (let i = 0; i < elems.length; i++) {
-        elems[i].value = arr[i];
+        elems[i].value = arr[i].toString();
     }
 }
 function reset() {

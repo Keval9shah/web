@@ -10,28 +10,28 @@
     <link rel="stylesheet" href="background.css">
 </head>
 
-<body>
+<body class="background-body">
     <i class="fa fa-bars" id="i" onclick="openMenu()"></i>
-    <div class="frst">
+    <div class="option-toolkit">
         <i class="fa fax fa-times" id="i1" onclick="closeMenu()"></i>
         <div id="scnd1"></div>
-        <button class="btn" Id="bttn1" onClick="toggleColorImage()">background image</button>
+        <button id="toggle-button" onClick="toggleColorImage()">background image</button>
         <div id="scnd"></div>
         <br>
-        <button class="bttn btn" Id="rgb(184, 41, 41)" style="background-color: rgb(184, 41, 41);" onClick="setBackgroundColor('rgb(184, 41, 41)')"></button>
-        <button class="bttn btn" Id="green" style="background-color: green;" onClick="setBackgroundColor('green')"></button>
-        <button class="bttn btn" Id="rgb(69, 174, 235)" style="background-color: rgb(69, 174, 235);" onClick="setBackgroundColor('rgb(69, 174, 235)')"></button>
+        <button class="background-button" id="rgb(184, 41, 41)" style="background-color: rgb(184, 41, 41);" onClick="setBackgroundColor('rgb(184, 41, 41)')"></button>
+        <button class="background-button" id="green" style="background-color: green;" onClick="setBackgroundColor('green')"></button>
+        <button class="background-button" id="rgb(69, 174, 235)" style="background-color: rgb(69, 174, 235);" onClick="setBackgroundColor('rgb(69, 174, 235)')"></button>
         <br>
-        <button class="bttn btn" Id="ltr" style="background-color: white;" onClick="storeSelectedColor()"></button>
-        <button class="bttn btn" Id="crnt" style="background-color: white;" onClick="currentSelectedColor()"></button>
-        <input type="color" class=" inp bttn btn" onclick="ifun()" Id="33" style="background-image:linear-gradient(45deg,orange,yellow,green,blue);">
+        <button class="background-button bg-white" onClick="storeSelectedColor()"></button>
+        <button class="background-button bg-white" id="current-color" onClick="currentSelectedColor()"></button>
+        <input type="color" class="background-color-input background-button" onclick="ifun()" id="33" style="background-image:linear-gradient(45deg,orange,yellow,green,blue);">
 
-        <img id="1" class="bttn2" src="https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/08-06-2020_Coral-Reef-Image_Solomon-Islands.jpg/image1170x530cropped.jpg" alt="" onclick="setBackgroundImage('https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/08-06-2020_Coral-Reef-Image_Solomon-Islands.jpg/image1170x530cropped.jpg','1')">
-        <img id="2" class="bttn2" src="https://free4kwallpapers.com/uploads/originals/2019/12/16/nature-wallpaper.jpg" alt="" onclick="setBackgroundImage('https://free4kwallpapers.com/uploads/originals/2019/12/16/nature-wallpaper.jpg','2')">
-        <img id="3" class="bttn2" src="https://images7.alphacoders.com/411/thumb-1920-411820.jpg" alt="" onclick="setBackgroundImage('https://images7.alphacoders.com/411/thumb-1920-411820.jpg','3')">
+        <img id="1" class="background-image hide-button" src="https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/08-06-2020_Coral-Reef-Image_Solomon-Islands.jpg/image1170x530cropped.jpg" alt="" onclick="setBackgroundImage('https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production+Library/08-06-2020_Coral-Reef-Image_Solomon-Islands.jpg/image1170x530cropped.jpg','1')">
+        <img id="2" class="background-image hide-button" src="https://free4kwallpapers.com/uploads/originals/2019/12/16/nature-wallpaper.jpg" alt="" onclick="setBackgroundImage('https://free4kwallpapers.com/uploads/originals/2019/12/16/nature-wallpaper.jpg','2')">
+        <img id="3" class="background-image hide-button" src="https://images7.alphacoders.com/411/thumb-1920-411820.jpg" alt="" onclick="setBackgroundImage('https://images7.alphacoders.com/411/thumb-1920-411820.jpg','3')">
         <br>
-        <input type="text" class="bttn2 in2" name="" placeholder="  Image-URL" id="intxt">
-        <select id="slct" class="bttn2 in2" oninput="onImageSizeSelection()">
+        <input type="text" class="hide-button in2" name="" placeholder="  Image-URL" id="intxt">
+        <select id="slct" class="background-select hide-button in2" oninput="onImageSizeSelection()">
             <option value="cover">crop</option>
             <option value="contain">full</option>
         </select>

@@ -1,47 +1,37 @@
-.inf {
-    cursor: default;
-    width: 70px;
-    height: 42px;
-}
-
-.row1 {
-    display: flex;
-}
-
-.col2 {
-    margin-left: 20px;
-}
-
-#info {
-    position: absolute;
-    margin: 0 0 0 35px;
-}
-
-.label-info {
-    background: #9bb6ae;
-}
-
-.label-warning {
-    background: #e0bf00;
-}
-
 body {
     margin: 0;
     padding: 0;
     background: rgb(230, 220, 211);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
+.inf {
+    cursor: default;
+    width: 70px;
+    height: 42px;
+}
+.row1 {
+    display: flex;
+}
+.col2 {
+    margin-left: 20px;
+}
+#info {
+    position: absolute;
+    margin: 0 0 0 35px;
+}
+.label-info {
+    background: #9bb6ae;
+}
+.label-warning {
+    background: #e0bf00;
+}
 .grid {
     margin: 30px 0 0 55px;
     display: grid;
-    /* grid-template-columns: repeat(5, clamp(68px, 12%, 85px)); */
 }
-
 i {
     margin-right: 5px;
 }
-
 .bttn {
     padding: 0;
     height: 38px;
@@ -51,13 +41,11 @@ i {
     transition: all 0.6s;
     box-shadow: 0px 2px 4px 1px rgba(65, 46, 46, 0.08);
 }
-
-.b1 {
-    margin: 30px 0 0 55px;
-}
-
 .bttn:hover {
     box-shadow: 1px 2px 4px 1px rgba(70, 70, 70, 0.42);
+}
+.b1 {
+    margin: 30px 0 0 55px;
 }
 
 button {
@@ -77,16 +65,8 @@ button {
     font-size: large;
 }
 
-#bottom,
-.html {
-    display: flex;
-    flex-direction: row;
-}
-
-#bottom {
-    max-width: 600px;
-}
-
+#bottom, .html { display: flex; }
+#bottom { max-width: 600px; }
 .html {
     position: relative;
     top: -8px;

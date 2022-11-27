@@ -49,11 +49,11 @@ $result = mysqli_query($con," SELECT * FROM transaction WHERE acc_no='$acc_no' O
             <div class="frstwrap">
                 <div class='dtind'>
                     <?php echo date_format(date_create($rows['datetime']),'d/m/y'); $cur_date=date_format(date_create($rows['datetime']),'d/m/y');$GLOBALS['frstdate']=date_format(date_create($rows['datetime']),'Y-m-d'); ?>
-                </div><div class="frto">
-                <form action="" method="post">
-                <input type="date" id="d1" name="d1"> to <input type="date" id="d2" name="d2">
-                </form>
-                
+                </div>
+                <div class="frto">
+                    <form style="margin-block-end: 0;" action="" method="post">
+                        <input type="date" id="d1" name="d1"> to <input type="date" id="d2" name="d2">
+                    </form>
                 </div>
             </div>
             <div class='backk'><?php

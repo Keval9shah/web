@@ -1,19 +1,9 @@
-/* body {
-    background-color: rgb(231, 231, 231);
-} */
-
-form {
-    margin-block-end: 0;
-    /* margin: 5px 0; */
-}
-
 .frstwrap {
     display: flex;
     justify-content: space-between;
 }
 
-#d1,
-#d2 {
+#d1, #d2 {
     height: 24px;
     width: 132px;
     border-radius: 5px;

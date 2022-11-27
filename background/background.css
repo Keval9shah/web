@@ -1,22 +1,20 @@
-body {
+.background-body {
   margin: 0;
   padding: 0;
   background-color: green;
   background-size: cover;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
-.bttn {
+.background-button {
   display: inline-block;
   padding: 17px 29px;
   margin: 0 15px 10px 0;
   border-radius: 6px;
   border-width: 3px;
-}
-.btn {
   outline: none;
   cursor: pointer;
 }
-.inp {
+.background-color-input {
   position: relative;
   top: 6px;
   cursor: pointer;
@@ -25,11 +23,14 @@ body {
   border-right: 3px solid black;
   border-bottom: 3px solid black;
 }
-.inp:active {
+.background-color-input:active {
   border-top: 3px solid black;
   border-left: 3px solid black;
   border-right: 3px solid rgb(129, 129, 129);
   border-bottom: 3px solid rgb(129, 129, 129);
+}
+.bg-white {
+  background-color: white;
 }
 .in2 {
   background: rgba(240, 248, 255, 0.4);
@@ -41,17 +42,17 @@ body {
   width: 47%;
   min-width: 170px;
 }
-::placeholder {
+input::placeholder {
   color: black;
 }
-select {
+.background-select {
   cursor: pointer;
 }
-.bttn2 {
+.hide-button {
   display: none;
   outline: none;
 }
-img {
+.background-image {
   height: 70px;
   margin: 0 10px 10px 0;
   border-radius: 7px;
@@ -61,13 +62,13 @@ img {
   border-bottom: 4px solid black;
   cursor: pointer;
 }
-img:active {
+.background-image:active {
   border-top: 4px solid black;
   border-left: 4px solid black;
   border-right: 4px solid rgb(129, 129, 129);
   border-bottom: 4px solid rgb(129, 129, 129);
 }
-.frst {
+.option-toolkit {
   width: 22%;
   background-color: rgba(75, 75, 75, 0.39);
   padding: 15px;
@@ -84,7 +85,7 @@ img:active {
   background-color: rgb(0, 0, 0);
   width: 135.5px;
 }
-#bttn1 {
+#toggle-button {
   border-radius: 7px;
   padding: 10px;
   z-index: 3;
@@ -92,8 +93,9 @@ img:active {
   top: 0;
   border: 3px solid rgb(0, 0, 0);
   transition: all 0.2s;
+  cursor: pointer;
 }
-#bttn1:active {
+#toggle-button:active {
   top: 4.5px;
 }
 .fa-bars,
