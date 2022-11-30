@@ -71,8 +71,7 @@ textarea {
     padding-top: 28vh;
     height: calc(29vh + 68px);
   }
-  .textarea,
-  #text {
+  .textarea,#text {
     width: 78vw;
     min-width: 220px;
     font-size: 24px;

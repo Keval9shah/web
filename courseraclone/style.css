@@ -168,7 +168,6 @@ body{
     padding-top: 20px;
     line-height: 1.6;
 }
-
 .content p{
     line-height: 52px;
     font-size: 44px;
@@ -176,7 +175,6 @@ body{
     margin-top: 0;
     box-sizing: border-box;
 }
-
 .navsmall{
     display: none;
 }
@@ -203,7 +201,6 @@ body{
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-    /* margin-top: 100px; */
 }
 
 .items a{
@@ -277,19 +274,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 @media screen and (max-width: 1024px) {
-    .items a{
-        flex-basis: 33%;
-    }
+    .items a{flex-basis: 33%;}
 }
 
 @media screen and (max-width: 808px) {
-    .items a{
-        flex-basis: 50%;
-    }
+    .items a{flex-basis: 50%;}
 }
 
 @media screen and (max-width: 592px) {
-    .items a{
-        flex-basis: 100%;
-    }
+    .items a{flex-basis: 100%;}
 }
