@@ -30,18 +30,10 @@ body {
   text-align: center;
   padding: calc(50vh - 22px) 0;
 }
-.shadow {
-  text-shadow: rgba(0, 0, 0, 0.7) 0 0 1px;
-}
+.shadow {text-shadow: rgba(0, 0, 0, 0.7) 0 0 1px;}
 @media only screen and (max-width: 427px) {
-  .main {
-    display: block;
-  }
-  .div1,
-  .div2,
-  .div3 {
-    width: 100%;
-  }
+  .main {display: block;}
+  .div1,.div2,.div3 {width: 100%;}
   .div1 {
     height: 33vh;
     background-image: url(wall-events-pattern.svg);
@@ -54,13 +46,7 @@ body {
     height: 33vh;
     background: linear-gradient(#ceddf0, #fff);
   }
-  .p2 {
-    padding: calc(16.7vh - 20.5px) 0;
-  }
-  .p1 {
-    padding: calc(16.7vh - 26.8px) 0 !important;
-  }
-  .p3 {
-    padding: calc(16.7vh - 22.5px) 0;
-  }
+  .p1 {padding: calc(16.7vh - 26.8px) 0 !important;}
+  .p2 {padding: calc(16.7vh - 20.5px) 0;}
+  .p3 {padding: calc(16.7vh - 22.5px) 0;}
 }

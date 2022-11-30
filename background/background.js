@@ -9,6 +9,16 @@ var imageButtons = document.querySelectorAll(".hide-button");
 var e, inpimg;
 var optionToolkit = document.querySelector(".option-toolkit");
 var toggleButton = document.querySelector("#toggle-button");
+const showInline = (buttons) => {
+    buttons.forEach(button => {
+        button.style.display = "inline-block";
+    });
+};
+const hide = (buttons) => {
+    buttons.forEach(button => {
+        button.style.display = "none";
+    });
+};
 function openMenu() {
     $("#i").css('display', 'none');
     $("#i1").css('display', 'inline-flex');
@@ -30,37 +40,27 @@ function toggleColorImage() {
     if (x % 2 == 1) {
         optionToolkit.style.width = "22%";
         toggleButton.innerText = "background image";
-        document.querySelector("#scnd").style.width = (toggleButton.offsetWidth + 0.5).toString();
         document.body.style.backgroundImage = "none";
         document.body.style.backgroundColor = defaultColor;
-        for (let i = 0; i < colorButtons.length; i++) {
-            colorButtons[i].style.display = "inline-block";
-        }
-        for (let i = 0; i < imageButtons.length; i++) {
-            imageButtons[i].style.display = "none";
-        }
+        hide(imageButtons);
+        showInline(colorButtons);
     }
     else {
         optionToolkit.style.width = "40%";
         document.body.style.backgroundImage = "url(" + defaultImageURL + ")";
         toggleButton.innerText = "background color";
-        document.querySelector("#scnd").style.width = toggleButton.offsetWidth.toString();
-        for (let i = 0; i < colorButtons.length; i++) {
-            colorButtons[i].style.display = "none";
-        }
-        for (let i = 0; i < imageButtons.length; i++) {
-            imageButtons[i].style.display = "inline-block";
-        }
+        hide(colorButtons);
+        showInline(imageButtons);
         inpimg = document.querySelector("#intxt");
         e = document.querySelector("#slct");
-        inpimg.addEventListener("input", () => {
+        inpimg.oninput = () => {
             defaultImageURL = inpimg.value;
             document.body.style.backgroundImage = "url(" + defaultImageURL + ")";
             inpimg.style.backgroundSize = "cover";
             setTimeout(() => {
                 inpimg.value = "";
             }, 8000);
-        });
+        };
     }
     if (x > 4) {
         x -= 2;
