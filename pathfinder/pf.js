@@ -271,7 +271,7 @@ function plus() {
     } else if (e.options[e.selectedIndex].value == "clm") {
         arr.push([]);
         var x = size[0] + 1; //experiment
-        document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + x + ", clamp(48px)";
+        document.getElementsByClassName("grid")[0].style.gridTemplateColumns = "repeat(" + x + ", 48px)";
         for (let i = 0; i < size[1]; i++) {
             buton = document.createElement("button");
             uls = size[0] * size[1] + 1 + i;
