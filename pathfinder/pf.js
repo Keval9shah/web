@@ -21,16 +21,20 @@ let pinFull = 3;
 
 //check for await in setTimeout
 clicked("x24");
+clicked("x24");
 clicked("x37");
-const obstacles = [24,37,5,8,10,11,15,17,23,25,26,28,32,35,39,43,46,47,51,59,63,65];
-obstacles.forEach((point,i) => {
+clicked("x37");
+const obstacles = [[5,8,10],[11,15,17],[23,25,26,28],[32,35,39],[43,46,47],[51,59],[63,65]];
+obstacles.forEach((points,i) => {
     setTimeout(() => {
-        clicked("x"+point.toString());
-    }, 100*i);
+        points.forEach(point => {
+            clicked("x"+point.toString());
+        })
+    }, 150*i);
 })
 setTimeout(() => {
     fiind();
-}, 100*obstacles.length);
+}, 150*obstacles.length);
 
 let info = document.getElementById("info");
 let txt = document.getElementsByClassName("txt")[0];
