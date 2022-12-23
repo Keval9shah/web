@@ -12,10 +12,10 @@ Links to my projects
 
 Landing Pages & Forms
 <ul>
-    <li><a href="https://keval9shah.github.io/Tntra/TntraRepo/" target="_blank">Landing Page</a></li>
-    <li><a href="https://keval9shah.github.io/Tntra/TntraMock/" target="_blank">Another Landing Page</a></li>
-    <li><a href="https://keval9shah.github.io/Tntra/TntraForm/" target="_blank">Form</a></li>
-    <li><a href="https://keval9shah.github.io/Tntra/TntraEval/" target="_blank">Availability Form</a></li>
+    🔗<a href="https://keval9shah.github.io/Tntra/TntraRepo/" target="_blank">Landing Page</a>&nbsp;
+    🔗<a href="https://keval9shah.github.io/Tntra/TntraMock/" target="_blank">Another Landing Page</a>&nbsp;
+    🔗<a href="https://keval9shah.github.io/Tntra/TntraForm/" target="_blank">Form</a>&nbsp;
+    🔗<a href="https://keval9shah.github.io/Tntra/TntraEval/" target="_blank">Availability Form</a>
 </ul>
 
 🔗 <a href="https://keval9shah.github.io/Vue-pathfinder/index">Vue Path Finder</a>
