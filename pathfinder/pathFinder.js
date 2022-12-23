@@ -30,7 +30,7 @@ function constructGrid() {
     if (columnSize == newColumnSize && rowSize == newRowSize && $("#grid button").length != 0) {
         return;
     }
-    !nodes[0] && gridElement.append("<button class='grid-node' onclick='clicked(this.id)' id = '0_0'></button>");
+    !nodes[0] && gridElement.append("<button class='grid-node' onmousedown='clicked(this.id)' id = '0_0'></button>");
     for (let rowNum = 0; rowNum < newRowSize; rowNum++) {
         !nodes[rowNum] && nodes.push([]);
         for (let columnNum = 0; columnNum < newColumnSize; columnNum++) {
@@ -46,7 +46,7 @@ function constructGrid() {
                 },
                 type: NodeType.blank
             });
-            $("<button class='grid-node' onclick='clicked(this.id)' id =" + rowNum + "_" + columnNum + "></button>").insertAfter("#" + (columnNum == 0 ? rowNum - 1 : rowNum) + "_" + (columnNum == 0 ? newColumnSize - 1 : columnNum - 1));
+            $("<button class='grid-node' onmousedown='clicked(this.id)' id =" + rowNum + "_" + columnNum + "></button>").insertAfter("#" + (columnNum == 0 ? rowNum - 1 : rowNum) + "_" + (columnNum == 0 ? newColumnSize - 1 : columnNum - 1));
         }
     }
     if (columnSize > newColumnSize || rowSize > newRowSize) {
