@@ -2,6 +2,8 @@
 
 Links to my projects
 
+<b>Banking, Landing Page &nbsp;&nbsp;&nbsp;</b>```Only for desktop```
+
 🔗<a href="https://kevalsproject.000webhostapp.com/" target="_blank">Banking website</a> After Login --> <a href="https://kevalsproject.000webhostapp.com/details" target="_blank">profile page</a>
 
 🔗<a href="https://keval9shah.github.io/web/pathfinder" target="_blank">Path finder</a>
@@ -12,10 +14,14 @@ Links to my projects
 
 Landing Pages & Forms
 <ul>
-    🔗<a href="https://keval9shah.github.io/Tntra/TntraRepo/" target="_blank">Landing Page</a>&nbsp;
-    🔗<a href="https://keval9shah.github.io/Tntra/TntraMock/" target="_blank">Another Landing Page</a>&nbsp;
-    🔗<a href="https://keval9shah.github.io/Tntra/TntraForm/" target="_blank">Form</a>&nbsp;
-    🔗<a href="https://keval9shah.github.io/Tntra/TntraEval/" target="_blank">Availability Form</a>
+<li>🔗<a href="https://keval9shah.github.io/Tntra/TntraRepo/" target="_blank">Landing Page</a>&nbsp;</li>
+
+<li>🔗<a href="https://keval9shah.github.io/Tntra/TntraMock/" target="_blank">Another Landing Page</a>&nbsp;</li>
+
+<li>🔗<a href="https://keval9shah.github.io/Tntra/TntraForm/" target="_blank">Form</a>&nbsp;</li>
+
+<li>🔗<a href="https://keval9shah.github.io/Tntra/TntraEval/" target="_blank">Availability Form</a></li>
+
 </ul>
 
 🔗 <a href="https://keval9shah.github.io/Vue-pathfinder/index">Vue Path Finder</a>
